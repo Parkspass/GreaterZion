@@ -6,6 +6,7 @@
     <meta content="utf-8" http-equiv="encoding">
     <title>Acadia VEM</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
     <!-- PWA STUFF -->
     <!-- <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -56,11 +57,35 @@
                         </div>
                     </div>
                 </div>
+                <v-bottom-navigation grow fixed v-model="page">
+                    <v-btn value="home" style="border-bottom: 1px solid #28430A;" @click="bottomNavImg('home');">
+                        <span>Home</span>
+                        <img :src="homeImg" alt="home">
+                    </v-btn>
+                    <v-btn value="map" @click="bottomNavImg('map');">
+                        <span>Map</span>
+                        <img :src="mapImg" alt="map">
+                    </v-btn>
+                </v-bottom-navigation>
             </div>
+        </div>
+        <div v-if="page == 'map' ">
+            <p>map page</p>
+            <v-bottom-navigation grow fixed v-model="page">
+                <v-btn value="home" @click="bottomNavImg('home');">
+                    <span>Home</span>
+                    <img :src="homeImg" alt="home">
+                </v-btn>
+                <v-btn style="border-bottom: 1px solid #28430A;" value="map" @click="bottomNavImg('map');">
+                    <span>Map</span>
+                    <img :src="mapImg" alt="map">
+                </v-btn>
+            </v-bottom-navigation>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
