@@ -127,11 +127,11 @@ body, textarea{
 #updatesTitle{
     margin: 0px;
     color: #24C73E;
-    font-size: max(4vw, 4vw);
+    font-size: 14px;
     font-weight: 500;
 }
 #updatesText{
-    font-size: max(3vw, 3vw);
+    font-size: 12px;
     color: white;
     margin: 0px;
     margin-top: 2px;
@@ -142,7 +142,7 @@ body, textarea{
     bottom: 4px;
 }
 #updateBold{
-    font-size: max(4vw, 4vw);
+    font-size: 14px;
     font-weight: bold;
     margin: 2px 0px;
 }
