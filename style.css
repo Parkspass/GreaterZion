@@ -193,3 +193,11 @@ body, textarea{
 a{
     text-decoration: none;
 }
+
+/* bottom navigation tabs */
+.homeTabFocus {
+    border-bottom: solid 2px #28430A;
+}
+.mapTabFocus {
+    border-bottom: solid 2px #28430A;
+}
