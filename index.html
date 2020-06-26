@@ -21,7 +21,43 @@
 </head>
 <body>
     <div id="app">
-
+        <div v-if="page=='home'">
+            <div id="headerImg">
+                <div class="headerText">
+                    <h1>Greater Zion</h1>
+                    <p><img class="bison" src="icons/white_bison.svg">Zion National Park</p>
+                </div>
+            </div>
+            <div class="grid-container">
+                <div class="grid-item" id="entrances">
+                    <p class="live">Live<img class="liveImg" src="icons/liveImg.svg"></p>
+                    <div class="gridText">
+                        <h2>Entrances</h2>
+                    </div>
+                </div>
+                <div class="grid-item" id="parking">
+                    <p class="live">Live<img class="liveImg" src="icons/liveImg.svg"></p>
+                    <div class="gridText">
+                        <h2>Parking</h2>
+                    </div>
+                </div>
+                <div class="grid-item" id="shuttles">
+                    <div class="gridText">
+                        <h2>Shuttles</h2>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <div id="updatesWrap">
+                        <p id="updatesTitle">ZION IS OPEN.</p>
+                    </div>
+                    <div id="trails">
+                        <div class="gridText">
+                            <h2>Trails</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
