@@ -117,3 +117,11 @@ body, textarea{
     margin: 0px;
     color: #24C73E;
 }
+
+/* bottom navigation tabs */
+.homeTabFocus {
+    border-bottom: solid 2px #28430A;
+}
+.mapTabFocus {
+    border-bottom: solid 2px #28430A;
+}

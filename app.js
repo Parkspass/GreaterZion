@@ -14,16 +14,22 @@ var app = new Vue({
         page: 'home',
         homeImg: 'icons/home_green.svg',
         mapImg: 'icons/map_grey.svg',
+        home_selected: true,
+        map_selected: false
     },
     methods: {
         bottomNavImg: function(NewTab) {
             switch(NewTab) {
                 case 'home':
-                    this.homeImg = 'icons/home_green.svg'; this.mapImg = 'icons/map_grey.svg'; break;
+                    this.homeImg = 'icons/home_green.svg'; this.mapImg = 'icons/map_grey.svg'; 
+                    this.home_selected=true;  this.map_selected=false; 
+                    break;
                 case 'map':
-                    this.homeImg = 'icons/home_grey.svg'; this.mapImg = 'icons/map_green.svg'; break;
+                    this.homeImg = 'icons/home_grey.svg'; this.mapImg = 'icons/map_green.svg'; 
+                    this.home_selected=false;  this.map_selected=true; 
+                    break;
             }
         },
-        
+
     }
 });

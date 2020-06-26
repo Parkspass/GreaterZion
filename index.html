@@ -57,31 +57,25 @@
                         </div>
                     </div>
                 </div>
-                <v-bottom-navigation grow fixed v-model="page">
-                    <v-btn value="home" style="border-bottom: 1px solid #28430A;" @click="bottomNavImg('home');">
-                        <span>Home</span>
-                        <img :src="homeImg" alt="home">
-                    </v-btn>
-                    <v-btn value="map" @click="bottomNavImg('map');">
-                        <span>Map</span>
-                        <img :src="mapImg" alt="map">
-                    </v-btn>
-                </v-bottom-navigation>
             </div>
         </div>
         <div v-if="page == 'map' ">
             <p>map page</p>
-            <v-bottom-navigation grow fixed v-model="page">
-                <v-btn value="home" @click="bottomNavImg('home');">
-                    <span>Home</span>
-                    <img :src="homeImg" alt="home">
-                </v-btn>
-                <v-btn style="border-bottom: 1px solid #28430A;" value="map" @click="bottomNavImg('map');">
-                    <span>Map</span>
-                    <img :src="mapImg" alt="map">
-                </v-btn>
-            </v-bottom-navigation>
         </div>
+
+
+        <v-bottom-navigation grow fixed v-model="page">
+            <v-btn value="home" :class="{homeTabFocus: home_selected}" @click="bottomNavImg('home');">
+                <span>Home</span>
+                <img :src="homeImg" alt="home">
+            </v-btn>
+            <!-- <v-spacer></v-spacer> -->
+            <v-btn value="map" :class="{mapTabFocus: map_selected}" @click="bottomNavImg('map');">
+                <span>Map</span>
+                <img :src="mapImg" alt="map">
+            </v-btn>
+        </v-bottom-navigation>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
