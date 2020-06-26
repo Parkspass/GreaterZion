@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div class="grid-container">
-                <div class="grid-item" id="entrances">
+                <div class="grid-item" id="entrances" @click="entrancesClicked()">
                     <p class="live">Live<img class="liveImg" src="icons/liveImg.svg"></p>
                     <div class="gridText">
                         <h2>Entrances</h2>
@@ -119,6 +119,73 @@
                 <a href="https://www.nps.gov/zion/planyourvisit/how-will-covid-19-affect-my-visit.htm"><img class="linkImg" src="icons/linkImg.svg"><span class="linkText">Learn more at nps.gov/zion.</span></a>
             </div>
             <div class="spacer"></div>
+        </div>
+
+        <div v-if="page=='entrances'">
+            <div class="mapStatic">
+                <img class="backArrow" src="icons/arrow_back-24px 1 1.svg" @click="page='home'">
+                <a href="photos/zion_national_park_map.jpg" download="ZionMap"><img class="circleBtn download" src="icons/download.svg"></a>
+                <img class="circleBtn expand" src="icons/expand.svg">
+            </div>
+            <div class="contentWrapper">
+                <h3 class="contentTitle">Entrances</h3>
+                <div class="lineWrapper">
+                    <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
+                        <image x="96" y="96" width="8" height="8" href="icons/entrance_pink.svg"></image>
+                        <circle class="background" cx="100" cy="100" r="8" stroke="#ef6a6e33" />
+                        <circle id="line0" class="overlayLine" cx="100" cy="100" r="8" stroke="#EF6A6E" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
+                    </svg>
+                    <div class="lineWrapper2">
+                        <h5>South Entrance</h5>
+                        <p>Vehicle Entrance</p>
+                    </div>
+                    <div class="lineWrapper3">
+                        <p>{{SouthEntranceBusiness}}</p>
+                    </div>
+                </div>
+                <div class="lineWrapper">
+                    <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
+                        <image x="96" y="96" width="8" height="8" href="icons/entrance_yellow.svg"></image>
+                        <circle class="background" cx="100" cy="100" r="8" stroke="#FFF5D6" />
+                        <circle id="line1" class="overlayLine" cx="100" cy="100" r="8" stroke="#FFCD31" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
+                    </svg>
+                    <div class="lineWrapper2">
+                        <h5>East Entrance</h5>
+                        <p>Vehicle Entrance</p>
+                    </div>
+                    <div class="lineWrapper3">
+                        <p>{{EastEntranceBusiness}}</p>
+                    </div>
+                </div>
+                <div class="lineWrapper">
+                    <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
+                        <image x="96" y="96" width="8" height="8" href="icons/entrance_green.svg"></image>
+                        <circle class="background" cx="100" cy="100" r="8" stroke="#E3EBDB" />
+                        <circle id="line2" class="overlayLine" cx="100" cy="100" r="8" stroke="#749D4C" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
+                    </svg>
+                    <div class="lineWrapper2">
+                        <h5>River Entrance</h5>
+                        <p>Walk-in Entrance</p>
+                    </div>
+                    <div class="lineWrapper3">
+                        <p>{{RiverEntranceBusiness}}</p>
+                    </div>
+                </div>
+                <div class="lineWrapper">
+                    <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
+                        <image x="96" y="96" width="8" height="8" href="icons/entrance_grey.svg"></image>
+                        <circle class="background" cx="100" cy="100" r="8" stroke="#E3EBDB" />
+                        <circle id="line3" class="overlayLine" cx="100" cy="100" r="8" stroke="#749D4C" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
+                    </svg>
+                    <div class="lineWrapper2">
+                        <h5>Kolob Entrance</h5>
+                        <p>Vehicle Entrance</p>
+                    </div>
+                    <div class="lineWrapper3">
+                        <p>{{KolobEntranceBusiness}}</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div>
