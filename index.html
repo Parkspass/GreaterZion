@@ -48,7 +48,7 @@
                     </div>
                 </div>
                 <div class="grid-item gi2">
-                    <div id="updatesWrap" @click="page='updates'">
+                    <div id="updatesWrap" @click="page='update'">
                         <img id="calendar" src="icons/event_available-24px 1.svg">
                         <p id="updatesTitle">ZION IS OPEN.</p>
                         <p id="updatesText">You must have a ticket to ride the shuttle.</p>
@@ -61,23 +61,13 @@
                     </div>
                 </div>
             </div>
-            <v-bottom-navigation grow fixed v-model="page">
-                <v-btn value="home" style="border-bottom: 1px solid #28430A;" @click="bottomNavImg('home');">
-                    <span>Home</span>
-                    <img :src="homeImg" alt="home">
-                </v-btn>
-                <v-btn value="map" @click="bottomNavImg('map');">
-                    <span>Map</span>
-                    <img :src="mapImg" alt="map">
-                </v-btn>
-            </v-bottom-navigation>
         </div>
 
         <div v-if="page == 'map' ">
             <p>map page</p>
         </div>
 
-        <div v-if="page == 'updates'">
+        <div v-if="page == 'update'">
             <div id="updatesImg">
                 <img class="backArrow" src="icons/arrow_back-24px 1 1.svg" @click="page='home'">
             </div>
