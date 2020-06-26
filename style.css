@@ -22,6 +22,9 @@ body, textarea{
     font-weight: normal;
     position: relative;
 }
+.spacer{
+    margin-bottom: 40x;
+}
 
 /* HOME PAGE */
 #headerImg{
@@ -196,6 +199,11 @@ a{
 }
 
 /* bottom navigation tabs */
+.bottomNavBar {
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+}
 .homeTabFocus {
     border-bottom: solid 2px #28430A;
 }

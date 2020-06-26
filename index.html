@@ -50,7 +50,7 @@
                     </div>
                 </div>
                 <div class="grid-item gi2">
-                    <div id="updatesWrap" @click="page='update'">
+                    <div id="updatesWrap" @click="page='update'; console.log('clicked');">
                         <img id="calendar" src="icons/event_available-24px 1.svg">
                         <p id="updatesTitle">ZION IS OPEN.</p>
                         <p id="updatesText">You must have a ticket to ride the shuttle.</p>
@@ -118,19 +118,26 @@
                     Visitors should have flexible alternate plans for getting to trailheads or visiting other areas.</p>
                 <a href="https://www.nps.gov/zion/planyourvisit/how-will-covid-19-affect-my-visit.htm"><img class="linkImg" src="icons/linkImg.svg"><span class="linkText">Learn more at nps.gov/zion.</span></a>
             </div>
+            <div class="spacer"></div>
         </div>
 
-        <v-bottom-navigation grow fixed v-model="page">
-            <v-btn value="home" :class="{homeTabFocus: home_selected}" @click="bottomNavImg('home');">
-                <span>Home</span>
-                <img :src="homeImg" alt="home">
-            </v-btn>
-            <!-- <v-spacer></v-spacer> -->
-            <v-btn value="map" :class="{mapTabFocus: map_selected}" @click="bottomNavImg('map');">
-                <span>Map</span>
-                <img :src="mapImg" alt="map">
-            </v-btn>
-        </v-bottom-navigation>
+        <div>
+            <v-app-bar class="bottomNavBar" >
+                <v-btn text width="50%" height="50px" tile :class="{homeTabFocus: home_selected}" @click="page='home'; bottomNavImg('home');">
+                    <div >
+                        <img :src="homeImg" alt="home">
+                        <div>Home</div>
+                    </div>
+                </v-btn>
+                <v-spacer></v-spacer>
+                <v-btn text width="50%" height="50px" tile :class="{mapTabFocus: map_selected}" @click="page='map'; bottomNavImg('map');">
+                    <div>
+                        <img :src="mapImg" alt="map">
+                        <div>Map</div>
+                    </div>
+                </v-btn>
+            </v-app-bar>
+        </div>
 
     </div>
 
