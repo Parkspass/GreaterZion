@@ -7,15 +7,15 @@ console.log('connected');
 //         .catch((err) => console.log("Service Worker Not Registered", err));
 // }
 
-var app = new Vue({
+const app = new Vue({
     el: '#app',
     vuetify: new Vuetify(),
     data: {
-        page: 'update',
+        page: 'home',
         homeImg: 'icons/home_green.svg',
         mapImg: 'icons/map_grey.svg',
         home_selected: true,
-        map_selected: false
+        map_selected: false,
     },
     methods: {
         bottomNavImg: function(NewTab) {
@@ -30,5 +30,5 @@ var app = new Vue({
                     break;
             }
         },
-    }
+    },
 });
