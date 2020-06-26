@@ -31,6 +31,7 @@ body, textarea{
     background-size: cover;
     height: 30vh;
     box-shadow: inset 0 0 0 1000px rgba(0,0,0,.5);
+    background-position: center;
 }
 .headerText{
     width: 240px;
@@ -58,14 +59,15 @@ body, textarea{
 .grid-container{
     display: grid;
     grid-template-columns: 49% 49%;
-    grid-gap: 10px;
-    padding: 10px;
+    grid-gap: 8px;
+    padding: 8px;
     color: white;
+    margin-bottom: 60px;
 }
 .grid-item{
     position: relative;
     width: 100%;
-    height: 150px;
+    height: 28vh;
     border-radius: 4px;
     overflow: hidden;
 }
@@ -115,33 +117,83 @@ body, textarea{
     background-color: #1E3D54;
     border-radius: 4px;
     height: 48%;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     padding: 8px;
     position: relative;
 }
 #updatesTitle{
     margin: 0px;
     color: #24C73E;
-    font-size: 10px;
+    font-size: max(4vw, 4vw);
     font-weight: 500;
 }
 #updatesText{
-    font-size: 12px;
+    font-size: max(3vw, 3vw);
     color: white;
     margin: 0px;
     margin-top: 2px;
 }
 #calendar{
     position: absolute;
-    right: 8px;
-    bottom: 8px;
+    right: 4px;
+    bottom: 4px;
 }
 #updateBold{
-    font-size: 14px;
+    font-size: max(4vw, 4vw);
     font-weight: bold;
     margin: 2px 0px;
 }
 
+/* UPDATES PAGE */
+.contentWrapper{
+    padding: 16px;
+}
+#updatesImg{
+    position: relative;
+    top: 0;
+    background-image: url("photos/zion-canyon-overlook-trail-36.jpg");
+    background-size: cover;
+    height: 30vh;
+    background-position: bottom;
+}
+.backArrow{
+    width: 25px;
+    height: 25px;
+    margin: 8px;
+}
+.uTitle{
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+.uSub{
+    font-size: 18px;
+    font-weight: 600;
+    margin: 16px 0px;
+}
+#buyTicket{
+    display: block;
+    width: 200px;
+    margin: 16px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.linkImg{
+    vertical-align: middle;
+    margin: 4px 0px;
+}
+.linkText{
+    color: #28430A;
+    line-height: 21px;
+    margin: 4px 0px;
+    vertical-align: middle;
+}
+.spacer{
+    margin-bottom: 16px;
+}
+a{
+    text-decoration: none;
+}
 
 /* bottom navigation tabs */
 .homeTabFocus {
@@ -149,3 +201,4 @@ body, textarea{
 }
 .mapTabFocus {
     border-bottom: solid 2px #28430A;
+}

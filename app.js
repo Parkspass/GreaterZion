@@ -30,6 +30,5 @@ var app = new Vue({
                     break;
             }
         },
-
     }
 });

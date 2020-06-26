@@ -50,8 +50,8 @@
                     </div>
                 </div>
                 <div class="grid-item gi2">
-                    <div id="updatesWrap">
-                        <img id="calendar" src="icons/calendar.svg">
+                    <div id="updatesWrap" @click="page='update'">
+                        <img id="calendar" src="icons/event_available-24px 1.svg">
                         <p id="updatesTitle">ZION IS OPEN.</p>
                         <p id="updatesText">You must have a ticket to ride the shuttle.</p>
                         <p id="updateBold">PARK UPDATES</p>
@@ -64,6 +64,7 @@
                 </div>
             </div>
         </div>
+
         <div v-if="page == 'map' ">
             <p>map page</p>
             <div id='map' style='width: 400px; height: 300px;'></div>
@@ -78,6 +79,46 @@
             </script>
         </div>
 
+        <div v-if="page == 'update'">
+            <div id="updatesImg">
+                <img class="backArrow" src="icons/arrow_back-24px 1 1.svg" @click="page='home'">
+            </div>
+            <div class="contentWrapper">
+                <h1 class="uTitle">Park Updates</h1>
+                <p class="uSub">Park Shuttle Service Resumes July 1, 2020 - Tickets Required In Advance</p>
+                <a href="https://www.nps.gov/zion/planyourvisit/zion-canyon-shuttle-tickets.htm"><img id="buyTicket" src="icons/buy-ticket-now.svg"></a>
+                <p class="uText">Park Shuttle Service Resumes July 1, 2020 - Tickets Required In Advance
+                    Starting July 1, park shuttles will resume modified operations--tickets required. Book tickets in advance on Recreation.gov. 
+                    Private vehicles are not allowed on the Zion Canyon Scenic Drive when shuttles are in operation. </p>
+                <a href="https://www.nps.gov/zion/planyourvisit/zion-canyon-shuttle-tickets.htm"><img class="linkImg" src="icons/linkImg.svg"><span class="linkText">Learn more at nps.gov/zion.</span></a>
+                <p class="uSub">What to do if tickets are sold out</p>
+                <p class="uText">If tickets are sold out, you still have the option to rent a bike or e-bike, or hire a private shuttle. </p>
+
+                <p class="uSub">Private Shuttle Businesses</p>
+                <p class="uText">Zion Rock & Mountain Guides</p>
+                <div class="spacer"><a href="https://www.zionrockguides.com/"><img class="linkImg" src="icons/linkImg.svg"><span class="linkText">zionrockguides.com</span></a></div>
+                <p class="uText">SAW Zion</p>
+                <div class="spacer"><a href="https://www.zionguidehub.com"><img class="linkImg" src="icons/linkImg.svg"><span class="linkText">zionguidehub.com</span></a></div>
+                <p class="uText">Zion Guru</p>
+                <div class="spacer"><a href="https://www.zionguru.com/"><img class="linkImg" src="icons/linkImg.svg"><span class="linkText">zionguru.com</span></a></div>
+                <p class="uText">East Zion Adventures</p>
+                <div class="spacer"><a href="https://www.eastzionadventures.com"><img class="linkImg" src="icons/linkImg.svg"><span class="linkText">eastzionadventures.com</span></a></div>
+                <p class="uText">Zion Adventure Company</p>
+                <div class="spacer"><a href="https://www.zionadventures.com"><img class="linkImg" src="icons/linkImg.svg"><span class="linkText">zionadventures.com</span></a></div>
+                <p class="uText">Zion Outback Safaris</p>
+                <div class="spacer"><a href="https://www.zionjeeptours.com"><img class="linkImg" src="icons/linkImg.svg"><span class="linkText">zionjeeptours.com</span></a></div>
+
+                <p class="uSub">Limited Resumption of Operations - Some Park Areas Available</p>
+                <p class="uText">Shuttles are not operating. Parking is extremely limited and Scenic Drive will be closed when all parking is full. 
+                    Kolob Canyons is closed. Have alternate plans in the area if parking is full. </p>
+                <a href="https://www.nps.gov/zion/planyourvisit/limited-resumption-of-operations.htm"><img class="linkImg" src="icons/linkImg.svg"><span class="linkText">Learn more at nps.gov/zion.</span></a>
+
+                <p class="uSub">How Will COVID-19 Affect My Visit?</p>
+                <p class="uText">The Zion Canyon Scenic Drive is closed to private vehicles for most of the day while all parking is full. 
+                    Visitors should have flexible alternate plans for getting to trailheads or visiting other areas.</p>
+                <a href="https://www.nps.gov/zion/planyourvisit/how-will-covid-19-affect-my-visit.htm"><img class="linkImg" src="icons/linkImg.svg"><span class="linkText">Learn more at nps.gov/zion.</span></a>
+            </div>
+        </div>
 
         <v-bottom-navigation grow fixed v-model="page">
             <v-btn value="home" :class="{homeTabFocus: home_selected}" @click="bottomNavImg('home');">
