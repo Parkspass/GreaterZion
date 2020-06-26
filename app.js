@@ -11,7 +11,7 @@ var app = new Vue({
     el: '#app',
     vuetify: new Vuetify(),
     data: {
-        page: 'home',
+        page: 'map',
         homeImg: 'icons/home_green.svg',
         mapImg: 'icons/map_grey.svg',
         home_selected: true,
