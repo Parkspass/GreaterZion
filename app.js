@@ -6,7 +6,14 @@ console.log('connected');
 //         .then((reg) => console.log("Service Worker Registered", reg))
 //         .catch((err) => console.log("Service Worker Not Registered", err));
 // }
-
+mapboxgl.accessToken="pk.eyJ1IjoiamFzb25waXR0cyIsImEiOiJja2J2NmNsNXowMzI2MzBvZnJ6aWEwaHpmIn0.LBsh6F1QSk4aNMBLtErYNw";
+var map = new mapboxgl.Map({
+    container: 'mapbox',
+    style: 'mapbox://styles/jasonpitts/ckbv6grp516621inii9kmamh6',
+    center: [-112.9867994, 37.200757], // starting position [lng, lat]
+    zoom: 11 // starting zoom
+});
+console.log(map);
 var app = new Vue({
     el: '#app',
     vuetify: new Vuetify(),
@@ -57,26 +64,18 @@ var app = new Vue({
         }
     },
     watch:{
-        page: function() {
-            if(this.page == 'map'){
-                mapboxgl.accessToken="pk.eyJ1IjoiamFzb25waXR0cyIsImEiOiJja2J2NmNsNXowMzI2MzBvZnJ6aWEwaHpmIn0.LBsh6F1QSk4aNMBLtErYNw";
-                var map = new mapboxgl.Map({
-                    container: 'map',
-                    style: 'mapbox://styles/jasonpitts/ckbv6grp516621inii9kmamh6',
-                    center: [-112.9867994, 37.200757], // starting position [lng, lat]
-                    zoom: 11 // starting zoom
-                });
-                console.log(map);
-            }
-        }
+        // page: function() {
+        //     if(this.page == 'map'){
+        //         mapboxgl.accessToken="pk.eyJ1IjoiamFzb25waXR0cyIsImEiOiJja2J2NmNsNXowMzI2MzBvZnJ6aWEwaHpmIn0.LBsh6F1QSk4aNMBLtErYNw";
+        //         var map = new mapboxgl.Map({
+        //             container: 'map',
+        //             style: 'mapbox://styles/jasonpitts/ckbv6grp516621inii9kmamh6',
+        //             center: [-112.9867994, 37.200757], // starting position [lng, lat]
+        //             zoom: 11 // starting zoom
+        //         });
+        //         console.log(map);
+        //     }
+        // }
     }
 });
 
-// mapboxgl.accessToken="pk.eyJ1IjoiamFzb25waXR0cyIsImEiOiJja2J2NmNsNXowMzI2MzBvZnJ6aWEwaHpmIn0.LBsh6F1QSk4aNMBLtErYNw";
-// var map = new mapboxgl.Map({
-//     container: 'map',
-//     style: 'mapbox://styles/jasonpitts/ckbv6grp516621inii9kmamh6',
-//     center: [-112.9867994, 37.200757], // starting position [lng, lat]
-//     zoom: 11 // starting zoom
-// });
-// console.log(map);

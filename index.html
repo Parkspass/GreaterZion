@@ -26,7 +26,7 @@
 <body>    
     <div id="app" >
         <v-app>
-            <v-main>
+            <v-main >
                 <div v-if="page=='home'">
                     <div id="headerImg">
                         <div class="headerText">
@@ -68,11 +68,10 @@
                     </div>
                 </div>
 
-                <div v-if="page == 'map' " style="height: 100%; width: 100%;">
-                    <p>map page</p>
-                    <div id='map'></div>
+                <div v-if="page == 'map' " style="height: 400px; width: 300px;">
+                    <p class="mb-4">map page</p> 
+                    <div class="mt-5" id='mapbox' style="height: 400px; width: 300px; border: 1px solid black;"></div>
                 </div>
-
                 
                 <div v-if="page == 'update'">
                     <div id="updatesImg">
@@ -184,7 +183,7 @@
                 </div>
 
                 <div>
-                    <v-app-bar class="bottomNavBar" >
+                    <v-app-bar class="bottomNavBar">
                         <v-btn text width="50%" height="55px" tile :class="{homeTabFocus: home_selected}" @click="page='home'; bottomNavImg('home');">
                             <div >
                                 <img :src="homeImg" alt="home">
@@ -204,7 +203,6 @@
         </v-app>
 
     </div>
-    
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
     <script src="app.js"></script>
