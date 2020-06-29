@@ -7,11 +7,11 @@ console.log('connected');
 //         .catch((err) => console.log("Service Worker Not Registered", err));
 // }
 
-const app = new Vue({
+var app = new Vue({
     el: '#app',
     vuetify: new Vuetify(),
     data: {
-        page: 'home',
+        page: 'map',
         homeImg: 'icons/home_green.svg',
         mapImg: 'icons/map_grey.svg',
         home_selected: true,
@@ -32,3 +32,12 @@ const app = new Vue({
         },
     },
 });
+
+mapboxgl.accessToken="pk.eyJ1IjoiamFzb25waXR0cyIsImEiOiJja2J2NmNsNXowMzI2MzBvZnJ6aWEwaHpmIn0.LBsh6F1QSk4aNMBLtErYNw";
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/jasonpitts/ckbv6grp516621inii9kmamh6',
+    center: [-112.9867994, 37.200757], // starting position [lng, lat]
+    zoom: 11 // starting zoom
+});
+console.log(map);

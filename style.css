@@ -210,3 +210,8 @@ a{
 .mapTabFocus {
     border-bottom: solid 2px #28430A;
 }
+
+#map {
+    height: 500px;
+    width: 100%;
+}
