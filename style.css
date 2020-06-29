@@ -1,3 +1,17 @@
+@keyframes dash {
+    to {
+      stroke-dashoffset: 0;
+    }
+}
+.background {
+    stroke-width: 4;
+    fill: none;
+}
+.overlayLine {
+    fill: none;
+    stroke-width: 4;
+    animation: dash 2s linear forwards;
+}
 @font-face{
     font-family: "myRoboto";
     src: url("fonts/Roboto/Roboto-Regular.ttf");
@@ -14,6 +28,7 @@ html, body{
     min-height: 100%;
     overflow-x: hidden;
     touch-action: manipulation;
+    padding-bottom: 20px;
 }
 body, textarea{
     font-family: 'myRoboto';
@@ -65,7 +80,6 @@ body, textarea{
     grid-gap: 8px;
     padding: 8px;
     color: white;
-    margin-bottom: 60px;
 }
 .grid-item{
     position: relative;
@@ -160,8 +174,8 @@ body, textarea{
     background-position: bottom;
 }
 .backArrow{
-    width: 25px;
-    height: 25px;
+    width: 35px;
+    height: 35px;
     margin: 8px;
 }
 .uTitle{
@@ -211,7 +225,73 @@ a{
     border-bottom: solid 2px #28430A;
 }
 
+<<<<<<< HEAD
 #map {
     height: 500px;
     width: 100%;
 }
+=======
+/* SUB NAV PAGES */
+
+.mapStatic{
+    background-image: url("photos/staticMap.svg");
+    position: relative;
+    top: 0;
+    background-size: cover;
+    height: 30vh;
+    background-position: center;
+}
+.svg{
+    display: inline-block;
+}
+.contentTitle{
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+h5{
+    font-size: 16px;
+    font-weight: 600;
+}
+.lineWrapper{
+    height: 53px;
+    margin: 16px 0px;
+}
+.lineWrapper2{
+    display: inline-block;
+    font-size: 11px;
+    line-height: 53px;
+    vertical-align: top;
+    margin: 8px;
+    margin-top: 10px;
+}
+.lineWrapper2 h5, .lineWrapper2 p{
+    line-height: 17px;
+}
+.lineWrapper2 p{
+    margin-left: 2px;
+}
+.lineWrapper3{
+    width: 100px;
+    float: right;
+    font-size: 14px;
+    text-align: right;
+}
+.lineWrapper3 p{
+    margin-top: 10px;
+}
+.circleBtn{
+    height: 60px;
+    width: 60px;
+    position: absolute;
+    cursor: pointer;
+}
+.download{
+    bottom: -30px;
+    right: 70px;
+}
+.expand{
+    bottom: -30px;
+    right: 10px;
+}
+>>>>>>> 264a7e6868523ed503a47ce21e455c502feb1def

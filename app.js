@@ -11,11 +11,19 @@ var app = new Vue({
     el: '#app',
     vuetify: new Vuetify(),
     data: {
-        page: 'map',
+        page: 'home',
         homeImg: 'icons/home_green.svg',
         mapImg: 'icons/map_grey.svg',
         home_selected: true,
         map_selected: false,
+
+        SouthEntranceBusiness: 'As busy as it gets',
+        EastEntranceBusiness: 'Busy',
+        RiverEntranceBusiness: 'Not Busy',
+        KolobEntranceBusiness: 'Not Busy',
+    },
+    created: function(){
+        this.loadEntrances();
     },
     methods: {
         bottomNavImg: function(NewTab) {
@@ -30,14 +38,45 @@ var app = new Vue({
                     break;
             }
         },
+        setStop: function(id, radius, stop){
+            var c = document.getElementById(id);
+            c.className = "background";
+            var stopVal = Math.PI * radius * 2 * (stop);
+            c.setAttribute("stroke-dasharray", stopVal + ", 3000");
+            c.setAttribute("stroke-dashoffset", stopVal);
+            c.className = "overlayLine";
+        },
+        entrancesClicked: function(){
+            this.page = 'entrances';
+        },
+        loadEntrances: function(){
+            this.setStop("line0", 8, 0.5);
+            this.setStop("line1", 8, 0.5);
+            this.setStop("line2", 8, 0.5);
+            this.setStop("line3", 8, 0.5);
+        }
     },
+    watch:{
+        page: function() {
+            if(this.page == 'map'){
+                mapboxgl.accessToken="pk.eyJ1IjoiamFzb25waXR0cyIsImEiOiJja2J2NmNsNXowMzI2MzBvZnJ6aWEwaHpmIn0.LBsh6F1QSk4aNMBLtErYNw";
+                var map = new mapboxgl.Map({
+                    container: 'map',
+                    style: 'mapbox://styles/jasonpitts/ckbv6grp516621inii9kmamh6',
+                    center: [-112.9867994, 37.200757], // starting position [lng, lat]
+                    zoom: 11 // starting zoom
+                });
+                console.log(map);
+            }
+        }
+    }
 });
 
-mapboxgl.accessToken="pk.eyJ1IjoiamFzb25waXR0cyIsImEiOiJja2J2NmNsNXowMzI2MzBvZnJ6aWEwaHpmIn0.LBsh6F1QSk4aNMBLtErYNw";
-var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/jasonpitts/ckbv6grp516621inii9kmamh6',
-    center: [-112.9867994, 37.200757], // starting position [lng, lat]
-    zoom: 11 // starting zoom
-});
-console.log(map);
+// mapboxgl.accessToken="pk.eyJ1IjoiamFzb25waXR0cyIsImEiOiJja2J2NmNsNXowMzI2MzBvZnJ6aWEwaHpmIn0.LBsh6F1QSk4aNMBLtErYNw";
+// var map = new mapboxgl.Map({
+//     container: 'map',
+//     style: 'mapbox://styles/jasonpitts/ckbv6grp516621inii9kmamh6',
+//     center: [-112.9867994, 37.200757], // starting position [lng, lat]
+//     zoom: 11 // starting zoom
+// });
+// console.log(map);
