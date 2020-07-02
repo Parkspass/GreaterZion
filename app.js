@@ -69,58 +69,76 @@ var app = new Vue({
         kolobVcParkingSvgStroke: '',
 
         // TRAILS
-        parusBusiness: 'Busy', 
-        archeologyBusiness: 'Busy', 
-        lowerEmeraldBusiness: 'Busy', 
-        grottoBusiness: 'Busy', 
-        weepingRockBusiness: 'Closed', 
-        riversideBusiness: 'Busy', 
-        watchmanBusiness: 'Busy', 
-        sandBenchBusiness: 'Busy', 
-        upperEmeraldBusiness: 'Busy', 
-        kayentaBusiness: 'Busy', 
-        canyonOverlookBusiness: 'Busy', 
-        taylorCreekBusiness: 'Busy', 
-        timberCreekBusiness: 'Busy', 
-        angelsLandingWestBusiness: 'Closed', 
-        hiddenCanyonBusiness: 'Closed', 
-        observationPointBusiness: 'Closed', 
-        narrowsBusiness: 'Busy', 
+        parusStat: '', 
+        archeologyStat: '', 
+        lowerEmeraldStat: '', 
+        grottoStat: '', 
+        weepingRockStat: '', 
+        riversideStat: '', 
+        watchmanStat: '', 
+        sandBenchStat: '', 
+        upperEmeraldStat: '', 
+        kayentaStat: '', 
+        canyonOverlookStat: '', 
+        taylorCreekStat: '', 
+        timberCreekStat: '', 
+        angelsLandingWestStat: '', 
+        hiddenCanyonStat: '', 
+        observationPointStat: '', 
+        narrowsStat: '', 
 
-        parusSvg: 'fill: #B5B5B5',
-        parusSvgStroke: '#B5B5B5',
-        archeologySvg: 'fill: #B5B5B5',
-        archeologySvgStroke: '#B5B5B5',
-        lowerEmeraldSvg: 'fill: #B5B5B5',
-        lowerEmeraldSvgStroke: '#B5B5B5',
-        grottoSvg: 'fill: #B5B5B5',
-        grottoSvgStroke: '#B5B5B5',
-        weepingRockSvg: 'fill: #B5B5B5',
-        weepingRockSvgStroke: '#B5B5B5',
-        riversideSvg: 'fill: #B5B5B5',
-        riversideSvgStroke: '#B5B5B5',
-        watchmanSvg: 'fill: #B5B5B5',
-        watchmanSvgStroke: '#B5B5B5',
-        sandBenchSvg: 'fill: #B5B5B5',
-        sandBenchSvgStroke: '#B5B5B5',
-        upperEmeraldSvg: 'fill: #B5B5B5',
-        upperEmeraldSvgStroke: '#B5B5B5',
-        kayentaSvg: 'fill: #B5B5B5',
-        kayentaSvgStroke: '#B5B5B5',
-        canyonOverlookSvg: 'fill: #B5B5B5',
-        canyonOverlookSvgStroke: '#B5B5B5',
-        taylorCreekSvg: 'fill: #B5B5B5',
-        taylorCreekSvgStroke: '#B5B5B5',
-        timberCreekSvg: 'fill: #B5B5B5',
-        timberCreekSvgStroke: '#B5B5B5',
-        angelsLandingWestSvg: 'fill: #B5B5B5',
-        angelsLandingWestSvgStroke: '#B5B5B5',
-        hiddenCanyonSvg: 'fill: #B5B5B5',
-        hiddenCanyonSvgStroke: '#B5B5B5',
-        observationPointSvg: 'fill: #B5B5B5',
-        observationPointSvgStroke: '#B5B5B5',
-        narrowsSvg: 'fill: #B5B5B5',
-        narrowsSvgStroke: '#B5B5B5',
+        parusBusiness: '', 
+        archeologyBusiness: '', 
+        lowerEmeraldBusiness: '', 
+        grottoBusiness: '', 
+        weepingRockBusiness: '', 
+        riversideBusiness: '', 
+        watchmanBusiness: '', 
+        sandBenchBusiness: '', 
+        upperEmeraldBusiness: '', 
+        kayentaBusiness: '', 
+        canyonOverlookBusiness: '', 
+        taylorCreekBusiness: '', 
+        timberCreekBusiness: '', 
+        angelsLandingWestBusiness: '', 
+        hiddenCanyonBusiness: '', 
+        observationPointBusiness: '', 
+        narrowsBusiness: '', 
+
+        parusSvg: '',
+        parusSvgStroke: '',
+        archeologySvg: '',
+        archeologySvgStroke: '',
+        lowerEmeraldSvg: '',
+        lowerEmeraldSvgStroke: '',
+        grottoSvg: '',
+        grottoSvgStroke: '',
+        weepingRockSvg: '',
+        weepingRockSvgStroke: '',
+        riversideSvg: '',
+        riversideSvgStroke: '',
+        watchmanSvg: '',
+        watchmanSvgStroke: '',
+        sandBenchSvg: '',
+        sandBenchSvgStroke: '',
+        upperEmeraldSvg: '',
+        upperEmeraldSvgStroke: '',
+        kayentaSvg: '',
+        kayentaSvgStroke: '',
+        canyonOverlookSvg: '',
+        canyonOverlookSvgStroke: '',
+        taylorCreekSvg: '',
+        taylorCreekSvgStroke: '',
+        timberCreekSvg: '',
+        timberCreekSvgStroke: '',
+        angelsLandingWestSvg: '',
+        angelsLandingWestSvgStroke: '',
+        hiddenCanyonSvg: '',
+        hiddenCanyonSvgStroke: '',
+        observationPointSvg: '',
+        observationPointSvgStroke: '',
+        narrowsSvg: '',
+        narrowsSvgStroke: '',
     },
     created: function(){
         this.loadStats();
@@ -193,7 +211,7 @@ var app = new Vue({
                 //River Entrance: Today
                 vm.RiverEntranceStat = 0;
                 //Kolob Entrance: Today
-                vm.KolobEntranceStat = 0;
+                vm.KolobEntranceStat = 'closed';
 
                 //Visitor Center: Today
                 vm.vcStat = this.getAPIData_safe(response.data, ["ParkingVisitorCenter", "Today", "count"], 0);
@@ -206,6 +224,25 @@ var app = new Vue({
                 //Kolob Visitor Center
                 vm.kolobVcStat = 0;
 
+                // ALL TRAILS
+                vm.parusStat = 50;
+                vm.archeologyStat = 20;
+                vm.lowerEmeraldStat = 50;
+                vm.grottoStat = 90;
+                vm.weepingRockStat = 'closed';
+                vm.riversideStat = 90;
+                vm.watchmanStat = 20;
+                vm.sandBenchStat = 20;
+                vm.upperEmeraldStat = 50;
+                vm.kayentaStat = 50;
+                vm.canyonOverlookStat = 90;
+                vm.taylorCreekStat = 20;
+                vm.timberCreekStat = 20;
+                vm.angelsLandingWestStat = 'closed';
+                vm.hiddenCanyonStat = 'closed';
+                vm.observationPointStat = 'closed';
+                vm.narrowsStat = 90; 
+
                 if (this.page == 'entrances'){
                     this.loadEntrances();
                 }
@@ -213,7 +250,7 @@ var app = new Vue({
                     this.loadParking();
                 }
                 if (this.page == 'trails'){
-                    this.loadParking();
+                    this.loadTrails();
                 }
             }).catch(error => {
                 vm = "Fetch " + error;
@@ -246,7 +283,7 @@ var app = new Vue({
             this.setStop("kolobEntranceLine", 8, K);
         },
         loadEntranceBusiness: function(entrance){
-            if (entrance == 0){
+            if (isNaN(entrance) ){
                 return ['Closed', 'icons/entrance_grey.svg', '#B5B5B5'];
             }else if(entrance < 0.33){
                 return ['Not busy', 'icons/entrance_green.svg', '#749D4C'];
@@ -289,7 +326,7 @@ var app = new Vue({
             this.setStop("kolobVcLine", 8, KVC);
         },
         loadParkingBusiness: function(lot){
-            if (lot == 0){
+            if (isNaN(lot)){
                 return ['Closed', 'icons/parking_grey.svg', '#B5B5B5'];
             }else if(lot < 0.33){
                 return ['Not busy', 'icons/parking_green.svg', '#749D4C'];
@@ -300,23 +337,118 @@ var app = new Vue({
             }
         },
         loadTrails: function(){
-            this.setStop("parusLine", 8, 0.5);
-            this.setStop("archeologyLine", 8, 0.5);
-            this.setStop("lowerEmeraldLine", 8, 0.5);
-            this.setStop("grottoLine", 8, 0.5);
-            this.setStop("weepingRockLine", 8, 0.5);
-            this.setStop("riversideLine", 8, 0.5);
-            this.setStop("watchmanLine", 8, 0.5);
-            this.setStop("sandBenchLine", 8, 0.5);
-            this.setStop("upperEmeraldLine", 8, 0.5);
-            this.setStop("kayentaLine", 8, 0.5);
-            this.setStop("canyonOverlookLine", 8, 0.5);
-            this.setStop("taylorCreekLine", 8, 0.5);
-            this.setStop("timberCreekLine", 8, 0.5);
-            this.setStop("angelsLandingWestLine", 8, 0.5);
-            this.setStop("hiddenCanyonLine", 8, 0.5);
-            this.setStop("observationPointLine", 8, 0.5);
-            this.setStop("narrowsLine", 8, 0.5);
+            var P = this.parusStat/100;
+            this.parusBusiness = this.loadTrailsBusiness(P)[0];
+            this.parusSvg = this.loadTrailsBusiness(P)[1];
+            this.parusSvgStroke = this.loadTrailsBusiness(P)[2];
+            this.setStop("parusLine", 8, P);
+
+            var A = this.archeologyStat/100;
+            this.archeologyBusiness = this.loadTrailsBusiness(A)[0];
+            this.archeologySvg = this.loadTrailsBusiness(A)[1];
+            this.archeologySvgStroke = this.loadTrailsBusiness(A)[2];
+            this.setStop("archeologyLine", 8, A);
+
+            var LE = this.lowerEmeraldStat/100;
+            this.lowerEmeraldBusiness = this.loadTrailsBusiness(LE)[0];
+            this.lowerEmeraldSvg = this.loadTrailsBusiness(LE)[1];
+            this.lowerEmeraldSvgStroke = this.loadTrailsBusiness(LE)[2];
+            this.setStop("lowerEmeraldLine", 8, LE);
+
+            var G = this.grottoStat/100;
+            this.grottoBusiness = this.loadTrailsBusiness(G)[0];
+            this.grottoSvg = this.loadTrailsBusiness(G)[1];
+            this.grottoSvgStroke = this.loadTrailsBusiness(G)[2];
+            this.setStop("grottoLine", 8, G);
+
+            var W = this.weepingRockStat/100;
+            this.weepingRockBusiness = this.loadTrailsBusiness(W)[0];
+            this.weepingRockSvg = this.loadTrailsBusiness(W)[1];
+            this.weepingRockSvgStroke = this.loadTrailsBusiness(W)[2];
+            this.setStop("weepingRockLine", 8, W);
+
+            var R = this.riversideStat/100;
+            this.riversideBusiness = this.loadTrailsBusiness(R)[0];
+            this.riversideSvg = this.loadTrailsBusiness(R)[1];
+            this.riversideSvgStroke = this.loadTrailsBusiness(R)[2];
+            this.setStop("riversideLine", 8, R);
+
+            var WL = this.watchmanStat/100;
+            this.watchmanBusiness = this.loadTrailsBusiness(WL)[0];
+            this.watchmanSvg = this.loadTrailsBusiness(WL)[1];
+            this.watchmanSvgStroke = this.loadTrailsBusiness(WL)[2];
+            this.setStop("watchmanLine", 8, WL);
+
+            var SB = this.sandBenchStat/100;
+            this.sandBenchBusiness = this.loadTrailsBusiness(SB)[0];
+            this.sandBenchSvg = this.loadTrailsBusiness(SB)[1];
+            this.sandBenchSvgStroke = this.loadTrailsBusiness(SB)[2];
+            this.setStop("sandBenchLine", 8, SB);
+
+            var UE = this.upperEmeraldStat/100;
+            this.upperEmeraldBusiness = this.loadTrailsBusiness(UE)[0];
+            this.upperEmeraldSvg = this.loadTrailsBusiness(UE)[1];
+            this.upperEmeraldSvgStroke = this.loadTrailsBusiness(UE)[2];
+            this.setStop("upperEmeraldLine", 8, UE);
+
+            var K = this.kayentaStat/100;
+            this.kayentaBusiness = this.loadTrailsBusiness(K)[0];
+            this.kayentaSvg = this.loadTrailsBusiness(K)[1];
+            this.kayentaSvgStroke = this.loadTrailsBusiness(K)[2];
+            this.setStop("kayentaLine", 8, K);
+
+            var CO = this.canyonOverlookStat/100;
+            this.canyonOverlookBusiness = this.loadTrailsBusiness(CO)[0];
+            this.canyonOverlookSvg = this.loadTrailsBusiness(CO)[1];
+            this.canyonOverlookSvgStroke = this.loadTrailsBusiness(CO)[2];
+            this.setStop("canyonOverlookLine", 8, CO);
+
+            var TC = this.taylorCreekStat/100;
+            this.taylorCreekBusiness = this.loadTrailsBusiness(TC)[0];
+            this.taylorCreekSvg = this.loadTrailsBusiness(TC)[1];
+            this.taylorCreekSvgStroke = this.loadTrailsBusiness(TC)[2];
+            this.setStop("taylorCreekLine", 8, TC);
+
+            var TiC = this.timberCreekStat/100;
+            this.timberCreekBusiness = this.loadTrailsBusiness(TiC)[0];
+            this.timberCreekSvg = this.loadTrailsBusiness(TiC)[1];
+            this.timberCreekSvgStroke = this.loadTrailsBusiness(TiC)[2];
+            this.setStop("timberCreekLine", 8, TiC);
+
+            var AW = this.angelsLandingWestStat/100;
+            this.angelsLandingWestBusiness = this.loadTrailsBusiness(AW)[0];
+            this.angelsLandingWestSvg = this.loadTrailsBusiness(AW)[1];
+            this.angelsLandingWestSvgStroke = this.loadTrailsBusiness(AW)[2];
+            this.setStop("angelsLandingWestLine", 8, AW);
+
+            var HC = this.hiddenCanyonStat/100;
+            this.hiddenCanyonBusiness = this.loadTrailsBusiness(HC)[0];
+            this.hiddenCanyonSvg = this.loadTrailsBusiness(HC)[1];
+            this.hiddenCanyonSvgStroke = this.loadTrailsBusiness(HC)[2];
+            this.setStop("hiddenCanyonLine", 8, HC);
+
+            var OP = this.observationPointStat/100;
+            this.observationPointBusiness = this.loadTrailsBusiness(OP)[0];
+            this.observationPointSvg = this.loadTrailsBusiness(OP)[1];
+            this.observationPointSvgStroke = this.loadTrailsBusiness(OP)[2];
+            this.setStop("observationPointLine", 8, OP);
+
+            var N = this.narrowsStat/100;
+            this.narrowsBusiness = this.loadTrailsBusiness(N)[0];
+            this.narrowsSvg = this.loadTrailsBusiness(N)[1];
+            this.narrowsSvgStroke = this.loadTrailsBusiness(N)[2];
+            this.setStop("narrowsLine", 8, N);
+        },
+        loadTrailsBusiness: function(trail){
+            if (isNaN(trail)){
+                return ['Closed', 'fill: #B5B5B5', '#B5B5B5'];
+            }else if(trail < 0.33){
+                return ['Not busy', 'fill: #749D4C', '#749D4C'];
+            }else if(trail < 0.66){
+                return ['A little busy', 'fill: #FFCD31', '#FFCD31'];
+            }else{
+                return ['As busy as it gets', 'fill: #EF6A6E', '#EF6A6E'];
+            }
         },
     },
     watch:{
