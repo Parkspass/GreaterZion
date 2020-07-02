@@ -188,7 +188,7 @@ body, textarea{
     font-weight: 600;
     margin: 16px 0px;
 }
-#buyTicket{
+.buyTicket{
     display: block;
     width: 200px;
     margin: 16px;
@@ -225,21 +225,28 @@ a{
     border-bottom: solid 2px #28430A;
 }
 
-<<<<<<< HEAD
 #map {
     height: 500px;
     width: 100%;
 }
-=======
 /* SUB NAV PAGES */
 
 .mapStatic{
-    background-image: url("photos/staticMap.svg");
+    background-image: url("Map\ photos/Entrances.jpg");
     position: relative;
     top: 0;
     background-size: cover;
     height: 30vh;
     background-position: center;
+}
+.map2{
+    background-image: url("Map\ photos/Parking.jpg");
+}
+.map3{
+    background-image: url("Map\ photos/Shuttles.jpg");
+}
+.map4{
+    background-image: url("Map\ photos/Trails.jpg");
 }
 .svg{
     display: inline-block;
@@ -264,21 +271,25 @@ h5{
     vertical-align: top;
     margin: 8px;
     margin-top: 10px;
+    width: 50%;
 }
 .lineWrapper2 h5, .lineWrapper2 p{
     line-height: 17px;
+}
+.lineWrapper2 h5{
+    margin-top: -2px;
 }
 .lineWrapper2 p{
     margin-left: 2px;
 }
 .lineWrapper3{
-    width: 100px;
+    width: 60px;
     float: right;
     font-size: 14px;
     text-align: right;
 }
 .lineWrapper3 p{
-    margin-top: 10px;
+    margin-top: 8px;
 }
 .circleBtn{
     height: 60px;
@@ -294,4 +305,40 @@ h5{
     bottom: -30px;
     right: 10px;
 }
->>>>>>> 264a7e6868523ed503a47ce21e455c502feb1def
+.shuttleNum{
+    display: inline-block;
+    margin: 4px;
+    vertical-align: top;
+}
+.shuttleWrap h5, .shuttleWrap p{
+    line-height: 17px;
+}
+.shuttleWrap h5{
+    margin-top: 7px;
+}
+.shuttleWrap{
+    width: 80%;
+    display: inline-block;
+    font-size: 11px;
+    line-height: 53px;
+    vertical-align: top;
+}
+.shuttleWrap p{
+    margin-bottom: 0px !important;
+}
+.alert{
+    height: 25px;
+    width: 25px;
+    vertical-align: middle;
+    margin-bottom: 3px;
+}
+h4{
+    font-size: 18px;
+    font-weight: 600;
+    display: inline-block;
+}
+.trailTitle{
+    font-size: 18px;
+    font-weight: 500;
+    margin: 24px 0px 16px 0px;
+}

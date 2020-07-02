@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css' rel='stylesheet' />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
    
     <!-- PWA STUFF -->
     <!-- <link rel="manifest" href="manifest.json">
@@ -35,19 +36,19 @@
                         </div>
                     </div>
                     <div class="grid-container">
-                        <div class="grid-item" id="entrances" @click="entrancesClicked()">
+                        <div class="grid-item" id="entrances" @click="entrancesClicked(); loadStats();">
                             <p class="live">Live<img class="liveImg" src="icons/liveImg.svg"></p>
                             <div class="gridText">
                                 <h2>Entrances</h2>
                             </div>
                         </div>
-                        <div class="grid-item gi2" id="parking">
+                        <div class="grid-item gi2" id="parking" @click="parkingClicked(); loadStats();">
                             <p class="live">Live<img class="liveImg" src="icons/liveImg.svg"></p>
                             <div class="gridText">
                                 <h2>Parking</h2>
                             </div>
                         </div>
-                        <div class="grid-item" id="shuttles">
+                        <div class="grid-item" id="shuttles" @click="shuttlesClicked()">
                             <div class="gridText">
                                 <h2>Shuttles</h2>
                             </div>
@@ -59,7 +60,7 @@
                                 <p id="updatesText">You must have a ticket to ride the shuttle.</p>
                                 <p id="updateBold">PARK UPDATES</p>
                             </div>
-                            <div id="trails">
+                            <div id="trails" @click="trailsClicked(); loadStats();">
                                 <div class="gridText">
                                     <h2>Trails</h2>
                                 </div>
@@ -80,7 +81,7 @@
                     <div class="contentWrapper">
                         <h1 class="uTitle">Park Updates</h1>
                         <p class="uSub">Park Shuttle Service Resumes July 1, 2020 - Tickets Required In Advance</p>
-                        <a href="https://www.nps.gov/zion/planyourvisit/zion-canyon-shuttle-tickets.htm"><img id="buyTicket" src="icons/buy-ticket-now.svg"></a>
+                        <a href="https://www.recreation.gov/ticket/facility/300016/tours"><img class="buyTicket" src="icons/buy-ticket-now.svg"></a>
                         <p class="uText">Park Shuttle Service Resumes July 1, 2020 - Tickets Required In Advance
                             Starting July 1, park shuttles will resume modified operations--tickets required. Book tickets in advance on Recreation.gov. 
                             Private vehicles are not allowed on the Zion Canyon Scenic Drive when shuttles are in operation. </p>
@@ -125,9 +126,9 @@
                         <h3 class="contentTitle">Entrances</h3>
                         <div class="lineWrapper">
                             <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
-                                <image x="96" y="96" width="8" height="8" href="icons/entrance_pink.svg"></image>
-                                <circle class="background" cx="100" cy="100" r="8" stroke="#ef6a6e33" />
-                                <circle id="line0" class="overlayLine" cx="100" cy="100" r="8" stroke="#EF6A6E" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
+                                <image x="96" y="96" width="8" height="8" v-bind:href="southEntranceSvg"></image>
+                                <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.3" :stroke="southEntranceSvgStroke" />
+                                <circle id="southEntranceLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="southEntranceSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
                             </svg>
                             <div class="lineWrapper2">
                                 <h5>South Entrance</h5>
@@ -139,9 +140,9 @@
                         </div>
                         <div class="lineWrapper">
                             <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
-                                <image x="96" y="96" width="8" height="8" href="icons/entrance_yellow.svg"></image>
-                                <circle class="background" cx="100" cy="100" r="8" stroke="#FFF5D6" />
-                                <circle id="line1" class="overlayLine" cx="100" cy="100" r="8" stroke="#FFCD31" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
+                                <image x="96" y="96" width="8" height="8" v-bind:href="eastEntranceSvg"></image>
+                                <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.3" :stroke="eastEntranceSvgStroke" />
+                                <circle id="eastEntranceLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="eastEntranceSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
                             </svg>
                             <div class="lineWrapper2">
                                 <h5>East Entrance</h5>
@@ -153,9 +154,9 @@
                         </div>
                         <div class="lineWrapper">
                             <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
-                                <image x="96" y="96" width="8" height="8" href="icons/entrance_green.svg"></image>
-                                <circle class="background" cx="100" cy="100" r="8" stroke="#E3EBDB" />
-                                <circle id="line2" class="overlayLine" cx="100" cy="100" r="8" stroke="#749D4C" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
+                                <image x="96" y="96" width="8" height="8" v-bind:href="riverEntranceSvg"></image>
+                                <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.3" :stroke="riverEntranceSvgStroke" />
+                                <circle id="riverEntranceLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="riverEntranceSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
                             </svg>
                             <div class="lineWrapper2">
                                 <h5>River Entrance</h5>
@@ -167,9 +168,9 @@
                         </div>
                         <div class="lineWrapper">
                             <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
-                                <image x="96" y="96" width="8" height="8" href="icons/entrance_grey.svg"></image>
-                                <circle class="background" cx="100" cy="100" r="8" stroke="#E3EBDB" />
-                                <circle id="line3" class="overlayLine" cx="100" cy="100" r="8" stroke="#749D4C" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
+                                <image x="96" y="96" width="8" height="8" v-bind:href="kolobEntranceSvg"></image>
+                                <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.3" :stroke="kolobEntranceSvgStroke" />
+                                <circle id="kolobEntranceLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="kolobEntranceSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
                             </svg>
                             <div class="lineWrapper2">
                                 <h5>Kolob Entrance</h5>
@@ -177,6 +178,435 @@
                             </div>
                             <div class="lineWrapper3">
                                 <p>{{KolobEntranceBusiness}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div v-if="page=='parking'">
+                    <div class="mapStatic map2">
+                        <img class="backArrow" src="icons/arrow_back-24px 1 1.svg" @click="page='home'">
+                        <a href="photos/zion_national_park_map.jpg" download="ZionMap"><img class="circleBtn download" src="icons/download.svg"></a>
+                        <img class="circleBtn expand" src="icons/expand.svg">
+                    </div>
+                    <div class="contentWrapper">
+                        <h3 class="contentTitle">Parking</h3>
+                        <div class="lineWrapper">
+                            <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
+                                <image x="96" y="96" width="8" height="8" v-bind:href="vcParkingSvg"></image>
+                                <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.3" :stroke="vcParkingSvgStroke" />
+                                <circle id="vcLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="vcParkingSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
+                            </svg>
+                            <div class="lineWrapper2">
+                                <h5>Zion Canyon</h5>
+                                <h5>Visitor Center</h5>
+                            </div>
+                            <div class="lineWrapper3">
+                                <p>{{vcBusiness}}</p>
+                            </div>
+                        </div>
+                        <div class="lineWrapper">
+                            <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
+                                <image x="96" y="96" width="8" height="8" v-bind:href="museumParkingSvg"></image>
+                                <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.3" :stroke="museumParkingSvgStroke" />
+                                <circle id="museumLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="museumParkingSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
+                            </svg>
+                            <div class="lineWrapper2">
+                                <h5>Museum</h5>
+                            </div>
+                            <div class="lineWrapper3">
+                                <p>{{museumBusiness}}</p>
+                            </div>
+                        </div>
+                        <div class="lineWrapper">
+                            <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
+                                <image x="96" y="96" width="8" height="8" v-bind:href="rvParkingSvg"></image>
+                                <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.3" :stroke="rvParkingSvgStroke" />
+                                <circle id="rvLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="rvParkingSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
+                            </svg>
+                            <div class="lineWrapper2">
+                                <h5>RV</h5>
+                            </div>
+                            <div class="lineWrapper3">
+                                <p>{{rvBusiness}}</p>
+                            </div>
+                        </div>
+                        <div class="lineWrapper">
+                            <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
+                                <image x="96" y="96" width="8" height="8" v-bind:href="springdaleParkingSvg"></image>
+                                <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.3" :stroke="springdaleParkingSvgStroke" />
+                                <circle id="springdaleLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="springdaleParkingSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
+                            </svg>
+                            <div class="lineWrapper2">
+                                <h5>Springdale</h5>
+                            </div>
+                            <div class="lineWrapper3">
+                                <p>{{springdaleBusiness}}</p>
+                            </div>
+                        </div>
+                        <div class="lineWrapper">
+                            <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
+                                <image x="96" y="96" width="8" height="8" v-bind:href="kolobVcParkingSvg"></image>
+                                <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.3" :stroke="kolobVcParkingSvgStroke" />
+                                <circle id="kolobVcLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="kolobVcParkingSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
+                            </svg>
+                            <div class="lineWrapper2">
+                                <h5>Kolob Canyon</h5>
+                                <h5>Visitor Center</h5>
+                            </div>
+                            <div class="lineWrapper3">
+                                <p>{{kolobVcBusiness}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div v-if="page=='shuttles'">
+                    <div class="mapStatic map3">
+                        <img class="backArrow" src="icons/arrow_back-24px 1 1.svg" @click="page='home'">
+                        <a href="photos/zion_national_park_map.jpg" download="ZionMap"><img class="circleBtn download" src="icons/download.svg"></a>
+                        <img class="circleBtn expand" src="icons/expand.svg">
+                    </div>
+                    <div class="contentWrapper">
+                        <h3 class="contentTitle">Shuttles</h3>
+                        <div>
+                            <img class="alert" src="icons/alert.svg"><h4>Warning</h4>
+                            <p style="font-size: 16px;">You must have a shuttle ticket to board the bus. Shuttle tickets cost $1.00 each and will sell out fast. </p>
+                            <a href="https://www.recreation.gov/ticket/facility/300016/tours"><img class="buyTicket" src="icons/buy-ticket-now.svg"></a>
+                        </div>
+                        <div class="lineWrapper">
+                            <img class="shuttleNum" src="icons/circle 1.svg">
+                            <div class="shuttleWrap">
+                                <h5>Visitor Center</h5>
+                                <p class="shuttleText">Shuttle Boarding Stop, Watchman Trail,
+                                    Pa’rus Trail, Archeology Trail</p>
+                            </div>
+                        </div>
+                        <div class="lineWrapper">
+                            <img class="shuttleNum" src="icons/circle 2.svg">
+                            <div class="shuttleWrap">
+                                <h5>Museum</h5>
+                                <p class="shuttleText">No shuttle service</p>
+                            </div>
+                        </div>
+                        <div class="lineWrapper">
+                            <img class="shuttleNum" src="icons/circle 3.svg">
+                            <div class="shuttleWrap">
+                                <h5>Canyon Junction</h5>
+                                <p class="shuttleText">No shuttle service</p>
+                            </div>
+                        </div>
+                        <div class="lineWrapper">
+                            <img class="shuttleNum" src="icons/circle 4.svg">
+                            <div class="shuttleWrap">
+                                <h5>Court of the Patriarchs</h5>
+                                <p class="shuttleText">Court of the Patriarchs Trail</p>
+                            </div>
+                        </div>
+                        <div class="lineWrapper">
+                            <img class="shuttleNum" src="icons/circle 5.svg">
+                            <div class="shuttleWrap">
+                                <h5>Zion Lodge</h5>
+                                <p class="shuttleText">Emerald Pools Trails, The Grotto Trail,
+                                    Sand Bench Trail</p>
+                            </div>
+                        </div>
+                        <div class="lineWrapper">
+                            <img class="shuttleNum" src="icons/circle 6.svg">
+                            <div class="shuttleWrap">
+                                <h5>The Grotto</h5>
+                                <p class="shuttleText">Angels Landing via West Rim Trail, 
+                                    Kayenta Trail, The Grotto Trail</p>
+                            </div>
+                        </div>
+                        <div class="lineWrapper">
+                            <img class="shuttleNum" src="icons/circle 7.svg">
+                            <div class="shuttleWrap">
+                                <h5>Weeping Rock</h5>
+                                <p class="shuttleText">Closed</p>
+                            </div>
+                        </div>
+                        <div class="lineWrapper">
+                            <img class="shuttleNum" src="icons/circle 8.svg">
+                            <div class="shuttleWrap">
+                                <h5>Big Bend</h5>
+                                <p class="shuttleText"></p>
+                            </div>
+                        </div>
+                        <div class="lineWrapper">
+                            <img class="shuttleNum" src="icons/circle 9.svg">
+                            <div class="shuttleWrap">
+                                <h5>Temple of Sinawava</h5>
+                                <p class="shuttleText">Riverside Walk, The Narrows</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div v-if="page=='trails'">
+                    <div class="mapStatic map4">
+                        <img class="backArrow" src="icons/arrow_back-24px 1 1.svg" @click="page='home'">
+                        <a href="photos/zion_national_park_map.jpg" download="ZionMap"><img class="circleBtn download" src="icons/download.svg"></a>
+                        <img class="circleBtn expand" src="icons/expand.svg">
+                    </div>
+                    <div class="contentWrapper">
+                        <h3 class="contentTitle">Trails</h3>
+
+                        <!-- EASY TRAILS -->
+                        <h3 class="trailTitle">EASY</h3>
+                        <div class="lineWrapper">
+                            <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
+                                <circle cx="100" cy="100" r="5" :style="parusSvg"/>
+                                <text x="98.3" y="102" font-size="6" font-weight="bold" style="fill: #FFFFFF">1</text>
+                                <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.3" :stroke="parusSvgStroke" />
+                                <circle id="parusLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="parusSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
+                            </svg>
+                            <div class="lineWrapper2">
+                                <h5>Pa'rus Trail</h5>
+                                <p>Zion Canyon Visitor Center</p>
+                            </div>
+                            <div class="lineWrapper3">
+                                <p>{{parusBusiness}}</p>
+                            </div>
+                        </div>
+                        <div class="lineWrapper">
+                            <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
+                                <circle cx="100" cy="100" r="5" :style="archeologySvg"/>
+                                <text x="98.3" y="102" font-size="6" font-weight="bold" style="fill: #FFFFFF">1</text>
+                                <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.3" :stroke="archeologySvgStroke" />
+                                <circle id="archeologyLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="archeologySvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
+                            </svg>
+                            <div class="lineWrapper2">
+                                <h5>Archeology Trail</h5>
+                                <p>Zion Canyon Visitor Center</p>
+                            </div>
+                            <div class="lineWrapper3">
+                                <p>{{archeologyBusiness}}</p>
+                            </div>
+                        </div>
+                        <div class="lineWrapper">
+                            <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
+                                <circle cx="100" cy="100" r="5" :style="lowerEmeraldSvg"/>
+                                <text x="98.3" y="102" font-size="6" font-weight="bold" style="fill: #FFFFFF">5</text>
+                                <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.3" :stroke="lowerEmeraldSvgStroke" />
+                                <circle id="lowerEmeraldLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="lowerEmeraldSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
+                            </svg>
+                            <div class="lineWrapper2">
+                                <h5>Lower Emerald Pool Trail</h5>
+                                <p>Zion Lodge</p>
+                            </div>
+                            <div class="lineWrapper3">
+                                <p>{{lowerEmeraldBusiness}}</p>
+                            </div>
+                        </div>
+                        <div class="lineWrapper">
+                            <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
+                                <circle cx="100" cy="100" r="5" :style="grottoSvg"/>
+                                <text x="98.3" y="102" font-size="6" font-weight="bold" style="fill: #FFFFFF">6</text>
+                                <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.3" :stroke="grottoSvgStroke" />
+                                <circle id="grottoLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="grottoSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
+                            </svg>
+                            <div class="lineWrapper2">
+                                <h5>The Grotto Trail</h5>
+                                <p>Zion Lodge - The Grotto</p>
+                            </div>
+                            <div class="lineWrapper3">
+                                <p>{{grottoBusiness}}</p>
+                            </div>
+                        </div>
+                        <div class="lineWrapper">
+                            <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
+                                <circle cx="100" cy="100" r="5" :style="weepingRockSvg"/>
+                                <text x="98.3" y="102" font-size="6" font-weight="bold" style="fill: #FFFFFF">7</text>
+                                <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.3" :stroke="weepingRockSvgStroke" />
+                                <circle id="weepingRockLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="weepingRockSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
+                            </svg>
+                            <div class="lineWrapper2">
+                                <h5>Weeping Rock Trail</h5>
+                                <p>Weeping Rock</p>
+                            </div>
+                            <div class="lineWrapper3">
+                                <p>{{weepingRockBusiness}}</p>
+                            </div>
+                        </div>
+                        <div class="lineWrapper">
+                            <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
+                                <circle cx="100" cy="100" r="5" :style="riversideSvg"/>
+                                <text x="98.3" y="102" font-size="6" font-weight="bold" style="fill: #FFFFFF">9</text>
+                                <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.3" :stroke="riversideSvgStroke" />
+                                <circle id="riversideLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="riversideSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
+                            </svg>
+                            <div class="lineWrapper2">
+                                <h5>Riverside Walk</h5>
+                                <p>Temple of Sinawava</p>
+                            </div>
+                            <div class="lineWrapper3">
+                                <p>{{riversideBusiness}}</p>
+                            </div>
+                        </div>
+
+                        <!-- MODERATE TRAILS -->
+                        <h3 class="trailTitle">MODERATE</h3>
+                        <div class="lineWrapper">
+                            <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
+                                <circle cx="100" cy="100" r="5" :style="watchmanSvg"/>
+                                <text x="98.3" y="102" font-size="6" font-weight="bold" style="fill: #FFFFFF">1</text>
+                                <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.3" :stroke="watchmanSvgStroke" />
+                                <circle id="watchmanLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="watchmanSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
+                            </svg>
+                            <div class="lineWrapper2">
+                                <h5>Watchman Trail</h5>
+                                <p>Zion Canyon Visitor Center</p>
+                            </div>
+                            <div class="lineWrapper3">
+                                <p>{{watchmanBusiness}}</p>
+                            </div>
+                        </div>
+                        <div class="lineWrapper">
+                            <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
+                                <circle cx="100" cy="100" r="5" :style="sandBenchSvg"/>
+                                <text x="98.3" y="102" font-size="6" font-weight="bold" style="fill: #FFFFFF">5</text>
+                                <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.3" :stroke="sandBenchSvgStroke" />
+                                <circle id="sandBenchLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="sandBenchSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
+                            </svg>
+                            <div class="lineWrapper2">
+                                <h5>Sand Bench Trail</h5>
+                                <p>Zion Lodge</p>
+                            </div>
+                            <div class="lineWrapper3">
+                                <p>{{sandBenchBusiness}}</p>
+                            </div>
+                        </div>
+                        <div class="lineWrapper">
+                            <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
+                                <circle cx="100" cy="100" r="5" :style="upperEmeraldSvg"/>
+                                <text x="98.3" y="102" font-size="6" font-weight="bold" style="fill: #FFFFFF">5</text>
+                                <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.3" :stroke="upperEmeraldSvgStroke" />
+                                <circle id="upperEmeraldLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="upperEmeraldSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
+                            </svg>
+                            <div class="lineWrapper2">
+                                <h5>Upper Emerald Pool Trail</h5>
+                                <p>Zion Lodge</p>
+                            </div>
+                            <div class="lineWrapper3">
+                                <p>{{upperEmeraldBusiness}}</p>
+                            </div>
+                        </div>
+                        <div class="lineWrapper">
+                            <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
+                                <circle cx="100" cy="100" r="5" :style="kayentaSvg"/>
+                                <text x="98.3" y="102" font-size="6" font-weight="bold" style="fill: #FFFFFF">6</text>
+                                <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.3" :stroke="kayentaSvgStroke" />
+                                <circle id="kayentaLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="kayentaSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
+                            </svg>
+                            <div class="lineWrapper2">
+                                <h5>Kayenta Trail</h5>
+                                <p>The Grotto</p>
+                            </div>
+                            <div class="lineWrapper3">
+                                <p>{{kayentaBusiness}}</p>
+                            </div>
+                        </div>
+                        <div class="lineWrapper">
+                            <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
+                                <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.3" :stroke="canyonOverlookSvgStroke" />
+                                <circle id="canyonOverlookLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="canyonOverlookSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
+                            </svg>
+                            <div class="lineWrapper2">
+                                <h5>Canyon Overlook Trail</h5>
+                                <p>Zion My Carmel Hwy</p>
+                            </div>
+                            <div class="lineWrapper3">
+                                <p>{{canyonOverlookBusiness}}</p>
+                            </div>
+                        </div>
+                        <div class="lineWrapper">
+                            <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
+                                <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.3" :stroke="taylorCreekSvgStroke" />
+                                <circle id="taylorCreekLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="taylorCreekSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
+                            </svg>
+                            <div class="lineWrapper2">
+                                <h5>Taylor Creek Trail</h5>
+                                <p>Kolob Canyons Road</p>
+                            </div>
+                            <div class="lineWrapper3">
+                                <p>{{taylorCreekBusiness}}</p>
+                            </div>
+                        </div>
+                        <div class="lineWrapper">
+                            <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
+                                <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.3" :stroke="timberCreekSvgStroke" />
+                                <circle id="timberCreekLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="timberCreekSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
+                            </svg>
+                            <div class="lineWrapper2">
+                                <h5>Timber Creek Overlook Trail</h5>
+                                <p>Kolob Canyons Road</p>
+                            </div>
+                            <div class="lineWrapper3">
+                                <p>{{timberCreekBusiness}}</p>
+                            </div>
+                        </div>
+
+                        <!-- STRENUOUS TRAILS -->
+                        <h3 class="trailTitle">STRENUOUS</h3>
+                        <div class="lineWrapper">
+                            <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
+                                <circle cx="100" cy="100" r="5" :style="angelsLandingWestSvg"/>
+                                <text x="98.3" y="102" font-size="6" font-weight="bold" style="fill: #FFFFFF">6</text>
+                                <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.3" :stroke="angelsLandingWestSvgStroke" />
+                                <circle id="angelsLandingWestLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="angelsLandingWestSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
+                            </svg>
+                            <div class="lineWrapper2">
+                                <h5>Angels Landing via West Rim Trail</h5>
+                                <p>The Grotto</p>
+                            </div>
+                            <div class="lineWrapper3">
+                                <p>{{angelsLandingWestBusiness}}</p>
+                            </div>
+                        </div>
+                        <div class="lineWrapper">
+                            <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
+                                <circle cx="100" cy="100" r="5" :style="hiddenCanyonSvg"/>
+                                <text x="98.3" y="102" font-size="6" font-weight="bold" style="fill: #FFFFFF">7</text>
+                                <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.3" :stroke="hiddenCanyonSvgStroke" />
+                                <circle id="hiddenCanyonLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="hiddenCanyonSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
+                            </svg>
+                            <div class="lineWrapper2">
+                                <h5>Hidden Canyon Trail</h5>
+                                <p>Weeping Rock</p>
+                            </div>
+                            <div class="lineWrapper3">
+                                <p>{{hiddenCanyonBusiness}}</p>
+                            </div>
+                        </div>
+                        <div class="lineWrapper">
+                            <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
+                                <circle cx="100" cy="100" r="5" :style="observationPointSvg"/>
+                                <text x="98.3" y="102" font-size="6" font-weight="bold" style="fill: #FFFFFF">7</text>
+                                <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.3" :stroke="observationPointSvgStroke" />
+                                <circle id="observationPointLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="observationPointSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
+                            </svg>
+                            <div class="lineWrapper2">
+                                <h5>Observation Point via East Rim Trail</h5>
+                                <p>Weeping Rock</p>
+                            </div>
+                            <div class="lineWrapper3">
+                                <p>{{observationPointBusiness}}</p>
+                            </div>
+                        </div>
+                        <div class="lineWrapper">
+                            <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
+                                <circle cx="100" cy="100" r="5" :style="narrowsSvg"/>
+                                <text x="98.3" y="102" font-size="6" font-weight="bold" style="fill: #FFFFFF">9</text>
+                                <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.3" :stroke="narrowsSvgStroke" />
+                                <circle id="narrowsLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="narrowsSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
+                            </svg>
+                            <div class="lineWrapper2">
+                                <h5>The Narrows via Riverside Walk</h5>
+                                <p>Temple of Sinawava</p>
+                            </div>
+                            <div class="lineWrapper3">
+                                <p>{{narrowsBusiness}}</p>
                             </div>
                         </div>
                     </div>
