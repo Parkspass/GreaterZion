@@ -265,7 +265,7 @@ var app = new Vue({
             var M = this.museumStat / 100;
             this.museumBusiness = this.loadParkingBusiness(M)[0];
             this.museumParkingSvg = this.loadParkingBusiness(M)[1];
-            this.museumParkingSvgStroke = this.loadParkingBusiness(M)[0];
+            this.museumParkingSvgStroke = this.loadParkingBusiness(M)[2];
 
             var RV = this.rvStat / 100;
             this.rvBusiness = this.loadParkingBusiness(RV)[0];
