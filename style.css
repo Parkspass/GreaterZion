@@ -42,6 +42,37 @@ body, textarea{
 }
 
 /* HOME PAGE */
+#installContainer{
+    left: 0;
+    right: 0;
+    margin: auto;
+    position: absolute;
+    bottom: 50px;
+    background-color: #242323ee;
+    border-radius: 4px;
+    width: 98%;
+    height: 60px;
+    font-size: 14px;
+    z-index: 10000;
+    color: white;
+}
+@media only screen and (min-width: 575px){
+    #installContainer{
+        text-align: center;
+    }
+}
+.arrow-down {
+    width: 0; 
+    height: 0; 
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #242323ee;
+    left: 0;
+    right: 0;
+    margin: auto;
+    position: absolute;
+    bottom: -20px;
+  }
 #headerImg{
     position: relative;
     top: 0;

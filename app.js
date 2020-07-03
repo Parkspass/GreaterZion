@@ -1,19 +1,12 @@
 /*jshint esversion: 6 */
 console.log('connected');
 
-// if('serviceWorker' in navigator){
-//     navigator.serviceWorker.register('sw.js')
-//         .then((reg) => console.log("Service Worker Registered", reg))
-//         .catch((err) => console.log("Service Worker Not Registered", err));
-// }
-mapboxgl.accessToken="pk.eyJ1IjoiamFzb25waXR0cyIsImEiOiJja2J2NmNsNXowMzI2MzBvZnJ6aWEwaHpmIn0.LBsh6F1QSk4aNMBLtErYNw";
-var map = new mapboxgl.Map({
-    container: 'mapbox',
-    style: 'mapbox://styles/jasonpitts/ckbv6grp516621inii9kmamh6',
-    center: [-112.9867994, 37.200757], // starting position [lng, lat]
-    zoom: 11 // starting zoom
-});
-console.log(map);
+if('serviceWorker' in navigator){
+    navigator.serviceWorker.register('sw.js')
+        .then((reg) => console.log("Service Worker Registered", reg))
+        .catch((err) => console.log("Service Worker Not Registered", err));
+}
+
 var app = new Vue({
     el: '#app',
     vuetify: new Vuetify(),
@@ -23,6 +16,7 @@ var app = new Vue({
         mapImg: 'icons/map_grey.svg',
         home_selected: true,
         map_selected: false,
+        showInstallMessage: false,
 
         // ENTRANCES
         SouthEntranceStat: '',
@@ -142,8 +136,26 @@ var app = new Vue({
     },
     created: function(){
         this.loadStats();
+        this.PWA_popup();
     },
     methods: {
+        PWA_popup: function(){
+            const isIos = () => {
+                const userAgent = window.navigator.userAgent.toLowerCase();
+                return /iphone|ipad|ipod/.test( userAgent );
+            };
+              // Detects if device is in standalone mode
+            const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
+              
+              // Checks if should display install popup notification:
+            if (isIos() && !isInStandaloneMode()) {
+                this.showInstallMessage = true;
+            }
+            setTimeout(function() {
+                this.showInstallMessage = false;
+                console.log("Should be false");
+            }, 5000);
+        },
         bottomNavImg: function(NewTab) {
             switch(NewTab) {
                 case 'home':
