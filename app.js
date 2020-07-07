@@ -12,6 +12,7 @@ var app = new Vue({
     vuetify: new Vuetify(),
     data: {
         page: 'home', // home, entrances, parking, shuttles, trails, map
+        previousPages: '',
         homeImg: 'icons/home_green.svg',
         mapImg: 'icons/map_grey.svg',
         home_selected: true,
@@ -177,15 +178,23 @@ var app = new Vue({
         },
         entrancesClicked: function(){
             this.page = 'entrances';
+            this.previousPages = {page: 'entrances'};
+            history.pushState(this.previousPages, '', "index.html");
         },
         parkingClicked: function(){
             this.page = 'parking';
+            this.previousPages = {page: 'parking'};
+            history.pushState(this.previousPages, '', "index.html");
         },
         shuttlesClicked: function(){
             this.page = 'shuttles';
+            this.previousPages = {page: 'shuttles'};
+            history.pushState(this.previousPages, '', "index.html");
         },
         trailsClicked: function(){
             this.page = 'trails';
+            this.previousPages = {page: 'trails'};
+            history.pushState(this.previousPages, '', "index.html");
         },
         getAPIData_safe: function (data, fields, def){
 			//data = json object api return data
