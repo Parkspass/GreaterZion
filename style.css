@@ -10,7 +10,7 @@
 .overlayLine {
     fill: none;
     stroke-width: 4;
-    animation: dash 2s linear forwards;
+    animation: dash 5s linear forwards;
 }
 @font-face{
     font-family: "myRoboto";
@@ -76,7 +76,7 @@ body, textarea{
 #headerImg{
     position: relative;
     top: 0;
-    background-image: url("photos/angels-landing-zion-national-park-15.jpg");
+    background-image: url("photos/angels-landing-zion-national-park-medium.jpg");
     background-size: cover;
     height: 30vh;
     box-shadow: inset 0 0 0 1000px rgba(0,0,0,.5);
@@ -120,22 +120,22 @@ body, textarea{
     overflow: hidden;
 }
 #entrances{
-    background: url("photos/south\ entrance.jpg");
+    background: url("photos/south-entrance_medium.jpg");
     background-size: cover;
     background-position: center;
 }
 #parking{
-    background: url("photos/parking.jpg");
+    background: url("photos/parking-medium.jpg");
     background-size: cover;
     background-position: center;
 }
 #shuttles{
-    background: url("photos/shuttles.jpg");
+    background: url("photos/shuttles_medium.jpg");
     background-size: cover;
     background-position: center;
 }
 #trails{
-    background: url("photos/parus-trail-8.jpg");
+    background: url("photos/parus-trail-medium.jpg");
     background-size: cover;
     height: 49%;
     border-radius: 4px;
@@ -206,7 +206,7 @@ body, textarea{
 #updatesImg{
     position: relative;
     top: 0;
-    background-image: url("photos/zion-canyon-overlook-trail-36.jpg");
+    background-image: url("photos/zion-canyon-overlook-trail-medium.jpg");
     background-size: cover;
     height: 30vh;
     background-position: bottom;
