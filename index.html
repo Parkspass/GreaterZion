@@ -25,6 +25,7 @@
     <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
     <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="apple-touch-icon" href="/apple-icon-180x180.png">
     <link href="/apple_splash_2048.png" sizes="2048x2732" rel="apple-touch-startup-image" />
     <link href="/apple_splash_1668.png" sizes="1668x2224" rel="apple-touch-startup-image" />
     <link href="/apple_splash_1536.png" sizes="1536x2048" rel="apple-touch-startup-image" />
@@ -46,7 +47,7 @@
     <div id="app" >
         <v-app>
             <v-main >
-                <div v-if="page=='home'" @click="showInstallMessage">
+                <div class="nospace" v-if="page=='home'" @click="showInstallMessage">
                     <div id="headerImg">
                         <div class="headerText">
                             <h1>Greater Zion</h1>
@@ -72,7 +73,7 @@
                             </div>
                         </div>
                         <div class="grid-item gi2">
-                            <div id="updatesWrap" @click="page='update'; console.log('clicked');">
+                            <div id="updatesWrap" @click="page='update';">
                                 <img id="calendar" src="icons/event_available-24px 1.svg">
                                 <p id="updatesTitle">ZION IS OPEN.</p>
                                 <p id="updatesText">You must have a ticket to ride the shuttle.</p>
@@ -97,6 +98,7 @@
                 </div>
 
                 <div v-if="page == 'map' ">
+                    <iframe src="https://www.google.com/maps/d/embed?mid=1B_Ic0hAzgCHBkcW4GRGo0od855twsJfN" class="mapIframe" ></iframe>
                 </div>
                 
                 <div v-if="page == 'update'">

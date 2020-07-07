@@ -152,9 +152,7 @@ var app = new Vue({
             if (isIos() && !isInStandaloneMode()) {
                 this.showInstallMessage = true;
             }
-            setTimeout(function() {
-                this.showInstallMessage = false;
-            }, 5000);
+            setTimeout(this.showInstallMessage = false, 3000);
         },
         bottomNavImg: function(NewTab) {
             switch(NewTab) {
@@ -222,7 +220,6 @@ var app = new Vue({
 		},
         loadStats: function(){
             var vm = this;
-            if (this.page == 'entrances'){
                 axios.get("https://trailwaze.info/zion/vehicleTraffic_request.php?site=zionsouthin").then(response =>{
                     this.SouthEntranceStat = response.data.zionsouthin.rotate100;
                     if(this.SouthEntranceStat < 33){
@@ -263,8 +260,26 @@ var app = new Vue({
                 }).catch(error =>{
                     vm = "Fetch " + error;
                 });
-            }
-            if (this.page == 'parking'){
+                axios.get("https://trailwaze.info/zion/vehicleTraffic_request.php?site=zionbridge").then(response =>{
+                    this.RiverEntranceStat = response.data.zionbridge.rotate100;
+                    if(this.RiverEntranceStat < 33){
+                        this.riverEntranceSvg = "icons/entrance_green.svg";
+                        this.riverEntranceSvgStroke = "#749D4C";
+                        this.RiverEntranceBusiness = "Not busy";
+                    }else if(this.RiverEntranceStat < 66){
+                        this.riverEntranceSvg = "icons/entrance_yellow.svg";
+                        this.riverEntranceSvgStroke = "#FFCD31";
+                        this.RiverEntranceBusiness = "A little busy";
+                    }else{
+                        this.riverEntranceSvg = "icons/entrance_pink.svg";
+                        this.riverEntranceSvgStroke = "#EF6A6E";
+                        this.RiverEntranceBusiness = "As busy as it gets";
+                    }
+                    this.RiverEntranceStat /= 100;
+                    this.setStop("riverEntranceLine", 8, this.RiverEntranceStat);
+                }).catch(error =>{
+                    vm = "Fetch " + error;
+                });
                 axios.get("https://trailwaze.info/zion/request.php").then(response => {
                     //Visitor Center: Today
                     vm.vcStat = this.getAPIData_safe(response.data, ["ParkingVisitorCenter", "Today", "count"], 0);
@@ -280,13 +295,31 @@ var app = new Vue({
                 }).catch(error => {
                     vm = "Fetch " + error;
                 });
-                // axios.get("kolob parking php request here").then(response => {
 
+                // axios.get("kolob parking php request here").then(response => {
+                //     this.RiverEntranceStat = response.data.zionbridge.rotate100;
+                //     if(this.RiverEntranceStat < 33){
+                //         this.riverEntranceSvg = "icons/entrance_green.svg";
+                //         this.riverEntranceSvgStroke = "#749D4C";
+                //         this.RiverEntranceBusiness = "Not busy";
+                //     }else if(this.RiverEntranceStat < 66){
+                //         this.riverEntranceSvg = "icons/entrance_yellow.svg";
+                //         this.riverEntranceSvgStroke = "#FFCD31";
+                //         this.RiverEntranceBusiness = "A little busy";
+                //     }else{
+                //         this.riverEntranceSvg = "icons/entrance_pink.svg";
+                //         this.riverEntranceSvgStroke = "#EF6A6E";
+                //         this.RiverEntranceBusiness = "As busy as it gets";
+                //     }
+                //     this.RiverEntranceStat /= 100;
+                //     this.setStop("riverEntranceLine", 8, this.RiverEntranceStat);
                 // }).catch(error => {
                 //     vm = "Fetch " + error;
                 // });
-                
-            }
+                this.kolobEntranceSvg = "icons/entrance_grey.svg";
+                this.kolobEntranceSvgStroke = "#B5B5B5";
+                this.KolobEntranceBusiness = "Closed";
+                this.setStop("kolobEntranceLine", 8, 1);
                 
             // ALL TRAILS
             vm.parusStat = 50;

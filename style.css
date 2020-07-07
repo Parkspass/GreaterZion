@@ -10,7 +10,7 @@
 .overlayLine {
     fill: none;
     stroke-width: 4;
-    animation: dash 5s linear forwards;
+    animation: dash 4s linear forwards;
 }
 @font-face{
     font-family: "myRoboto";
@@ -29,6 +29,9 @@ html, body{
     overflow-x: hidden;
     touch-action: manipulation;
     padding-bottom: 20px;
+}
+.nospace{
+    padding-bottom: -60px !important;
 }
 body, textarea{
     font-family: 'myRoboto';
@@ -379,4 +382,9 @@ h4{
     font-size: 18px;
     font-weight: 500;
     margin: 24px 0px 16px 0px;
+}
+.mapIframe{
+    height: 92%;
+    width: 100%;
+    position: absolute;
 }
