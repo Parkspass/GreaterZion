@@ -153,7 +153,6 @@ var app = new Vue({
             }
             setTimeout(function() {
                 this.showInstallMessage = false;
-                console.log("Should be false");
             }, 5000);
         },
         bottomNavImg: function(NewTab) {
@@ -256,45 +255,50 @@ var app = new Vue({
                     vm = "Fetch " + error;
                 });
             }
-            axios.get("https://trailwaze.info/zion/request.php").then(response => {
-                //Visitor Center: Today
-                vm.vcStat = this.getAPIData_safe(response.data, ["ParkingVisitorCenter", "Today", "count"], 0);
-                //Museum: Today
-                vm.museumStat = this.getAPIData_safe(response.data, ["ParkingVisitorCenter", "Today", "count"], 0);
-                //RV: Today
-                vm.rvStat = this.getAPIData_safe(response.data, ["ParkingVisitorCenter", "Today", "count"], 0);
-                //Springdale: Today
-                vm.springdaleStat = 0;
-                //Kolob Visitor Center
-                vm.kolobVcStat = 'closed';
-
-                // ALL TRAILS
-                vm.parusStat = 50;
-                vm.archeologyStat = 20;
-                vm.lowerEmeraldStat = 50;
-                vm.grottoStat = 90;
-                vm.weepingRockStat = 'closed';
-                vm.riversideStat = 90;
-                vm.watchmanStat = 20;
-                vm.sandBenchStat = 20;
-                vm.upperEmeraldStat = 50;
-                vm.kayentaStat = 50;
-                vm.canyonOverlookStat = 90;
-                vm.taylorCreekStat = 20;
-                vm.timberCreekStat = 20;
-                vm.angelsLandingWestStat = 'closed';
-                vm.hiddenCanyonStat = 'closed';
-                vm.observationPointStat = 'closed';
-                vm.narrowsStat = 90; 
-                if (this.page == 'parking'){
+            if (this.page == 'parking'){
+                axios.get("https://trailwaze.info/zion/request.php").then(response => {
+                    //Visitor Center: Today
+                    vm.vcStat = this.getAPIData_safe(response.data, ["ParkingVisitorCenter", "Today", "count"], 0);
+                    //Museum: Today
+                    vm.museumStat = this.getAPIData_safe(response.data, ["ParkingVisitorCenter", "Today", "count"], 0);
+                    //RV: Today
+                    vm.rvStat = this.getAPIData_safe(response.data, ["ParkingVisitorCenter", "Today", "count"], 0);
+                    //Springdale: Today
+                    vm.springdaleStat = 0;
+                    //Kolob Visitor Center
+                    vm.kolobVcStat = 'closed';
                     this.loadParking();
-                }
-                if (this.page == 'trails'){
-                    this.loadTrails();
-                }
-            }).catch(error => {
-                vm = "Fetch " + error;
-            });
+                }).catch(error => {
+                    vm = "Fetch " + error;
+                });
+                // axios.get("kolob parking php request here").then(response => {
+
+                // }).catch(error => {
+                //     vm = "Fetch " + error;
+                // });
+                
+            }
+                
+            // ALL TRAILS
+            vm.parusStat = 50;
+            vm.archeologyStat = 20;
+            vm.lowerEmeraldStat = 50;
+            vm.grottoStat = 90;
+            vm.weepingRockStat = 'closed';
+            vm.riversideStat = 90;
+            vm.watchmanStat = 20;
+            vm.sandBenchStat = 20;
+            vm.upperEmeraldStat = 50;
+            vm.kayentaStat = 50;
+            vm.canyonOverlookStat = 90;
+            vm.taylorCreekStat = 20;
+            vm.timberCreekStat = 20;
+            vm.angelsLandingWestStat = 'closed';
+            vm.hiddenCanyonStat = 'closed';
+            vm.observationPointStat = 'closed';
+            vm.narrowsStat = 90; 
+            this.loadTrails();
+            
         },
         loadParking: function(){
             var VC = this.vcStat / 100;
