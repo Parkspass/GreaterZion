@@ -19,6 +19,7 @@ const assets = [
     '/icons/circle 8.svg',
     '/icons/circle 9.svg',
     '/icons/liveImg.svg',
+    '/pwaIcons',
     '/Map Photos/Entrances.jpg',
     '/Map Photos/Parking.jpg',
     '/Map Photos/Shuttles.jpg',
