@@ -1,6 +1,6 @@
 /*jshint esversion: 6 */
 
-const staticCacheName = 'site-static-v7'; // Need to change version number ANYTIME we change HTML or CSS files. This is how we get the app to update. The browser needs to detect a change in the service worker.
+const staticCacheName = 'site-static-v8'; // Need to change version number ANYTIME we change HTML or CSS files. This is how we get the app to update. The browser needs to detect a change in the service worker.
 const assets = [
     '/', // caches all reqeust responses from server
     '/index.html',
@@ -29,6 +29,7 @@ const assets = [
     'https://unpkg.com/axios/dist/axios.min.js',
     'https://cdn.jsdelivr.net/npm/vue',
     'https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js',
+    
 ];
 
 // Install service worker
