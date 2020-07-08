@@ -37,7 +37,6 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-
     <!-- Style Sheet Links-->
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
@@ -55,13 +54,13 @@
                         </div>
                     </div>
                     <div class="grid-container">
-                        <div class="grid-item" id="entrances" @click="entrancesClicked(); loadStats();">
+                        <div class="grid-item" id="entrances" @click="entrancesClicked();">
                             <p class="live">Live<img class="liveImg" src="icons/liveImg.svg"></p>
                             <div class="gridText">
                                 <h2>Entrances</h2>
                             </div>
                         </div>
-                        <div class="grid-item gi2" id="parking" @click="parkingClicked(); loadStats();">
+                        <div class="grid-item gi2" id="parking" @click="parkingClicked();">
                             <p class="live">Live<img class="liveImg" src="icons/liveImg.svg"></p>
                             <div class="gridText">
                                 <h2>Parking</h2>
@@ -79,7 +78,7 @@
                                 <p id="updatesText">You must have a ticket to ride the shuttle.</p>
                                 <p id="updateBold">PARK UPDATES</p>
                             </div>
-                            <div id="trails" @click="trailsClicked(); loadStats();">
+                            <div id="trails" @click="trailsClicked();">
                                 <div class="gridText">
                                     <h2>Trails</h2>
                                 </div>
@@ -145,6 +144,7 @@
         
                 <div v-if="page=='entrances'">
                     <div class="mapStatic">
+                        <a class="linkClass" href="https://www.google.com/maps/place/Zion+Park+Fee+Collection+Office/@37.1994752,-112.9913065,17z/data=!4m5!3m4!1s0x80cac2bd3eccc579:0xd19bbb134a3793d3!8m2!3d37.1993729!4d-112.9881647"></a>
                         <img class="backArrow" src="icons/arrow_back-24px 1 1.svg" @click="page='home'">
                         <a href="photos/zion_national_park_map.jpg" download="ZionMap"><img class="circleBtn download" src="icons/download.svg"></a>
                         <a href="https://www.google.com/maps/place/Zion+Park+Fee+Collection+Office/@37.1994752,-112.9913065,17z/data=!4m5!3m4!1s0x80cac2bd3eccc579:0xd19bbb134a3793d3!8m2!3d37.1993729!4d-112.9881647"><img class="circleBtn expand" src="icons/expand.svg"></a>
@@ -212,6 +212,7 @@
 
                 <div v-if="page=='parking'">
                     <div class="mapStatic map2">
+                        <a class="linkClass" href="https://www.google.com/maps/place/Zion+Parking/@37.1994752,-112.9913065,17z/data=!4m12!1m6!3m5!1s0x80cac2bd3eccc579:0xd19bbb134a3793d3!2sZion+Park+Fee+Collection+Office!8m2!3d37.1993729!4d-112.9881647!3m4!1s0x0:0x54426bffe4c915ed!8m2!3d37.1992244!4d-112.9865943"></a>
                         <img class="backArrow" src="icons/arrow_back-24px 1 1.svg" @click="page='home'">
                         <a href="photos/zion_national_park_map.jpg" download="ZionMap"><img class="circleBtn download" src="icons/download.svg"></a>
                         <a href="https://www.google.com/maps/place/Zion+Parking/@37.1994752,-112.9913065,17z/data=!4m12!1m6!3m5!1s0x80cac2bd3eccc579:0xd19bbb134a3793d3!2sZion+Park+Fee+Collection+Office!8m2!3d37.1993729!4d-112.9881647!3m4!1s0x0:0x54426bffe4c915ed!8m2!3d37.1992244!4d-112.9865943"><img class="circleBtn expand" src="icons/expand.svg"></a>
@@ -290,6 +291,7 @@
 
                 <div v-if="page=='shuttles'">
                     <div class="mapStatic map3">
+                        <a class="linkClass" href="https://www.google.com/maps/place/Zion+National+Park+Visitor+Center/@37.2001611,-112.9903242,15.89z/data=!4m12!1m6!3m5!1s0x80cac2bd3eccc579:0xd19bbb134a3793d3!2sZion+Park+Fee+Collection+Office!8m2!3d37.1993729!4d-112.9881647!3m4!1s0x0:0x8e601e4c459d754d!8m2!3d37.2000865!4d-112.986998"></a>
                         <img class="backArrow" src="icons/arrow_back-24px 1 1.svg" @click="page='home'">
                         <a href="photos/zion_national_park_map.jpg" download="ZionMap"><img class="circleBtn download" src="icons/download.svg"></a>
                         <a href="https://www.google.com/maps/place/Zion+National+Park+Visitor+Center/@37.2001611,-112.9903242,15.89z/data=!4m12!1m6!3m5!1s0x80cac2bd3eccc579:0xd19bbb134a3793d3!2sZion+Park+Fee+Collection+Office!8m2!3d37.1993729!4d-112.9881647!3m4!1s0x0:0x8e601e4c459d754d!8m2!3d37.2000865!4d-112.986998"><img class="circleBtn expand" src="icons/expand.svg"></a>
@@ -372,6 +374,7 @@
 
                 <div v-if="page=='trails'">
                     <div class="mapStatic map4">
+                        <a class="linkClass" href="https://www.google.com/maps/place/Angels+Landing+Trail/@37.2718178,-112.9522506,17z/data=!3m1!4b1!4m12!1m6!3m5!1s0x80cac17e56c262ab:0xc5f60dc9da7d6629!2sAngels+Landing+Trail!8m2!3d37.2718136!4d-112.9500619!3m4!1s0x80cac17e56c262ab:0xc5f60dc9da7d6629!8m2!3d37.2718136!4d-112.9500619"></a>
                         <img class="backArrow" src="icons/arrow_back-24px 1 1.svg" @click="page='home'">
                         <a href="photos/zion_national_park_map.jpg" download="ZionMap"><img class="circleBtn download" src="icons/download.svg"></a>
                         <a href="https://www.google.com/maps/place/Angels+Landing+Trail/@37.2718178,-112.9522506,17z/data=!3m1!4b1!4m12!1m6!3m5!1s0x80cac17e56c262ab:0xc5f60dc9da7d6629!2sAngels+Landing+Trail!8m2!3d37.2718136!4d-112.9500619!3m4!1s0x80cac17e56c262ab:0xc5f60dc9da7d6629!8m2!3d37.2718136!4d-112.9500619"><img class="circleBtn expand" src="icons/expand.svg"></a>

@@ -64,23 +64,23 @@ var app = new Vue({
         kolobVcParkingSvgStroke: '',
 
         // TRAILS
-        parusStat: '', 
-        archeologyStat: '', 
-        lowerEmeraldStat: '', 
-        grottoStat: '', 
-        weepingRockStat: '', 
-        riversideStat: '', 
-        watchmanStat: '', 
-        sandBenchStat: '', 
-        upperEmeraldStat: '', 
-        kayentaStat: '', 
-        canyonOverlookStat: '', 
-        taylorCreekStat: '', 
-        timberCreekStat: '', 
-        angelsLandingWestStat: '', 
-        hiddenCanyonStat: '', 
-        observationPointStat: '', 
-        narrowsStat: '', 
+        parusStat: 50,
+        archeologyStat: 20,
+        lowerEmeraldStat: 50,
+        grottoStat: 90,
+        weepingRockStat: 'closed',
+        riversideStat: 90,
+        watchmanStat: 20,
+        sandBenchStat: 20,
+        upperEmeraldStat: 50,
+        kayentaStat: 50,
+        canyonOverlookStat: 90,
+        taylorCreekStat: 20,
+        timberCreekStat: 20,
+        angelsLandingWestStat: 'closed',
+        hiddenCanyonStat: 'closed',
+        observationPointStat: 'closed',
+        narrowsStat: 90,
 
         parusBusiness: '', 
         archeologyBusiness: '', 
@@ -136,7 +136,6 @@ var app = new Vue({
         narrowsSvgStroke: '',
     },
     created: function(){
-        this.loadStats();
         this.PWA_popup();
     },
     methods: {
@@ -152,7 +151,7 @@ var app = new Vue({
             if (isIos() && !isInStandaloneMode()) {
                 this.showInstallMessage = true;
             }
-            setTimeout(this.showInstallMessage = false, 3000);
+            setTimeout(this.showInstallMessage = false, 30000);
         },
         bottomNavImg: function(NewTab) {
             switch(NewTab) {
@@ -166,23 +165,17 @@ var app = new Vue({
                     break;
             }
         },
-        setStop: function(id, radius, stop){
-            var c = document.getElementById(id);
-            c.className = "background";
-            var stopVal = Math.PI * radius * 2 * (stop);
-            c.setAttribute("stroke-dasharray", stopVal + ", 3000");
-            c.setAttribute("stroke-dashoffset", stopVal);
-            c.className = "overlayLine";
-        },
         entrancesClicked: function(){
             this.page = 'entrances';
             this.previousPages = {page: 'entrances'};
             history.pushState(this.previousPages, '', "index.html");
+            this.loadEntrance();
         },
         parkingClicked: function(){
             this.page = 'parking';
             this.previousPages = {page: 'parking'};
             history.pushState(this.previousPages, '', "index.html");
+            this.loadParking();
         },
         shuttlesClicked: function(){
             this.page = 'shuttles';
@@ -193,6 +186,15 @@ var app = new Vue({
             this.page = 'trails';
             this.previousPages = {page: 'trails'};
             history.pushState(this.previousPages, '', "index.html");
+            this.loadTrails();
+        },
+        setStop: function(id, radius, stop){
+            var c = document.getElementById(id);
+            c.className = "background";
+            var stopVal = Math.PI * radius * 2 * (stop);
+            c.setAttribute("stroke-dasharray", stopVal + ", 3000");
+            c.setAttribute("stroke-dashoffset", stopVal);
+            c.className = "overlayLine";
         },
         getAPIData_safe: function (data, fields, def){
 			//data = json object api return data
@@ -218,131 +220,112 @@ var app = new Vue({
 			}
 			return ret;
 		},
-        loadStats: function(){
+        loadEntrance: function(){
             var vm = this;
-                axios.get("https://trailwaze.info/zion/vehicleTraffic_request.php?site=zionsouthin").then(response =>{
-                    this.SouthEntranceStat = response.data.zionsouthin.rotate100;
-                    if(this.SouthEntranceStat < 33){
-                        this.southEntranceSvg = "icons/entrance_green.svg";
-                        this.southEntranceSvgStroke = "#749D4C";
-                        this.SouthEntranceBusiness = "Not busy";
-                    }else if(this.SouthEntranceStat < 66){
-                        this.southEntranceSvg = "icons/entrance_yellow.svg";
-                        this.southEntranceSvgStroke = "#FFCD31";
-                        this.SouthEntranceBusiness = "A little busy";
-                    }else{
-                        this.southEntranceSvg = "icons/entrance_pink.svg";
-                        this.southEntranceSvgStroke = "#EF6A6E";
-                        this.SouthEntranceBusiness = "As busy as it gets";
-                    }
-                    this.SouthEntranceStat /= 100;
-                    this.setStop("southEntranceLine", 8, this.SouthEntranceStat);
-                }).catch(error =>{
-                    vm = "Fetch " + error;
-                });
-                axios.get("https://trailwaze.info/zion/vehicleTraffic_request.php?site=zioneastin").then(response =>{
-                    this.EastEntranceStat = response.data.zioneastin.rotate100;
-                    if(this.EastEntranceStat < 33){
-                        this.eastEntranceSvg = "icons/entrance_green.svg";
-                        this.eastEntranceSvgStroke = "#749D4C";
-                        this.EastEntranceBusiness = "Not busy";
-                    }else if(this.EastEntranceStat < 66){
-                        this.eastEntranceSvg = "icons/entrance_yellow.svg";
-                        this.eastEntranceSvgStroke = "#FFCD31";
-                        this.EastEntranceBusiness = "A little busy";
-                    }else{
-                        this.eastEntranceSvg = "icons/entrance_pink.svg";
-                        this.eastEntranceSvgStroke = "#EF6A6E";
-                        this.EastEntranceBusiness = "As busy as it gets";
-                    }
-                    this.EastEntranceStat /= 100;
-                    this.setStop("eastEntranceLine", 8, this.EastEntranceStat);
-                }).catch(error =>{
-                    vm = "Fetch " + error;
-                });
-                axios.get("https://trailwaze.info/zion/vehicleTraffic_request.php?site=zionbridge").then(response =>{
-                    this.RiverEntranceStat = response.data.zionbridge.rotate100;
-                    if(this.RiverEntranceStat < 33){
-                        this.riverEntranceSvg = "icons/entrance_green.svg";
-                        this.riverEntranceSvgStroke = "#749D4C";
-                        this.RiverEntranceBusiness = "Not busy";
-                    }else if(this.RiverEntranceStat < 66){
-                        this.riverEntranceSvg = "icons/entrance_yellow.svg";
-                        this.riverEntranceSvgStroke = "#FFCD31";
-                        this.RiverEntranceBusiness = "A little busy";
-                    }else{
-                        this.riverEntranceSvg = "icons/entrance_pink.svg";
-                        this.riverEntranceSvgStroke = "#EF6A6E";
-                        this.RiverEntranceBusiness = "As busy as it gets";
-                    }
-                    this.RiverEntranceStat /= 100;
-                    this.setStop("riverEntranceLine", 8, this.RiverEntranceStat);
-                }).catch(error =>{
-                    vm = "Fetch " + error;
-                });
-                axios.get("https://trailwaze.info/zion/request.php").then(response => {
-                    //Visitor Center: Today
-                    vm.vcStat = this.getAPIData_safe(response.data, ["ParkingVisitorCenter", "Today", "count"], 0);
-                    //Museum: Today
-                    vm.museumStat = this.getAPIData_safe(response.data, ["ParkingVisitorCenter", "Today", "count"], 0);
-                    //RV: Today
-                    vm.rvStat = this.getAPIData_safe(response.data, ["ParkingVisitorCenter", "Today", "count"], 0);
-                    //Springdale: Today
-                    vm.springdaleStat = 0;
-                    //Kolob Visitor Center
-                    vm.kolobVcStat = 'closed';
-                    this.loadParking();
-                }).catch(error => {
-                    vm = "Fetch " + error;
-                });
-
-                // axios.get("kolob parking php request here").then(response => {
-                //     this.RiverEntranceStat = response.data.zionbridge.rotate100;
-                //     if(this.RiverEntranceStat < 33){
-                //         this.riverEntranceSvg = "icons/entrance_green.svg";
-                //         this.riverEntranceSvgStroke = "#749D4C";
-                //         this.RiverEntranceBusiness = "Not busy";
-                //     }else if(this.RiverEntranceStat < 66){
-                //         this.riverEntranceSvg = "icons/entrance_yellow.svg";
-                //         this.riverEntranceSvgStroke = "#FFCD31";
-                //         this.RiverEntranceBusiness = "A little busy";
-                //     }else{
-                //         this.riverEntranceSvg = "icons/entrance_pink.svg";
-                //         this.riverEntranceSvgStroke = "#EF6A6E";
-                //         this.RiverEntranceBusiness = "As busy as it gets";
-                //     }
-                //     this.RiverEntranceStat /= 100;
-                //     this.setStop("riverEntranceLine", 8, this.RiverEntranceStat);
-                // }).catch(error => {
-                //     vm = "Fetch " + error;
-                // });
-                this.kolobEntranceSvg = "icons/entrance_grey.svg";
-                this.kolobEntranceSvgStroke = "#B5B5B5";
-                this.KolobEntranceBusiness = "Closed";
-                this.setStop("kolobEntranceLine", 8, 1);
-                
-            // ALL TRAILS
-            vm.parusStat = 50;
-            vm.archeologyStat = 20;
-            vm.lowerEmeraldStat = 50;
-            vm.grottoStat = 90;
-            vm.weepingRockStat = 'closed';
-            vm.riversideStat = 90;
-            vm.watchmanStat = 20;
-            vm.sandBenchStat = 20;
-            vm.upperEmeraldStat = 50;
-            vm.kayentaStat = 50;
-            vm.canyonOverlookStat = 90;
-            vm.taylorCreekStat = 20;
-            vm.timberCreekStat = 20;
-            vm.angelsLandingWestStat = 'closed';
-            vm.hiddenCanyonStat = 'closed';
-            vm.observationPointStat = 'closed';
-            vm.narrowsStat = 90; 
-            this.loadTrails();
-            
+            axios.get("https://trailwaze.info/zion/vehicleTraffic_request.php?site=zionsouthin").then(response =>{
+                this.SouthEntranceStat = response.data.zionsouthin.rotate100;
+                if(this.SouthEntranceStat < 33){
+                    this.southEntranceSvg = "icons/entrance_green.svg";
+                    this.southEntranceSvgStroke = "#749D4C";
+                    this.SouthEntranceBusiness = "Not busy";
+                }else if(this.SouthEntranceStat < 66){
+                    this.southEntranceSvg = "icons/entrance_yellow.svg";
+                    this.southEntranceSvgStroke = "#FFCD31";
+                    this.SouthEntranceBusiness = "A little busy";
+                }else{
+                    this.southEntranceSvg = "icons/entrance_pink.svg";
+                    this.southEntranceSvgStroke = "#EF6A6E";
+                    this.SouthEntranceBusiness = "As busy as it gets";
+                }
+                this.SouthEntranceStat /= 100;
+                this.setStop("southEntranceLine", 8, this.SouthEntranceStat);
+            }).catch(error =>{
+                vm = "Fetch " + error;
+            });
+            axios.get("https://trailwaze.info/zion/vehicleTraffic_request.php?site=zioneastin").then(response =>{
+                this.EastEntranceStat = response.data.zioneastin.rotate100;
+                if(this.EastEntranceStat < 33){
+                    this.eastEntranceSvg = "icons/entrance_green.svg";
+                    this.eastEntranceSvgStroke = "#749D4C";
+                    this.EastEntranceBusiness = "Not busy";
+                }else if(this.EastEntranceStat < 66){
+                    this.eastEntranceSvg = "icons/entrance_yellow.svg";
+                    this.eastEntranceSvgStroke = "#FFCD31";
+                    this.EastEntranceBusiness = "A little busy";
+                }else{
+                    this.eastEntranceSvg = "icons/entrance_pink.svg";
+                    this.eastEntranceSvgStroke = "#EF6A6E";
+                    this.EastEntranceBusiness = "As busy as it gets";
+                }
+                this.EastEntranceStat /= 100;
+                this.setStop("eastEntranceLine", 8, this.EastEntranceStat);
+            }).catch(error =>{
+                vm = "Fetch " + error;
+            });
+            axios.get("https://trailwaze.info/zion/vehicleTraffic_request.php?site=zionbridge").then(response =>{
+                this.RiverEntranceStat = response.data.zionbridge.rotate100;
+                if(this.RiverEntranceStat < 33){
+                    this.riverEntranceSvg = "icons/entrance_green.svg";
+                    this.riverEntranceSvgStroke = "#749D4C";
+                    this.RiverEntranceBusiness = "Not busy";
+                }else if(this.RiverEntranceStat < 66){
+                    this.riverEntranceSvg = "icons/entrance_yellow.svg";
+                    this.riverEntranceSvgStroke = "#FFCD31";
+                    this.RiverEntranceBusiness = "A little busy";
+                }else{
+                    this.riverEntranceSvg = "icons/entrance_pink.svg";
+                    this.riverEntranceSvgStroke = "#EF6A6E";
+                    this.RiverEntranceBusiness = "As busy as it gets";
+                }
+                this.RiverEntranceStat /= 100;
+                this.setStop("riverEntranceLine", 8, this.RiverEntranceStat);
+            }).catch(error =>{
+                vm = "Fetch " + error;
+            });
+            // axios.get("kolob parking php request here").then(response => {
+            //     this.RiverEntranceStat = response.data.zionbridge.rotate100;
+            //     if(this.RiverEntranceStat < 33){
+            //         this.riverEntranceSvg = "icons/entrance_green.svg";
+            //         this.riverEntranceSvgStroke = "#749D4C";
+            //         this.RiverEntranceBusiness = "Not busy";
+            //     }else if(this.RiverEntranceStat < 66){
+            //         this.riverEntranceSvg = "icons/entrance_yellow.svg";
+            //         this.riverEntranceSvgStroke = "#FFCD31";
+            //         this.RiverEntranceBusiness = "A little busy";
+            //     }else{
+            //         this.riverEntranceSvg = "icons/entrance_pink.svg";
+            //         this.riverEntranceSvgStroke = "#EF6A6E";
+            //         this.RiverEntranceBusiness = "As busy as it gets";
+            //     }
+            //     this.RiverEntranceStat /= 100;
+            //     this.setStop("riverEntranceLine", 8, this.RiverEntranceStat);
+            // }).catch(error => {
+            //     vm = "Fetch " + error;
+            // });
+            this.kolobEntranceSvg = "icons/entrance_grey.svg";
+            this.kolobEntranceSvgStroke = "#B5B5B5";
+            this.KolobEntranceBusiness = "Closed";
+            this.setStop("kolobEntranceLine", 8, 1);
         },
         loadParking: function(){
+            axios.get("https://trailwaze.info/zion/request.php").then(response => {
+                //Visitor Center: Today
+                this.vcStat = this.getAPIData_safe(response.data, ["ParkingVisitorCenter", "Today", "count"], 0);
+                //Museum: Today
+                this.museumStat = this.getAPIData_safe(response.data, ["ParkingVisitorCenter", "Today", "count"], 0);
+                //RV: Today
+                this.rvStat = this.getAPIData_safe(response.data, ["ParkingVisitorCenter", "Today", "count"], 0);
+                //Springdale: Today
+                this.springdaleStat = 0;
+                //Kolob Visitor Center
+                this.kolobVcStat = 'closed';
+                this.loadParkingSvgs();
+                
+            }).catch(error => {
+                vm = "Fetch " + error;
+            });
+        },
+        loadParkingSvgs: function(){
             var VC = this.vcStat / 100;
             this.vcBusiness = this.loadParkingBusiness(VC)[0];
             this.vcParkingSvg = this.loadParkingBusiness(VC)[1];
