@@ -137,6 +137,7 @@ var app = new Vue({
     },
     created: function(){
         this.PWA_popup();
+        this.loadTrails();
     },
     methods: {
         PWA_popup: function(){
@@ -394,87 +395,89 @@ var app = new Vue({
             this.parusBusiness = this.loadTrailsBusiness(P)[0];
             this.parusSvg = this.loadTrailsBusiness(P)[1];
             this.parusSvgStroke = this.loadTrailsBusiness(P)[2];
-            this.setStop("parusLine", 8, P);
             
             this.archeologyBusiness = this.loadTrailsBusiness(A)[0];
             this.archeologySvg = this.loadTrailsBusiness(A)[1];
             this.archeologySvgStroke = this.loadTrailsBusiness(A)[2];
-            this.setStop("archeologyLine", 8, A);
-
+        
             this.lowerEmeraldBusiness = this.loadTrailsBusiness(LE)[0];
             this.lowerEmeraldSvg = this.loadTrailsBusiness(LE)[1];
             this.lowerEmeraldSvgStroke = this.loadTrailsBusiness(LE)[2];
-            this.setStop("lowerEmeraldLine", 8, LE);
 
             this.grottoBusiness = this.loadTrailsBusiness(G)[0];
             this.grottoSvg = this.loadTrailsBusiness(G)[1];
             this.grottoSvgStroke = this.loadTrailsBusiness(G)[2];
-            this.setStop("grottoLine", 8, G);
-
+            
             this.weepingRockBusiness = this.loadTrailsBusiness(W)[0];
             this.weepingRockSvg = this.loadTrailsBusiness(W)[1];
             this.weepingRockSvgStroke = this.loadTrailsBusiness(W)[2];
-            this.setStop("weepingRockLine", 8, W);
 
             this.riversideBusiness = this.loadTrailsBusiness(R)[0];
             this.riversideSvg = this.loadTrailsBusiness(R)[1];
             this.riversideSvgStroke = this.loadTrailsBusiness(R)[2];
-            this.setStop("riversideLine", 8, R);
-
+            
             this.watchmanBusiness = this.loadTrailsBusiness(WL)[0];
             this.watchmanSvg = this.loadTrailsBusiness(WL)[1];
             this.watchmanSvgStroke = this.loadTrailsBusiness(WL)[2];
-            this.setStop("watchmanLine", 8, WL);
 
             this.sandBenchBusiness = this.loadTrailsBusiness(SB)[0];
             this.sandBenchSvg = this.loadTrailsBusiness(SB)[1];
             this.sandBenchSvgStroke = this.loadTrailsBusiness(SB)[2];
-            this.setStop("sandBenchLine", 8, SB);
 
             this.upperEmeraldBusiness = this.loadTrailsBusiness(UE)[0];
             this.upperEmeraldSvg = this.loadTrailsBusiness(UE)[1];
             this.upperEmeraldSvgStroke = this.loadTrailsBusiness(UE)[2];
-            this.setStop("upperEmeraldLine", 8, UE);
 
             this.kayentaBusiness = this.loadTrailsBusiness(K)[0];
             this.kayentaSvg = this.loadTrailsBusiness(K)[1];
             this.kayentaSvgStroke = this.loadTrailsBusiness(K)[2];
-            this.setStop("kayentaLine", 8, K);
 
             this.canyonOverlookBusiness = this.loadTrailsBusiness(CO)[0];
             this.canyonOverlookSvg = this.loadTrailsBusiness(CO)[1];
             this.canyonOverlookSvgStroke = this.loadTrailsBusiness(CO)[2];
-            this.setStop("canyonOverlookLine", 8, CO);
 
             this.taylorCreekBusiness = this.loadTrailsBusiness(TC)[0];
             this.taylorCreekSvg = this.loadTrailsBusiness(TC)[1];
             this.taylorCreekSvgStroke = this.loadTrailsBusiness(TC)[2];
-            this.setStop("taylorCreekLine", 8, TC);
             
             this.timberCreekBusiness = this.loadTrailsBusiness(TiC)[0];
             this.timberCreekSvg = this.loadTrailsBusiness(TiC)[1];
             this.timberCreekSvgStroke = this.loadTrailsBusiness(TiC)[2];
-            this.setStop("timberCreekLine", 8, TiC);
 
             this.angelsLandingWestBusiness = this.loadTrailsBusiness(AW)[0];
             this.angelsLandingWestSvg = this.loadTrailsBusiness(AW)[1];
             this.angelsLandingWestSvgStroke = this.loadTrailsBusiness(AW)[2];
-            this.setStop("angelsLandingWestLine", 8, AW);
 
             this.hiddenCanyonBusiness = this.loadTrailsBusiness(HC)[0];
             this.hiddenCanyonSvg = this.loadTrailsBusiness(HC)[1];
             this.hiddenCanyonSvgStroke = this.loadTrailsBusiness(HC)[2];
-            this.setStop("hiddenCanyonLine", 8, HC);
 
             this.observationPointBusiness = this.loadTrailsBusiness(OP)[0];
             this.observationPointSvg = this.loadTrailsBusiness(OP)[1];
             this.observationPointSvgStroke = this.loadTrailsBusiness(OP)[2];
-            this.setStop("observationPointLine", 8, OP);
-
+            
             this.narrowsBusiness = this.loadTrailsBusiness(N)[0];
             this.narrowsSvg = this.loadTrailsBusiness(N)[1];
             this.narrowsSvgStroke = this.loadTrailsBusiness(N)[2];
+
+            this.setStop("parusLine", 8, P);
+            this.setStop("archeologyLine", 8, A);
+            this.setStop("lowerEmeraldLine", 8, LE);
+            this.setStop("grottoLine", 8, G);
+            this.setStop("weepingRockLine", 8, W);
+            this.setStop("riversideLine", 8, R);
+            this.setStop("watchmanLine", 8, WL);
+            this.setStop("sandBenchLine", 8, SB);
+            this.setStop("upperEmeraldLine", 8, UE);
+            this.setStop("kayentaLine", 8, K);
+            this.setStop("canyonOverlookLine", 8, CO);
+            this.setStop("taylorCreekLine", 8, TC);
+            this.setStop("timberCreekLine", 8, TiC);
+            this.setStop("angelsLandingWestLine", 8, AW);
+            this.setStop("hiddenCanyonLine", 8, HC);
+            this.setStop("observationPointLine", 8, OP);
             this.setStop("narrowsLine", 8, N);
+
         },
         loadTrailsBusiness: function(trail){
             if (isNaN(trail)){
