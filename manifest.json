@@ -28,14 +28,14 @@
             "sizes": "16x16"
         },
         {
-            "src": "pwaIcons/favicon-96x96.png",
-            "type": "image/png",
-            "sizes": "96x96"
-        },
-        {
             "src": "pwaIcons/favicon-32x32.png",
             "type": "image/png",
             "sizes": "32x32"
+        },
+        {
+            "src": "pwaIcons/favicon-96x96.png",
+            "type": "image/png",
+            "sizes": "96x96"
         }
     ]
 }
