@@ -38,7 +38,7 @@
             "sizes": "192x192"
         },
         {
-            "src": "pwaIcons/android-chrome-512x512.png",
+            "src": "pwaIcons/Icon-512.png",
             "type": "image/png",
             "sizes": "512x512"
         },
