@@ -152,7 +152,8 @@ var app = new Vue({
             if (isIos() && !isInStandaloneMode()) {
                 this.showInstallMessage = true;
             }
-            setTimeout(this.showInstallMessage = false, 30000);
+
+            setTimeout(() => this.showInstallMessage = false, 15000);
         },
         bottomNavImg: function(NewTab) {
             switch(NewTab) {
@@ -168,26 +169,26 @@ var app = new Vue({
         },
         entrancesClicked: function(){
             this.page = 'entrances';
-            this.previousPages = {page: 'entrances'};
-            history.pushState(this.previousPages, '', "index.html");
+            history.pushState();
             this.loadEntrance();
+            this.showInstallMessage = false;
         },
         parkingClicked: function(){
             this.page = 'parking';
-            this.previousPages = {page: 'parking'};
-            history.pushState(this.previousPages, '', "index.html");
+            history.pushState();
             this.loadParking();
+            this.showInstallMessage = false;
         },
         shuttlesClicked: function(){
             this.page = 'shuttles';
-            this.previousPages = {page: 'shuttles'};
-            history.pushState(this.previousPages, '', "index.html");
+            history.pushState();
+            this.showInstallMessage = false;
         },
         trailsClicked: function(){
             this.page = 'trails';
-            this.previousPages = {page: 'trails'};
-            history.pushState(this.previousPages, '', "index.html");
+            history.pushState();
             this.loadTrails();
+            this.showInstallMessage = false;
         },
         setStop: function(id, radius, stop){
             var c = document.getElementById(id);

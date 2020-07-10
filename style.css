@@ -80,7 +80,20 @@ body, textarea{
     margin: auto;
     position: absolute;
     bottom: -20px;
-  }
+}
+@media only screen and (min-width: 575px){
+    #installContainer{
+        top: 25px;
+        bottom: unset;
+        background-color: rgba(242, 247, 250, 0.687);
+        color: black;
+    }
+    .arrow-down{
+        transform: rotate(180deg);
+        top: -100px;
+        border-top: 20px solid rgba(242, 247, 250, 0.687);
+    }
+}
 #headerImg{
     position: relative;
     top: 0;
