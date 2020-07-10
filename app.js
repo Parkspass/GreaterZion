@@ -169,24 +169,24 @@ var app = new Vue({
         },
         entrancesClicked: function(){
             this.page = 'entrances';
-            history.pushState();
+            history.pushState(this.previousPages, '', "index.html");
             this.loadEntrance();
             this.showInstallMessage = false;
         },
         parkingClicked: function(){
             this.page = 'parking';
-            history.pushState();
+            history.pushState(this.previousPages, '', "index.html");            
             this.loadParking();
             this.showInstallMessage = false;
         },
         shuttlesClicked: function(){
             this.page = 'shuttles';
-            history.pushState();
+            history.pushState(this.previousPages, '', "index.html");            
             this.showInstallMessage = false;
         },
         trailsClicked: function(){
             this.page = 'trails';
-            history.pushState();
+            history.pushState(this.previousPages, '', "index.html");            
             this.loadTrails();
             this.showInstallMessage = false;
         },
