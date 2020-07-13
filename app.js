@@ -7,6 +7,8 @@ if('serviceWorker' in navigator){
         .catch((err) => console.log("Service Worker Not Registered", err));
 }
 
+
+
 var app = new Vue({
     el: '#app',
     vuetify: new Vuetify(),

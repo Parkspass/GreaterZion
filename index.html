@@ -35,7 +35,9 @@
     <!-- Style Sheet Links-->
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css" rel="stylesheet"/>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    
 </head>
 <body>    
     <div id="app" >
@@ -92,9 +94,32 @@
                     <div class="push2"></div>
                 </div>
 
-                <div v-if="page == 'map' ">
-                    <!--<iframe src="https://www.google.com/maps/d/embed?mid=1B_Ic0hAzgCHBkcW4GRGo0od855twsJfN" class="mapIframe" ></iframe>-->
-                </div>
+                <template v-if="page == 'map'">
+                    <MglMap :accessToken="accessToken" :mapStyle="mapStyle">
+                </template>
+                <script>
+                    import VueMapbox from "vue-mapbox";
+                    import Mapbox from "mapbox-gl";
+
+                    Vue.use(VueMapbox, { mapboxgl: Mapbox });
+
+                    export default {
+                    components: {
+                        MglMap
+                    },
+                    data() {
+                        return {
+                            accessToken: "pk.eyJ1IjoiamFzb25waXR0cyIsImEiOiJja2J2NmNsNXowMzI2MzBvZnJ6aWEwaHpmIn0.LBsh6F1QSk4aNMBLtErYNw", // your access token. Needed if you using Mapbox maps
+                            mapStyle: mapbox: '//styles/jasonpitts/ckc26lbsx6hg21inxwwf27nkx' // your map style
+                        };
+                    },
+
+                    created() {
+                        // We need to set mapbox-gl library here in order to use it in template
+                        this.mapbox = Mapbox;
+                    }
+                    };
+                </script>
                 
                 <div v-if="page == 'update'">
                     <div id="updatesImg">
