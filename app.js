@@ -1,5 +1,4 @@
 /*jshint esversion: 6 */
-console.log('connected');
 
 if('serviceWorker' in navigator){
     navigator.serviceWorker.register('sw.js')
@@ -18,6 +17,7 @@ var app = new Vue({
         home_selected: true,
         map_selected: false,
         showInstallMessage: false,
+        slideIndex: 1,
 
         // ENTRANCES
         entranceLastUpdate: '',
@@ -141,6 +141,7 @@ var app = new Vue({
     created: function(){
         this.PWA_popup();
         this.loadTrails();
+        this.showSlides(this.slideIndex);
     },
     methods: {
         PWA_popup: function(){
@@ -192,6 +193,31 @@ var app = new Vue({
             history.pushState(this.previousPages, '', "index.html");            
             this.loadTrails();
             this.showInstallMessage = false;
+        },
+
+        // Next/previous controls
+        plusSlides: function(n){
+            this.showSlides(this.slideIndex += n);
+        },
+        // Thumbnail image controls
+        currentSlide: function(n) {
+            this.showSlides(this.slideIndex = n);
+        },
+        showSlides: function(n) {
+            console.log(this.slideIndex);
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {this.slideIndex = 1;}
+            if (n < 1) {this.slideIndex = slides.length;}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[this.slideIndex-1].style.display = "block";
+            dots[this.slideIndex-1].className += " active";
         },
         setStop: function(id, radius, stop){
             var c = document.getElementById(id);
@@ -257,7 +283,6 @@ var app = new Vue({
                     hours=12;
                 }
                 let minutes = date.getMinutes();
-                console.log(hours, minutes, TOD);
                 this.entranceLastUpdate = hours.toString() + ":" + minutes.toString() + " " + TOD;
             }).catch(error =>{
                 vm = "Fetch " + error;
@@ -353,7 +378,6 @@ var app = new Vue({
                     hours=12;
                 }
                 let minutes = date.getMinutes();
-                console.log(hours, minutes, TOD);
                 this.parkingLastUpdate = hours.toString() + ":" + minutes.toString() + " " + TOD;
             }).catch(error => {
                 vm = "Fetch " + error;
@@ -524,7 +548,7 @@ var app = new Vue({
                 hours=12;
             }
             let minutes = date.getMinutes();
-            console.log(hours, minutes, TOD);
+
             this.trailsLastUpdate = hours.toString() + ":" + minutes.toString() + " " + TOD;
         },
         loadTrailsBusiness: function(trail){
