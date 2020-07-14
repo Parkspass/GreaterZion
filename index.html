@@ -700,33 +700,35 @@
 
                 <div v-if="page=='parusImages'" class="blackBack">
                     <img class="backX" src="icons/whiteX.svg" @click="page='parusTrail'">
-                    <a href="trail photos/pa'rus/parus-trail-1.jpg" download="Pa'rusTrail"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
-                    <div class="photosContainer">
-                        <div class="mySlides fade">
-                            <div class="numbertext">1 / 5</div>
-                            <img class="trailPhotoLone" src="trail photos/pa'rus/parus-trail-1.jpg">
-                        </div>
-                        <div class="mySlides fade">
-                            <div class="numbertext">2 / 5</div>
-                            <img class="trailPhotoLone" src="trail photos/pa'rus/parus-trail-2.jpg">
-                        </div>
-                        <div class="mySlides fade">
-                            <div class="numbertext">3 / 5</div>
-                            <img class="trailPhotoLone" src="trail photos/pa'rus/parus-trail-3.jpg">
-                        </div>
-                        <div class="mySlides fade">
-                            <div class="numbertext">4 / 5</div>
-                            <img class="trailPhotoLone" src="trail photos/pa'rus/parus-trail-4.jpg">
-                        </div>
-                        <div class="mySlides fade">
-                            <div class="numbertext">5 / 5</div>
-                            <img class="trailPhotoLone" src="trail photos/pa'rus/parus-trail-5.jpg">
-                        </div>
-                        <!-- Next and previous buttons -->
-                        <a class="prev" @click="plusSlides(-1)">&#10094;</a>
-                        <a class="next" @click="plusSlides(1)">&#10095;</a>
-                        <br>
+                    <div class="mySlides fade">
+                        <div class="numbertext">1 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/pa'rus/parus-trail-1.jpg">
+                        <a href="trail photos/pa'rus/parus-trail-1.jpg" download="Pa'rusTrail1"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
                     </div>
+                    <div class="mySlides fade">
+                        <div class="numbertext">2 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/pa'rus/parus-trail-2.jpg">
+                        <a href="trail photos/pa'rus/parus-trail-2.jpg" download="Pa'rusTrail2"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides fade">
+                        <div class="numbertext">3 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/pa'rus/parus-trail-3.jpg">
+                        <a href="trail photos/pa'rus/parus-trail-3.jpg" download="Pa'rusTrail3"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides fade">
+                        <div class="numbertext">4 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/pa'rus/parus-trail-4.jpg">
+                        <a href="trail photos/pa'rus/parus-trail-4.jpg" download="Pa'rusTrail4"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides fade">
+                        <div class="numbertext">5 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/pa'rus/parus-trail-5.jpg">
+                        <a href="trail photos/pa'rus/parus-trail-5.jpg" download="Pa'rusTrail5"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <!-- Next and previous buttons -->
+                    <a class="prev" @click="plusSlides(-1)">&#10094;</a>
+                    <a class="next" @click="plusSlides(1)">&#10095;</a>
+                    <br>
                     <!-- The dots/circles -->
                     <div class="dotContainer">
                         <span class="dot" @click="currentSlide(1)"></span>

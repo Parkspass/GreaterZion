@@ -505,7 +505,8 @@ h4{
     height: 100%;
 }
 .whiteDownload{
-    margin: 12px;
+    margin-right: 16px;
+    margin-top: -42px;
     width: 30px;
     height: auto;
     float: right;
