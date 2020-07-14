@@ -201,10 +201,10 @@ var app = new Vue({
         },
         // Thumbnail image controls
         currentSlide: function(n) {
+            console.log(n);
             this.showSlides(this.slideIndex = n);
         },
         showSlides: function(n) {
-            console.log(this.slideIndex);
             var i;
             var slides = document.getElementsByClassName("mySlides");
             var dots = document.getElementsByClassName("dot");

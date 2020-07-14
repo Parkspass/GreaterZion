@@ -454,6 +454,12 @@ h4{
 .parusPhoto{
     background-image: url("trail\ photos/pa'rus/parus-trail-1.jpg");
 }
+.archeologyPhoto{
+    background-image: url("trail\ photos/archeology/archeology-trail-1.jpg");
+}
+.lowerEmeraldPhoto{
+    background-image: url("trail\ photos/lower emerald pool/emerald-pool-lower-1.jpg");
+}
 .trailsGridContainer{
     display: grid;
     grid-template-columns: auto auto auto;
