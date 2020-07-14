@@ -242,6 +242,16 @@ body, textarea{
     height: 35px;
     margin: 8px;
 }
+.backArrow{
+    width: 35px;
+    height: 35px;
+    margin: 8px;
+}
+.backX{
+    width: 16px;
+    height: 16px;
+    margin: 16px;
+}
 .uTitle{
     font-size: 24px;
     font-weight: 700;
@@ -289,12 +299,17 @@ a{
     border-bottom: solid 2px #28430A;
 }
 
-#map {
-    height: 500px;
-    width: 100%;
-}
 /* SUB NAV PAGES */
-
+#staticMapTab{
+    width: 100%;
+    height: 100%;
+    margin-top: 25px;
+}
+#staticMapDownload{
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
 .mapStatic{
     background-image: url("Map\ photos/Entrances.jpg");
     position: relative;
@@ -323,6 +338,20 @@ a{
 h5{
     font-size: 16px;
     font-weight: 600;
+}
+.updateNowWrapper{
+    margin-top: -24px;
+}
+.updateTime{
+    font-size: 11px;
+    margin: -16px 0px 10px 2px;
+    display: inline-block;
+}
+.updateNowBtn{
+    color: #28430A;
+    font-size: 14px;
+    font-weight: 500;
+    float: right;
 }
 .lineWrapper{
     height: 53px;
@@ -412,3 +441,84 @@ h4{
     position: absolute;
     overflow: hidden;
 }
+
+/* Trail Pages */
+
+.trailPhoto{
+    position: relative;
+    top: 0;
+    background-size: cover;
+    height: 30vh;
+    background-position: center;
+}
+.parusPhoto{
+    background-image: url("trail\ photos/pa'rus/parus-trail-1.jpg");
+}
+.trailsGridContainer{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    color: black;
+    font-size: 10px;
+    justify-content: space-between;
+}
+.trailsGridItem{
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+.boldTrail{
+    font-size: 14px;
+    font-weight: 600;
+}
+.trailText{
+    font-size: 16px;
+    margin-top: 16px;
+    line-height: 20px;
+}
+.trailMapTitle{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+}
+.trailMap{
+    width: 100%;
+    height: 30vh;
+    margin: 16px 0px;
+}
+.trailLineWrapper{
+    height: 40px;
+}
+.trailsIcon{
+    height: auto;
+    width: 20px;
+    margin: 8px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.trailsIconText{
+    display: inline-block;
+    margin-bottom: 0px !important;
+    font-size: 16px;
+}
+.blackBack{
+    background-color: black;
+    height: 100%;
+}
+.whiteDownload{
+    margin: 12px;
+    width: 30px;
+    height: auto;
+    float: right;
+}
+.trailPhotoLone{
+    width: 100%;
+    height: auto;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+}
+@media only screen and (max-width: 365px) {
+    .trailsIconText{
+        font-size: 12px;
+    }
+  }

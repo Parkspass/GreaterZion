@@ -32,12 +32,10 @@
     <link rel="apple-touch-startup-image" media="screen and (device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="/pwaIcons/icon_1668x2388.png"/>
     <link rel="apple-touch-startup-image" media="screen and (device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="/pwaIcons/icon_1536x2048.png"/>
 
-    <!-- Style Sheet Links-->
+
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
-    <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css" rel="stylesheet"/>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    
 </head>
 <body>    
     <div id="app" >
@@ -94,32 +92,12 @@
                     <div class="push2"></div>
                 </div>
 
-                <template v-if="page == 'map'">
-                    <MglMap :accessToken="accessToken" :mapStyle="mapStyle">
-                </template>
-                <script>
-                    import VueMapbox from "vue-mapbox";
-                    import Mapbox from "mapbox-gl";
-
-                    Vue.use(VueMapbox, { mapboxgl: Mapbox });
-
-                    export default {
-                    components: {
-                        MglMap
-                    },
-                    data() {
-                        return {
-                            accessToken: "pk.eyJ1IjoiamFzb25waXR0cyIsImEiOiJja2J2NmNsNXowMzI2MzBvZnJ6aWEwaHpmIn0.LBsh6F1QSk4aNMBLtErYNw", // your access token. Needed if you using Mapbox maps
-                            mapStyle: mapbox: '//styles/jasonpitts/ckc26lbsx6hg21inxwwf27nkx' // your map style
-                        };
-                    },
-
-                    created() {
-                        // We need to set mapbox-gl library here in order to use it in template
-                        this.mapbox = Mapbox;
-                    }
-                    };
-                </script>
+                <div v-if="page=='map'">
+                    <img id="staticMapTab" src="photos/zion_national_park_map.jpg">
+                    <a href="photos/zion_national_park_map.jpg" download="ZionMap"><img id="staticMapDownload" class="circleBtn download" src="icons/download.svg"></a>
+                    <div class="push"></div>
+                </div>
+                
                 
                 <div v-if="page == 'update'">
                     <div id="updatesImg">
@@ -172,6 +150,10 @@
                     </div>
                     <div class="contentWrapper">
                         <h3 class="contentTitle">Entrances</h3>
+                        <div class="updateNowWrapper">
+                            <div class="updateTime">Last updated {{entranceLastUpdate}}</div>
+                            <div class="updateNowBtn" @click="loadEntrance()">UPDATE NOW</div>
+                        </div>
                         <div class="lineWrapper">
                             <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
                                 <image x="96" y="96" width="8" height="8" v-bind:href="southEntranceSvg"></image>
@@ -240,6 +222,10 @@
                     </div>
                     <div class="contentWrapper">
                         <h3 class="contentTitle">Parking</h3>
+                        <div class="updateNowWrapper">
+                            <div class="updateTime">Last updated {{parkingLastUpdate}}</div>
+                            <div class="updateNowBtn" @click="loadParking()">UPDATE NOW</div>
+                        </div>
                         <div class="lineWrapper">
                             <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
                                 <image x="96" y="96" width="8" height="8" v-bind:href="vcParkingSvg"></image>
@@ -404,10 +390,14 @@
                     </div>
                     <div class="contentWrapper">
                         <h3 class="contentTitle">Trails</h3>
+                        <div class="updateNowWrapper">
+                            <div class="updateTime">Last updated {{trailsLastUpdate}}</div>
+                            <div class="updateNowBtn" @click="loadTrails()">UPDATE NOW</div>
+                        </div>
 
                         <!-- EASY TRAILS -->
                         <h3 class="trailTitle">EASY</h3>
-                        <div class="lineWrapper">
+                        <div class="lineWrapper" @click="page='parusTrail'">
                             <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
                                 <circle cx="100" cy="100" r="5" :style="parusSvg"/>
                                 <text x="98.3" y="102" font-size="6" font-weight="bold" style="fill: #FFFFFF">1</text>
@@ -664,6 +654,60 @@
                         </div>
                         <div class="push"></div>
                     </div>
+                </div>
+
+                <div v-if="page=='parusTrail'">
+                    <div class="trailPhoto parusPhoto" @click="page='parusImages'">
+                        <img class="backArrow" src="icons/arrow_back-24px 1 1.svg" @click="page='trails'">
+                    </div>
+                    <div class="contentWrapper">
+                        <h3 class="contentTitle">Pa'rus Trail</h3>
+                        <div class="trailsGridContainer">
+                            <div class="trailsGridItem">DIFFICULTY</div>
+                            <div class="trailsGridItem">LENGTH</div>
+                            <div class="trailsGridItem">AVG TIME</div>
+                            <div class="trailsGridItem boldTrail">Easy</div>
+                            <div class="trailsGridItem boldTrail">3.5 mi</div>
+                            <div class="trailsGridItem boldTrail">1-2 hrs</div>
+                        </div>
+                        <p class="trailText">The Pa’rus Trail is one of the best, and often overlooked hiking trails in Zion National Park. This is a paved trail that begins next to the Watchman Campground and follows the river for just under 2 miles and ends at the Canyon Junction tram stop. </p>
+                        <h4 class="trailMapTitle">Trail Map</h4>
+                        <img class="trailMap" src="trail photos/pa'rus-map.jpg" @click="page='parusMap'">
+                        <h4 class="trailMapTitle">Trail Details</h4>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/toilets.svg">
+                            <p class="trailsIconText">Flushing Toilets at Ranger Station/Lodge</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/dog.svg">
+                            <p class="trailsIconText">Dogs Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/bike.svg">
+                            <p class="trailsIconText">Bikes Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/horse.svg">
+                            <p class="trailsIconText">No Equestrian Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/permit.svg">
+                            <p class="trailsIconText">No Permit Required</p>
+                        </div>
+                    </div>
+                    <div class="push"></div>
+                </div>
+
+                <div v-if="page=='parusImages'" class="blackBack">
+                    <img class="backX" src="icons/whiteX.svg" @click="page='parusTrail'">
+                    <a href="trail photos/pa'rus/parus-trail-1.jpg" download="Pa'rusTrail"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
+                    <img class="trailPhotoLone" src="trail photos/pa'rus/parus-trail-1.jpg">
+                </div>
+
+                <div v-if="page=='parusMap'" class="blackBack">
+                    <img class="backX" src="icons/whiteX.svg" @click="page='parusTrail'">
+                    <a href="trail photos/pa'rus-map.jpg" download="Pa'rusTrailMap"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
+                    <img class="trailPhotoLone" src="trail photos/pa'rus-map.jpg">
                 </div>
 
                 <div>

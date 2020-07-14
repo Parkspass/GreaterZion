@@ -7,8 +7,6 @@ if('serviceWorker' in navigator){
         .catch((err) => console.log("Service Worker Not Registered", err));
 }
 
-
-
 var app = new Vue({
     el: '#app',
     vuetify: new Vuetify(),
@@ -22,6 +20,7 @@ var app = new Vue({
         showInstallMessage: false,
 
         // ENTRANCES
+        entranceLastUpdate: '',
         SouthEntranceStat: '',
         EastEntranceStat: '',
         RiverEntranceStat: '',
@@ -42,6 +41,7 @@ var app = new Vue({
         kolobEntranceSvgStroke: '',
 
         // PARKING
+        parkingLastUpdate: '',
         vcStat: '',
         museumStat: '',
         rvStat: '',
@@ -66,6 +66,7 @@ var app = new Vue({
         kolobVcParkingSvgStroke: '',
 
         // TRAILS
+        trailsLastUpdate: '',
         parusStat: 50,
         archeologyStat: 20,
         lowerEmeraldStat: 50,
@@ -243,6 +244,21 @@ var app = new Vue({
                 }
                 this.SouthEntranceStat /= 100;
                 this.setStop("southEntranceLine", 8, this.SouthEntranceStat);
+                let date = new Date();
+                let TOD = 'AM';
+                let hours = date.getHours();
+                if(hours>12){
+                    TOD = 'PM';
+                    if(hours>13){
+                        hours -= 12;
+                    }
+                }
+                if(hours==0){
+                    hours=12;
+                }
+                let minutes = date.getMinutes();
+                console.log(hours, minutes, TOD);
+                this.entranceLastUpdate = hours.toString() + ":" + minutes.toString() + " " + TOD;
             }).catch(error =>{
                 vm = "Fetch " + error;
             });
@@ -324,7 +340,21 @@ var app = new Vue({
                 //Kolob Visitor Center
                 this.kolobVcStat = 'closed';
                 this.loadParkingSvgs();
-                
+                let date = new Date();
+                let TOD = 'AM';
+                let hours = date.getHours();
+                if(hours>12){
+                    TOD = 'PM';
+                    if(hours>13){
+                        hours -= 12;
+                    }
+                }
+                if(hours==0){
+                    hours=12;
+                }
+                let minutes = date.getMinutes();
+                console.log(hours, minutes, TOD);
+                this.parkingLastUpdate = hours.toString() + ":" + minutes.toString() + " " + TOD;
             }).catch(error => {
                 vm = "Fetch " + error;
             });
@@ -481,6 +511,21 @@ var app = new Vue({
             this.setStop("observationPointLine", 8, OP);
             this.setStop("narrowsLine", 8, N);
 
+            let date = new Date();
+            let TOD = 'AM';
+            let hours = date.getHours();
+            if(hours>12){
+                TOD = 'PM';
+                if(hours>13){
+                    hours -= 12;
+                }
+            }
+            if(hours==0){
+                hours=12;
+            }
+            let minutes = date.getMinutes();
+            console.log(hours, minutes, TOD);
+            this.trailsLastUpdate = hours.toString() + ":" + minutes.toString() + " " + TOD;
         },
         loadTrailsBusiness: function(trail){
             if (isNaN(trail)){
@@ -494,19 +539,5 @@ var app = new Vue({
             }
         },
     },
-    watch:{
-        // page: function() {
-        //     if(this.page == 'map'){
-        //         mapboxgl.accessToken="pk.eyJ1IjoiamFzb25waXR0cyIsImEiOiJja2J2NmNsNXowMzI2MzBvZnJ6aWEwaHpmIn0.LBsh6F1QSk4aNMBLtErYNw";
-        //         var map = new mapboxgl.Map({
-        //             container: 'map',
-        //             style: 'mapbox://styles/jasonpitts/ckbv6grp516621inii9kmamh6',
-        //             center: [-112.9867994, 37.200757], // starting position [lng, lat]
-        //             zoom: 11 // starting zoom
-        //         });
-        //         console.log(map);
-        //     }
-        // }
-    }
 });
 
