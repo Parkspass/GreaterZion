@@ -41,7 +41,7 @@
     <div id="app" >
         <v-app>
             <v-main >
-                <div class="nospace" v-if="page=='home'" @click="showInstallMessage">
+                <div v-if="page=='home'" class="nospace" @click="showInstallMessage">
                     <div id="headerImg">
                         <div class="headerText">
                             <h1>Greater Zion</h1>
@@ -97,7 +97,6 @@
                     <a href="photos/zion_national_park_map.jpg" download="ZionMap"><img id="staticMapDownload" class="circleBtn download" src="icons/download.svg"></a>
                     <div class="push"></div>
                 </div>
-                
                 
                 <div v-if="page == 'update'">
                     <div id="updatesImg">
@@ -442,7 +441,7 @@
                                 <p>{{lowerEmeraldBusiness}}</p>
                             </div>
                         </div>
-                        <div class="lineWrapper">
+                        <div class="lineWrapper" @click="page='grottoTrail'">
                             <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
                                 <circle cx="100" cy="100" r="5" :style="grottoSvg"/>
                                 <text x="98.3" y="102" font-size="6" font-weight="bold" style="fill: #FFFFFF">6</text>
@@ -457,7 +456,7 @@
                                 <p>{{grottoBusiness}}</p>
                             </div>
                         </div>
-                        <div class="lineWrapper">
+                        <div class="lineWrapper" @click="page='weepingTrail'">
                             <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
                                 <circle cx="100" cy="100" r="5" :style="weepingRockSvg"/>
                                 <text x="98.3" y="102" font-size="6" font-weight="bold" style="fill: #FFFFFF">7</text>
@@ -472,7 +471,7 @@
                                 <p>{{weepingRockBusiness}}</p>
                             </div>
                         </div>
-                        <div class="lineWrapper">
+                        <div class="lineWrapper" @click="page='riversideTrail'">
                             <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
                                 <circle cx="100" cy="100" r="5" :style="riversideSvg"/>
                                 <text x="98.3" y="102" font-size="6" font-weight="bold" style="fill: #FFFFFF">9</text>
@@ -490,7 +489,7 @@
 
                         <!-- MODERATE TRAILS -->
                         <h3 class="trailTitle">MODERATE</h3>
-                        <div class="lineWrapper">
+                        <div class="lineWrapper" @click="page='watchmanTrail'">
                             <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
                                 <circle cx="100" cy="100" r="5" :style="watchmanSvg"/>
                                 <text x="98.3" y="102" font-size="6" font-weight="bold" style="fill: #FFFFFF">1</text>
@@ -505,7 +504,7 @@
                                 <p>{{watchmanBusiness}}</p>
                             </div>
                         </div>
-                        <div class="lineWrapper">
+                        <div class="lineWrapper" @click="page='sandbenchTrail'">
                             <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
                                 <circle cx="100" cy="100" r="5" :style="sandBenchSvg"/>
                                 <text x="98.3" y="102" font-size="6" font-weight="bold" style="fill: #FFFFFF">5</text>
@@ -520,7 +519,7 @@
                                 <p>{{sandBenchBusiness}}</p>
                             </div>
                         </div>
-                        <div class="lineWrapper">
+                        <div class="lineWrapper" @click="page='upperEmeraldTrail'">
                             <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
                                 <circle cx="100" cy="100" r="5" :style="upperEmeraldSvg"/>
                                 <text x="98.3" y="102" font-size="6" font-weight="bold" style="fill: #FFFFFF">5</text>
@@ -535,7 +534,7 @@
                                 <p>{{upperEmeraldBusiness}}</p>
                             </div>
                         </div>
-                        <div class="lineWrapper">
+                        <div class="lineWrapper" @click="page='kayentaTrail'">
                             <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
                                 <circle cx="100" cy="100" r="5" :style="kayentaSvg"/>
                                 <text x="98.3" y="102" font-size="6" font-weight="bold" style="fill: #FFFFFF">6</text>
@@ -550,7 +549,7 @@
                                 <p>{{kayentaBusiness}}</p>
                             </div>
                         </div>
-                        <div class="lineWrapper">
+                        <div class="lineWrapper" @click="page='canyonTrail'">
                             <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
                                 <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.2" :stroke="canyonOverlookSvgStroke" />
                                 <circle id="canyonOverlookLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="canyonOverlookSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
@@ -563,7 +562,7 @@
                                 <p>{{canyonOverlookBusiness}}</p>
                             </div>
                         </div>
-                        <div class="lineWrapper">
+                        <div class="lineWrapper" @click="page='taylorTrail'">
                             <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
                                 <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.2" :stroke="taylorCreekSvgStroke" />
                                 <circle id="taylorCreekLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="taylorCreekSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
@@ -576,7 +575,7 @@
                                 <p>{{taylorCreekBusiness}}</p>
                             </div>
                         </div>
-                        <div class="lineWrapper">
+                        <div class="lineWrapper" @click="page='timberTrail'">
                             <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
                                 <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.2" :stroke="timberCreekSvgStroke" />
                                 <circle id="timberCreekLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="timberCreekSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
@@ -592,7 +591,7 @@
 
                         <!-- STRENUOUS TRAILS -->
                         <h3 class="trailTitle">STRENUOUS</h3>
-                        <div class="lineWrapper">
+                        <div class="lineWrapper" @click="page='angelsTrail'">
                             <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
                                 <circle cx="100" cy="100" r="5" :style="angelsLandingWestSvg"/>
                                 <text x="98.3" y="102" font-size="6" font-weight="bold" style="fill: #FFFFFF">6</text>
@@ -607,7 +606,7 @@
                                 <p>{{angelsLandingWestBusiness}}</p>
                             </div>
                         </div>
-                        <div class="lineWrapper">
+                        <div class="lineWrapper" @click="page='hiddenTrail'">
                             <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
                                 <circle cx="100" cy="100" r="5" :style="hiddenCanyonSvg"/>
                                 <text x="98.3" y="102" font-size="6" font-weight="bold" style="fill: #FFFFFF">7</text>
@@ -622,7 +621,7 @@
                                 <p>{{hiddenCanyonBusiness}}</p>
                             </div>
                         </div>
-                        <div class="lineWrapper">
+                        <div class="lineWrapper" @click="page='observationTrail'">
                             <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
                                 <circle cx="100" cy="100" r="5" :style="observationPointSvg"/>
                                 <text x="98.3" y="102" font-size="6" font-weight="bold" style="fill: #FFFFFF">7</text>
@@ -637,7 +636,7 @@
                                 <p>{{observationPointBusiness}}</p>
                             </div>
                         </div>
-                        <div class="lineWrapper">
+                        <div class="lineWrapper" @click="page='narrowsTrail'">
                             <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
                                 <circle cx="100" cy="100" r="5" :style="narrowsSvg"/>
                                 <text x="98.3" y="102" font-size="6" font-weight="bold" style="fill: #FFFFFF">9</text>
@@ -657,7 +656,7 @@
                 </div>
 
                 <div v-if="page=='parusTrail'">
-                    <div class="trailPhoto parusPhoto" @click="page='parusImages'">
+                    <div class="trailPhoto parusPhoto" @click="page='parusImages'; showSlides(1)">
                         <img class="backArrow" src="icons/arrow_back-24px 1 1.svg" @click="page='trails'">
                         <img class="circleBtn expand" src="icons/expand.svg" @click="page='parusImages'">
                     </div>
@@ -704,27 +703,27 @@
                     <div class="mySlides fade">
                         <div class="numbertext">1 / 5</div>
                         <img class="trailPhotoLone" src="trail photos/pa'rus/parus-trail-1.jpg">
-                        <a href="trail photos/pa'rus/parus-trail-1.jpg" download="Pa'rusTrail1"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
+                        <a href="trail photos/pa'rus/parus-trail-1.jpg" download="Pa'rusTrail1"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
                     </div>
                     <div class="mySlides fade">
                         <div class="numbertext">2 / 5</div>
                         <img class="trailPhotoLone" src="trail photos/pa'rus/parus-trail-2.jpg">
-                        <a href="trail photos/pa'rus/parus-trail-2.jpg" download="Pa'rusTrail2"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
+                        <a href="trail photos/pa'rus/parus-trail-2.jpg" download="Pa'rusTrail2"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
                     </div>
                     <div class="mySlides fade">
                         <div class="numbertext">3 / 5</div>
                         <img class="trailPhotoLone" src="trail photos/pa'rus/parus-trail-3.jpg">
-                        <a href="trail photos/pa'rus/parus-trail-3.jpg" download="Pa'rusTrail3"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
+                        <a href="trail photos/pa'rus/parus-trail-3.jpg" download="Pa'rusTrail3"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
                     </div>
                     <div class="mySlides fade">
                         <div class="numbertext">4 / 5</div>
                         <img class="trailPhotoLone" src="trail photos/pa'rus/parus-trail-4.jpg">
-                        <a href="trail photos/pa'rus/parus-trail-4.jpg" download="Pa'rusTrail4"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
+                        <a href="trail photos/pa'rus/parus-trail-4.jpg" download="Pa'rusTrail4"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
                     </div>
                     <div class="mySlides fade">
                         <div class="numbertext">5 / 5</div>
                         <img class="trailPhotoLone" src="trail photos/pa'rus/parus-trail-5.jpg">
-                        <a href="trail photos/pa'rus/parus-trail-5.jpg" download="Pa'rusTrail5"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
+                        <a href="trail photos/pa'rus/parus-trail-5.jpg" download="Pa'rusTrail5"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
                     </div>
                     <!-- Next and previous buttons -->
                     <a class="prev" @click="plusSlides(-1)">&#10094;</a>
@@ -747,7 +746,7 @@
                 </div>
 
                 <div v-if="page=='archeologyTrail'">
-                    <div class="trailPhoto archeologyPhoto" @click="page='archeologyImages'">
+                    <div class="trailPhoto archeologyPhoto" @click="page='archeologyImages'; currentSlide(0)">
                         <img class="backArrow" src="icons/arrow_back-24px 1 1.svg" @click="page='trails'">
                         <img class="circleBtn expand" src="icons/expand.svg" @click="page='archeologyImages'">
                     </div>
@@ -791,30 +790,30 @@
 
                 <div v-if="page=='archeologyImages'" class="blackBack">
                     <img class="backX" src="icons/whiteX.svg" @click="page='archeologyTrail'">
-                    <div class="mySlides fade">
+                    <div class="mySlides2 fade">
                         <div class="numbertext">1 / 5</div>
                         <img class="trailPhotoLone" src="trail photos/archeology/archeology-trail-1.jpg">
-                        <a href="trail photos/archeology/archeology-trail-1.jpg" download="ArcheologyTrail1"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
+                        <a href="trail photos/archeology/archeology-trail-1.jpg" download="ArcheologyTrail1"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
                     </div>
-                    <div class="mySlides fade">
+                    <div class="mySlides2 fade">
                         <div class="numbertext">2 / 5</div>
                         <img class="trailPhotoLone" src="trail photos/archeology/archeology-trail-2.jpg">
-                        <a href="trail photos/archeology/archeology-trail-2.jpg" download="ArcheologyTrail2"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
+                        <a href="trail photos/archeology/archeology-trail-2.jpg" download="ArcheologyTrail2"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
                     </div>
-                    <div class="mySlides fade">
+                    <div class="mySlides2 fade">
                         <div class="numbertext">3 / 5</div>
                         <img class="trailPhotoLone" src="trail photos/archeology/archeology-trail-3.jpg">
-                        <a href="trail photos/archeology/archeology-trail-3.jpg" download="ArcheologyTrail3"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
+                        <a href="trail photos/archeology/archeology-trail-3.jpg" download="ArcheologyTrail3"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
                     </div>
-                    <div class="mySlides fade">
+                    <div class="mySlides2 fade">
                         <div class="numbertext">4 / 5</div>
                         <img class="trailPhotoLone" src="trail photos/archeology/archeology-trail-4.jpg">
-                        <a href="trail photos/archeology/archeology-trail-4.jpg" download="ArcheologyTrail4"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
+                        <a href="trail photos/archeology/archeology-trail-4.jpg" download="ArcheologyTrail4"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
                     </div>
-                    <div class="mySlides fade">
+                    <div class="mySlides2 fade">
                         <div class="numbertext">5 / 5</div>
                         <img class="trailPhotoLone" src="trail photos/archeology/archeology-trail-5.jpg">
-                        <a href="trail photos/archeology/archeology-trail-5.jpg" download="ArcheologyTrail5"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
+                        <a href="trail photos/archeology/archeology-trail-5.jpg" download="ArcheologyTrail5"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
                     </div>
                     <!-- Next and previous buttons -->
                     <a class="prev" @click="plusSlides(-1)">&#10094;</a>
@@ -837,7 +836,7 @@
                 </div>
 
                 <div v-if="page=='lowerEmeraldTrail'">
-                    <div class="trailPhoto lowerEmeraldPhoto" @click="page='lowerEmeraldImages'; ">
+                    <div class="trailPhoto lowerEmeraldPhoto" @click="page='lowerEmeraldImages'; showSlides(1) ">
                         <img class="backArrow" src="icons/arrow_back-24px 1 1.svg" @click="page='trails'">
                         <img class="circleBtn expand" src="icons/expand.svg" @click="page='lowerEmeraldImages'">
                     </div>
@@ -881,30 +880,30 @@
 
                 <div v-if="page=='lowerEmeraldImages'" class="blackBack">
                     <img class="backX" src="icons/whiteX.svg" @click="page='lowerEmeraldTrail'">
-                    <div class="mySlides fade">
+                    <div class="mySlides3 fade">
                         <div class="numbertext">1 / 5</div>
                         <img class="trailPhotoLone" src="trail photos/lower emerald pool/emerald-pool-lower-1.jpg">
-                        <a href="trail photos/lower emerald pool/emerald-pool-lower-1.jpg" download="LowerEmeraldTrail1"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
+                        <a href="trail photos/lower emerald pool/emerald-pool-lower-1.jpg" download="LowerEmeraldTrail1"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
                     </div>
-                    <div class="mySlides fade">
+                    <div class="mySlides3 fade">
                         <div class="numbertext">2 / 5</div>
                         <img class="trailPhotoLone" src="trail photos/lower emerald pool/emerald-pool-lower-2.jpg">
-                        <a href="trail photos/lower emerald pool/emerald-pool-lower-2.jpg" download="LowerEmeraldTrail2"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
+                        <a href="trail photos/lower emerald pool/emerald-pool-lower-2.jpg" download="LowerEmeraldTrail2"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
                     </div>
-                    <div class="mySlides fade">
+                    <div class="mySlides3 fade">
                         <div class="numbertext">3 / 5</div>
                         <img class="trailPhotoLone" src="trail photos/lower emerald pool/emerald-pool-lower-3.jpg">
-                        <a href="trail photos/lower emerald pool/emerald-pool-lower-3.jpg" download="LowerEmeraldTrail3"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
+                        <a href="trail photos/lower emerald pool/emerald-pool-lower-3.jpg" download="LowerEmeraldTrail3"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
                     </div>
-                    <div class="mySlides fade">
+                    <div class="mySlides3 fade">
                         <div class="numbertext">4 / 5</div>
                         <img class="trailPhotoLone" src="trail photos/lower emerald pool/emerald-pool-lower-4.jpg">
-                        <a href="trail photos/lower emerald pool/emerald-pool-lower-4.jpg" download="LowerEmeraldTrail4"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
+                        <a href="trail photos/lower emerald pool/emerald-pool-lower-4.jpg" download="LowerEmeraldTrail4"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
                     </div>
-                    <div class="mySlides fade">
+                    <div class="mySlides3 fade">
                         <div class="numbertext">5 / 5</div>
                         <img class="trailPhotoLone" src="trail photos/lower emerald pool/emerald-pool-lower-5.jpg">
-                        <a href="trail photos/lower emerald pool/emerald-pool-lower-5.jpg" download="LowerEmeraldTrail5"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
+                        <a href="trail photos/lower emerald pool/emerald-pool-lower-5.jpg" download="LowerEmeraldTrail5"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
                     </div>
                     <!-- Next and previous buttons -->
                     <a class="prev" @click="plusSlides(-1)">&#10094;</a>
@@ -926,6 +925,259 @@
                     <img class="trailPhotoLone" src="trail photos/lower-emerald-pool-map.jpg">
                 </div>
 
+                <div v-if="page=='grottoTrail'">
+                    <div class="trailPhoto grottoPhoto" @click="page='grottoImages'; currentSlide(0)">
+                        <img class="backArrow" src="icons/arrow_back-24px 1 1.svg" @click="page='trails'">
+                        <img class="circleBtn expand" src="icons/expand.svg" @click="page='grottoImages'">
+                    </div>
+                    <div class="contentWrapper">
+                        <h3 class="contentTitle">The Grotto Trail</h3>
+                        <div class="trailsGridContainer">
+                            <div class="trailsGridItem">DIFFICULTY</div>
+                            <div class="trailsGridItem">LENGTH</div>
+                            <div class="trailsGridItem">AVG TIME</div>
+                            <div class="trailsGridItem boldTrail">Easy</div>
+                            <div class="trailsGridItem boldTrail">1 mi</div>
+                            <div class="trailsGridItem boldTrail">30 min</div>
+                        </div>
+                        <p class="trailText">The trail connects the Zion Lodge to the Grotto and is near the road most of the way. This trail is a great place to view wildlife. Restrooms are available at both the Lodge and the Grotto. When the shuttle is not in operation and the parking is full at the Grotto, this trail is a lovely alternate way to reach the Grotto.</p>
+                        <h4 class="trailMapTitle">Trail Map</h4>
+                        <img class="trailMap" src="trail photos/the-grotto-trail-map.jpg" @click="page='grottoMap'">
+                        <h4 class="trailMapTitle">Trail Details</h4>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/toilets.svg">
+                            <p class="trailsIconText">Flushing Toilets at Ranger Station/Lodge</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/dog.svg">
+                            <p class="trailsIconText">No Dogs Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/bike.svg">
+                            <p class="trailsIconText">No Bikes Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/horse.svg">
+                            <p class="trailsIconText">No Equestrian Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/permit.svg">
+                            <p class="trailsIconText">No Permit Required</p>
+                        </div>
+                    </div>
+                    <div class="push"></div>
+                </div>
+
+                <div v-if="page=='grottoImages'" class="blackBack">
+                    <img class="backX" src="icons/whiteX.svg" @click="page='grottoTrail'">
+                    <div class="mySlides4 fade">
+                        <div class="numbertext">1 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/grotto/grotto-trail-1.jpg">
+                        <a href="trail photos/grotto/grotto-trail-1.jpg" download="GrottoTrail1"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides4 fade">
+                        <div class="numbertext">2 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/grotto/grotto-trail-2.jpg">
+                        <a href="trail photos/grotto/grotto-trail-2.jpg" download="GrottoTrail2"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides4 fade">
+                        <div class="numbertext">3 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/grotto/grotto-trail-3.jpg">
+                        <a href="trail photos/grotto/grotto-trail-3.jpg" download="GrottoTrail3"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides4 fade">
+                        <div class="numbertext">4 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/grotto/grotto-trail-4.jpg">
+                        <a href="trail photos/grotto/grotto-trail-4.jpg" download="GrottoTrail4"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides4 fade">
+                        <div class="numbertext">5 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/grotto/grotto-trail-5.jpg">
+                        <a href="trail photos/grotto/grotto-trail-5.jpg" download="GrottoTrail5"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <!-- Next and previous buttons -->
+                    <a class="prev" @click="plusSlides(-1)">&#10094;</a>
+                    <a class="next" @click="plusSlides(1)">&#10095;</a>
+                    <br>
+                    <!-- The dots/circles -->
+                    <div class="dotContainer">
+                        <span class="dot" @click="currentSlide(1)"></span>
+                        <span class="dot" @click="currentSlide(2)"></span>
+                        <span class="dot" @click="currentSlide(3)"></span>
+                        <span class="dot" @click="currentSlide(4)"></span>
+                        <span class="dot" @click="currentSlide(5)"></span>
+                    </div>
+                </div>
+
+                <div v-if="page=='grottoMap'" class="blackBack">
+                    <img class="backX" src="icons/whiteX.svg" @click="page='grottoTrail'">
+                    <a href="trail photos/the-grotto-trail-map.jpg" download="GrottoTrailMap"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
+                    <img class="trailPhotoLone" src="trail photos/the-grotto-trail-map.jpg">
+                </div>
+
+                <div v-if="page=='riversideTrail'">
+                    <div class="trailPhoto riversidePhoto" @click="page='riversideImages'; currentSlide(0)">
+                        <img class="backArrow" src="icons/arrow_back-24px 1 1.svg" @click="page='trails'">
+                        <img class="circleBtn expand" src="icons/expand.svg" @click="page='riversideImages'">
+                    </div>
+                    <div class="contentWrapper">
+                        <h3 class="contentTitle">Riverside Walk</h3>
+                        <div class="trailsGridContainer">
+                            <div class="trailsGridItem">DIFFICULTY</div>
+                            <div class="trailsGridItem">LENGTH</div>
+                            <div class="trailsGridItem">AVG TIME</div>
+                            <div class="trailsGridItem boldTrail">Easy</div>
+                            <div class="trailsGridItem boldTrail">1-2 mi</div>
+                            <div class="trailsGridItem boldTrail">1-2 hrs</div>
+                        </div>
+                        <p class="trailText">The Riverside Walk (Gateway to the Narrows) is a nice little paved trail in Zion National Park that starts at the Temple of Sinawava and takes you along the river bank to the mouth of the canyon that takes you into the Narrows hike.</p>
+                        <h4 class="trailMapTitle">Trail Map</h4>
+                        <img class="trailMap" src="trail photos/riverside-walk-map.jpg" @click="page='riversideMap'">
+                        <h4 class="trailMapTitle">Trail Details</h4>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/toilets.svg">
+                            <p class="trailsIconText">Flushing Toilets at Trailhead</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/dog.svg">
+                            <p class="trailsIconText">No Dogs Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/bike.svg">
+                            <p class="trailsIconText">No Bikes Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/horse.svg">
+                            <p class="trailsIconText">No Equestrian Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/permit.svg">
+                            <p class="trailsIconText">No Permit Required</p>
+                        </div>
+                    </div>
+                    <div class="push"></div>
+                </div>
+
+                <div v-if="page=='riversideImages'" class="blackBack">
+                    <img class="backX" src="icons/whiteX.svg" @click="page='riversideTrail'">
+                    <div class="mySlides5 fade">
+                        <div class="numbertext">1 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/riverside walk/river-side-walk-zion-1.jpg">
+                        <a href="trail photos/riverside walk/river-side-walk-zion-1.jpg" download="RiversideWalk1"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides5 fade">
+                        <div class="numbertext">2 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/riverside walk/river-side-walk-zion-2.jpg">
+                        <a href="trail photos/riverside walk/river-side-walk-zion-2.jpg" download="RiversideWalk2"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides5 fade">
+                        <div class="numbertext">3 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/riverside walk/river-side-walk-zion-3.jpg">
+                        <a href="trail photos/riverside walk/river-side-walk-zion-3.jpg" download="RiversideWalk3"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides5 fade">
+                        <div class="numbertext">4 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/riverside walk/river-side-walk-zion-4.jpg">
+                        <a href="trail photos/riverside walk/river-side-walk-zion-4.jpg" download="RiversideWalk4"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides5 fade">
+                        <div class="numbertext">5 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/riverside walk/river-side-walk-zion-5.jpg">
+                        <a href="trail photos/riverside walk/river-side-walk-zion-5.jpg" download="RiversideWalk5"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <!-- Next and previous buttons -->
+                    <a class="prev" @click="plusSlides(-1)">&#10094;</a>
+                    <a class="next" @click="plusSlides(1)">&#10095;</a>
+                    <br>
+                    <!-- The dots/circles -->
+                    <div class="dotContainer">
+                        <span class="dot" @click="currentSlide(1)"></span>
+                        <span class="dot" @click="currentSlide(2)"></span>
+                        <span class="dot" @click="currentSlide(3)"></span>
+                        <span class="dot" @click="currentSlide(4)"></span>
+                        <span class="dot" @click="currentSlide(5)"></span>
+                    </div>
+                </div>
+
+                <div v-if="page=='riversideMap'" class="blackBack">
+                    <img class="backX" src="icons/whiteX.svg" @click="page='riversideTrail'">
+                    <a href="trail photos/riverside-walk-map.jpg" download="RiversideWalkMap"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
+                    <img class="trailPhotoLone" src="trail photos/riverside-walk-map.jpg">
+                </div>
+                
+                <div v-if="page=='watchmanTrail'">
+                    <div class="trailPhoto watchmanPhoto" @click="page='watchmanImages'; currentSlide(0)">
+                        <img class="backArrow" src="icons/arrow_back-24px 1 1.svg" @click="page='trails'">
+                        <img class="circleBtn expand" src="icons/expand.svg" @click="page='watchmanImages'">
+                    </div>
+                    <div class="contentWrapper">
+                        <h3 class="contentTitle">Watchman Trail</h3>
+                        <div class="trailsGridContainer">
+                            <div class="trailsGridItem">DIFFICULTY</div>
+                            <div class="trailsGridItem">LENGTH</div>
+                            <div class="trailsGridItem">AVG TIME</div>
+                            <div class="trailsGridItem boldTrail">Moderate</div>
+                            <div class="trailsGridItem boldTrail">3.3 mi</div>
+                            <div class="trailsGridItem boldTrail">2 hrs</div>
+                        </div>
+                        <p class="trailText">The Watchman Trail in Zion features fewer crowds than many of the more popular trails. Even though you won’t be going to the top of Watchman Mountain, you will be hiking to a prime view of the famous peak. This is a moderate, family friendly hike with a mild 456 ft elevation gain. Beware though; this trail is exceptionally hot in the heat of the summer.</p>
+                        <h4 class="trailMapTitle">Trail Map</h4>
+                        <img class="trailMap" src="trail photos/Watchman-Trail-map.jpg" @click="page='watchmanMap'">
+                        <h4 class="trailMapTitle">Trail Details</h4>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/toilets.svg">
+                            <p class="trailsIconText">Flushing Toilets at Ranger Station/Lodge</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/dog.svg">
+                            <p class="trailsIconText">No Dogs Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/bike.svg">
+                            <p class="trailsIconText">No Bikes Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/horse.svg">
+                            <p class="trailsIconText">No Equestrian Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/permit.svg">
+                            <p class="trailsIconText">No Permit Required</p>
+                        </div>
+                    </div>
+                    <div class="push"></div>
+                </div>
+
+                <div v-if="page=='watchmanImages'" class="blackBack">
+                    <img class="backX" src="icons/whiteX.svg" @click="page='watchmanTrail'">
+                    <div class="mySlides6 fade">
+                        <div class="numbertext">1 / 2</div>
+                        <img class="trailPhotoLone" src="trail photos/watchman/Watchman-Trail-Zion-National-Park-4.jpg">
+                        <a href="trail photos/watchman/Watchman-Trail-Zion-National-Park-4.jpg" download="WatchmanTrail1"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides6 fade">
+                        <div class="numbertext">2 / 2</div>
+                        <img class="trailPhotoLone" src="trail photos/watchman/Watchman-Trail-Zion-National-Park-5.jpg">
+                        <a href="trail photos/watchman/Watchman-Trail-Zion-National-Park-5.jpg" download="WatchmanTrail2"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <!-- Next and previous buttons -->
+                    <a class="prev" @click="plusSlides(-1)">&#10094;</a>
+                    <a class="next" @click="plusSlides(1)">&#10095;</a>
+                    <br>
+                    <!-- The dots/circles -->
+                    <div class="dotContainer">
+                        <span class="dot" @click="currentSlide(1)"></span>
+                        <span class="dot" @click="currentSlide(2)"></span>
+                    </div>
+                </div>
+
+                <div v-if="page=='watchmanMap'" class="blackBack">
+                    <img class="backX" src="icons/whiteX.svg" @click="page='watchmanTrail'">
+                    <a href="trail photos/Watchman-Trail-map.jpg" download="WathcmanTrailMap"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
+                    <img class="trailPhotoLone" src="trail photos/Watchman-Trail-map.jpg">
+                </div>
+
+                <!-- BOTTOM NAV -->
                 <div>
                     <v-app-bar class="bottomNavBar">
                         <v-btn text width="50%" height="55px" tile :class="{homeTabFocus: home_selected}" @click="page='home'; bottomNavImg('home');">

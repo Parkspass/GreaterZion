@@ -141,7 +141,6 @@ var app = new Vue({
     created: function(){
         this.PWA_popup();
         this.loadTrails();
-        this.showSlides(this.slideIndex);
     },
     methods: {
         PWA_popup: function(){
@@ -201,12 +200,23 @@ var app = new Vue({
         },
         // Thumbnail image controls
         currentSlide: function(n) {
-            console.log(n);
             this.showSlides(this.slideIndex = n);
         },
         showSlides: function(n) {
-            var i;
-            var slides = document.getElementsByClassName("mySlides");
+            var i, slides;
+            if(this.page=='parusImages'){
+                slides = document.getElementsByClassName("mySlides");
+            }else if(this.page=='archeologyImages'){
+                slides = document.getElementsByClassName("mySlides2");
+            }else if(this.page=='lowerEmeraldImages'){
+                slides = document.getElementsByClassName("mySlides3");
+            }else if(this.page=='grottoImages'){
+                slides = document.getElementsByClassName("mySlides4");
+            }else if(this.page=='riversideImages'){
+                slides = document.getElementsByClassName("mySlides5");
+            }else if(this.page=='watchmanImages'){
+                slides = document.getElementsByClassName("mySlides6");
+            }
             var dots = document.getElementsByClassName("dot");
             if (n > slides.length) {this.slideIndex = 1;}
             if (n < 1) {this.slideIndex = slides.length;}
@@ -283,6 +293,9 @@ var app = new Vue({
                     hours=12;
                 }
                 let minutes = date.getMinutes();
+                if(minutes < 10){
+                    minutes = "0" + minutes.toString();
+                }
                 this.entranceLastUpdate = hours.toString() + ":" + minutes.toString() + " " + TOD;
             }).catch(error =>{
                 vm = "Fetch " + error;
@@ -324,6 +337,11 @@ var app = new Vue({
                 }
                 this.RiverEntranceStat /= 100;
                 this.setStop("riverEntranceLine", 8, this.RiverEntranceStat);
+
+                this.kolobEntranceSvg = "icons/entrance_grey.svg";
+                this.kolobEntranceSvgStroke = "#B5B5B5";
+                this.KolobEntranceBusiness = "Closed";
+                this.setStop("kolobEntranceLine", 8, 1);
             }).catch(error =>{
                 vm = "Fetch " + error;
             });
@@ -347,10 +365,6 @@ var app = new Vue({
             // }).catch(error => {
             //     vm = "Fetch " + error;
             // });
-            this.kolobEntranceSvg = "icons/entrance_grey.svg";
-            this.kolobEntranceSvgStroke = "#B5B5B5";
-            this.KolobEntranceBusiness = "Closed";
-            this.setStop("kolobEntranceLine", 8, 1);
         },
         loadParking: function(){
             axios.get("https://trailwaze.info/zion/request.php").then(response => {
@@ -378,6 +392,9 @@ var app = new Vue({
                     hours=12;
                 }
                 let minutes = date.getMinutes();
+                if(minutes < 10){
+                    minutes = "0" + minutes.toString();
+                }
                 this.parkingLastUpdate = hours.toString() + ":" + minutes.toString() + " " + TOD;
             }).catch(error => {
                 vm = "Fetch " + error;
@@ -548,6 +565,9 @@ var app = new Vue({
                 hours=12;
             }
             let minutes = date.getMinutes();
+            if(minutes < 10){
+                minutes = "0" + minutes.toString();
+            }
 
             this.trailsLastUpdate = hours.toString() + ":" + minutes.toString() + " " + TOD;
         },

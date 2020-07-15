@@ -460,6 +460,42 @@ h4{
 .lowerEmeraldPhoto{
     background-image: url("trail\ photos/lower emerald pool/emerald-pool-lower-1.jpg");
 }
+.upperEmeraldPhoto{
+    background-image: url("trail\ photos/upper emerald pool/emerald-pool-upper-1.jpg");
+}
+.angelsPhoto{
+    background-image: url("trail\ photos/angels landing/angels-landing-zion-national-park-1.jpg");
+}
+.canyonPhoto{
+    background-image: url("trail\ photos/canyon overlook/zion-canyon-overlook-trail-1.jpg");
+}
+.grottoPhoto{
+    background-image: url("trail\ photos/grotto/grotto-trail-4.jpg");
+}
+.kayentaPhoto{
+    background-image: url("trail\ photos/kayenta/kayenta-trail-1.jpg");
+}
+.observationPhoto{
+    background-image: url("trail\ photos/observation-point-1.jpg");
+}
+.riversidePhoto{
+    background-image: url("trail\ photos/riverside walk/river-side-walk-zion-1.jpg");
+}
+.sandbenchPhoto{
+    background-image: url("trail\ photos/sandbench/sandbench-trail-1.jpg");
+}
+.taylorPhoto{
+    background-image: url("trail\ photos/taylor creek/taylor-creek-hike-1.jpg");
+}
+.narrowsPhoto{
+    background-image: url("trail\ photos/the narrows via riverside walk/the-narrows-1.jpg");
+}
+.timberPhoto{
+    background-image: url("trail\ photos/timber creek/timber-creek-overlook-trail-1.jpg");
+}
+.watchmanPhoto{
+    background-image: url("trail\ photos/watchman/Watchman-Trail-Zion-National-Park-4.jpg");
+}
 .trailsGridContainer{
     display: grid;
     grid-template-columns: auto auto auto;
@@ -511,11 +547,13 @@ h4{
     height: 100%;
 }
 .whiteDownload{
-    margin-right: 16px;
-    margin-top: -42px;
+    margin: 16px;
     width: 30px;
     height: auto;
     float: right;
+}
+.lift{
+    margin-top: -42px;
 }
 .trailPhotoLone{
     width: 100%;
