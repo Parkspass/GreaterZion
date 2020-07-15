@@ -69,7 +69,7 @@ body, textarea{
     right: 0;
     margin: auto;
     position: fixed;
-    top: 50px;
+    top: 20px;
     background-color: rgba(242, 247, 250, 0.687);
     border-radius: 4px;
     width: 98%;
@@ -134,16 +134,19 @@ body, textarea{
     bottom: 0;
     position: absolute;
     color: white;
+    z-index: 50;
 }
 .headerText h1{
     font-size: 32px;
     font-weight: bold;
     margin: 0px;
+    z-index: 50;
 }
 .headerText p{
     font-size: 16px;
     margin: 0px;
     vertical-align: middle;
+    z-index: 50;
 }
 .bison{
     height: 24px;
