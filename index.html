@@ -89,6 +89,15 @@
                         </div>
                         <div class="arrow-down"></div>
                     </div>
+                    <div v-if="showAndroidInstallMessage" id="androidInstallContainer">
+                        <div style="float: left;">
+                            <img src="icons/plus.png" style="height: 25px; width: 25px; margin: 15px; margin-right: 5px; filter: invert(100%)">
+                        </div>
+                        <div style="display: inline-block; width: 80%">
+                            <p style="margin: 6px;">Install this webapp on your device: tap &nbsp;<img src="icons/hamburgerBtn.png" style="height: 14px; width: auto; vertical-align: middle;">&nbsp; then Add to homescreen.</p>
+                        </div>
+                        <div class="arrow-up"></div>
+                    </div>
                     <div class="push2"></div>
                 </div>
 
@@ -110,6 +119,27 @@
                             Starting July 1, park shuttles will resume modified operations--tickets required. Book tickets in advance on Recreation.gov. 
                             Private vehicles are not allowed on the Zion Canyon Scenic Drive when shuttles are in operation. </p>
                         <a href="https://www.nps.gov/zion/planyourvisit/zion-canyon-shuttle-tickets.htm"><img class="linkImg" src="icons/linkImg.svg"><span class="linkText">Learn more at nps.gov/zion.</span></a>
+
+                        <p class="uSub">How Do The Shuttles Work?</p>
+                        <p class="uText">TICKETS ARE ONLY AVAILABLE AT RECREATION.GOV</P>
+                        <ul>
+                            <li>You must have a shuttle ticket to board the bus</li>
+                            <li>Shuttle tickets cost $1.00 each and will sell out fast</li>
+                            <li>Shuttle tickets are not included in your park entrance fee</li>
+                            <li>A shuttle ticket does not guarantee parking in the park</li>
+                            <li>A ticket is valid only for the date and time purchased</li>
+                            <li>Only ticketed passengers will be allowed on shuttles</li>
+                            <li>Seating has been reduced and no standing is allowed</li>
+                            <li>Boarding times for visitor center stop #1 are on the ticket</li>
+                            <li>Circulator buses can be boarded any time when in operation</li>
+                            <li>Children under 2 years of age who can sit on a parent’s lap do not need a ticket</li>
+                        </ul>
+                        <p class="uText">Passengers will be transported by shuttle from stop #1 at the visitor
+                                        center to stops along the Scenic Drive. Circulator buses will transport riders up and down the Scenic Drive during the day. Circulator buses do not travel back to the visitor center. When you are ready to return to the visitor center, take a shuttle that isn’t marked as a circulator.
+                                        Note that once you return to the visitor center you cannot return to the Scenic Drive by shuttle without a new ticket and new boarding time.</p>
+
+                        <p class="uText">It is strongly advised to get on a return bus to the Zion Lodge or visitor center before 7:30 p.m. The last bus leaves Temple of Sinawava at 8:15 p.m. It only holds 33 people. If more than 33 people wait to catch the very last bus, some will end up walking back. It is about 8 miles from Temple of Sinawava to the Visitor Center parking lot.
+
                         <p class="uSub">What to do if tickets are sold out</p>
                         <p class="uText">If tickets are sold out, you still have the option to rent a bike or e-bike, or hire a private shuttle. </p>
         
@@ -126,18 +156,8 @@
                         <div class="spacer"><a href="https://www.zionadventures.com"><img class="linkImg" src="icons/linkImg.svg"><span class="linkText">zionadventures.com</span></a></div>
                         <p class="uText">Zion Outback Safaris</p>
                         <div class="spacer"><a href="https://www.zionjeeptours.com"><img class="linkImg" src="icons/linkImg.svg"><span class="linkText">zionjeeptours.com</span></a></div>
-        
-                        <p class="uSub">Limited Resumption of Operations - Some Park Areas Available</p>
-                        <p class="uText">Shuttles are not operating. Parking is extremely limited and Scenic Drive will be closed when all parking is full. 
-                            Kolob Canyons is closed. Have alternate plans in the area if parking is full. </p>
-                        <a href="https://www.nps.gov/zion/planyourvisit/limited-resumption-of-operations.htm"><img class="linkImg" src="icons/linkImg.svg"><span class="linkText">Learn more at nps.gov/zion.</span></a>
-        
-                        <p class="uSub">How Will COVID-19 Affect My Visit?</p>
-                        <p class="uText">The Zion Canyon Scenic Drive is closed to private vehicles for most of the day while all parking is full. 
-                            Visitors should have flexible alternate plans for getting to trailheads or visiting other areas.</p>
-                        <a href="https://www.nps.gov/zion/planyourvisit/how-will-covid-19-affect-my-visit.htm"><img class="linkImg" src="icons/linkImg.svg"><span class="linkText">Learn more at nps.gov/zion.</span></a>
                     </div>
-                    <div class="spacer"></div>
+                    <div class="push"></div>
                 </div>
         
                 <div v-if="page=='entrances'">
@@ -456,7 +476,7 @@
                                 <p>{{grottoBusiness}}</p>
                             </div>
                         </div>
-                        <div class="lineWrapper" @click="page='weepingTrail'">
+                        <!--<div class="lineWrapper" @click="page='weepingTrail'">
                             <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
                                 <circle cx="100" cy="100" r="5" :style="weepingRockSvg"/>
                                 <text x="98.3" y="102" font-size="6" font-weight="bold" style="fill: #FFFFFF">7</text>
@@ -470,7 +490,7 @@
                             <div class="lineWrapper3">
                                 <p>{{weepingRockBusiness}}</p>
                             </div>
-                        </div>
+                        </div>-->
                         <div class="lineWrapper" @click="page='riversideTrail'">
                             <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
                                 <circle cx="100" cy="100" r="5" :style="riversideSvg"/>
@@ -606,7 +626,7 @@
                                 <p>{{angelsLandingWestBusiness}}</p>
                             </div>
                         </div>
-                        <div class="lineWrapper" @click="page='hiddenTrail'">
+                        <!--<div class="lineWrapper" @click="page='hiddenTrail'">
                             <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
                                 <circle cx="100" cy="100" r="5" :style="hiddenCanyonSvg"/>
                                 <text x="98.3" y="102" font-size="6" font-weight="bold" style="fill: #FFFFFF">7</text>
@@ -620,7 +640,7 @@
                             <div class="lineWrapper3">
                                 <p>{{hiddenCanyonBusiness}}</p>
                             </div>
-                        </div>
+                        </div>-->
                         <div class="lineWrapper" @click="page='observationTrail'">
                             <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
                                 <circle cx="100" cy="100" r="5" :style="observationPointSvg"/>
@@ -1175,6 +1195,771 @@
                     <img class="backX" src="icons/whiteX.svg" @click="page='watchmanTrail'">
                     <a href="trail photos/Watchman-Trail-map.jpg" download="WathcmanTrailMap"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
                     <img class="trailPhotoLone" src="trail photos/Watchman-Trail-map.jpg">
+                </div>
+
+                <div v-if="page=='sandbenchTrail'">
+                    <div class="trailPhoto sandbenchPhoto" @click="page='sandbenchImages'; currentSlide(0)">
+                        <img class="backArrow" src="icons/arrow_back-24px 1 1.svg" @click="page='trails'">
+                        <img class="circleBtn expand" src="icons/expand.svg" @click="page='sandbenchImages'">
+                    </div>
+                    <div class="contentWrapper">
+                        <h3 class="contentTitle">Sandbench Trail</h3>
+                        <div class="trailsGridContainer">
+                            <div class="trailsGridItem">DIFFICULTY</div>
+                            <div class="trailsGridItem">LENGTH</div>
+                            <div class="trailsGridItem">AVG TIME</div>
+                            <div class="trailsGridItem boldTrail">Moderate</div>
+                            <div class="trailsGridItem boldTrail">7.6 mi</div>
+                            <div class="trailsGridItem boldTrail">5 hrs</div>
+                        </div>
+                        <p class="trailText">Commercial horse trail from March to October. Hike atop a massive landslide under The Sentinel. Deep sand and little shade. Restrooms and water filling stations are available at the Zion Lodge. Alternate start available from the Court of the Patriarchs (no water of restrooms) makes the roundtrip closer to 5 miles (8 km).</p>
+                        <h4 class="trailMapTitle">Trail Map</h4>
+                        <img class="trailMap" src="trail photos/Sandbench-Trail-map.jpg" @click="page='sandbenchMap'">
+                        <h4 class="trailMapTitle">Trail Details</h4>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/toilets.svg">
+                            <p class="trailsIconText">Flushing Toilets at Ranger Station/Lodge</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/dog.svg">
+                            <p class="trailsIconText">No Dogs Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/bike.svg">
+                            <p class="trailsIconText">No Bikes Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/horse.svg">
+                            <p class="trailsIconText">Equestrian Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/permit.svg">
+                            <p class="trailsIconText">No Permit Required</p>
+                        </div>
+                    </div>
+                    <div class="push"></div>
+                </div>
+
+                <div v-if="page=='sandbenchImages'" class="blackBack">
+                    <img class="backX" src="icons/whiteX.svg" @click="page='sandbenchTrail'">
+                    <div class="mySlides7 fade">
+                        <div class="numbertext">1 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/sandbench/sandbench-trail-1.jpg">
+                        <a href="trail photos/sandbench/sandbench-trail-1.jpg" download="SandbenchTrail1"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides7 fade">
+                        <div class="numbertext">2 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/sandbench/sandbench-trail-2.jpg">
+                        <a href="trail photos/sandbench/sandbench-trail-2.jpg" download="SandbenchTrail2"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides7 fade">
+                        <div class="numbertext">3 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/sandbench/sandbench-trail-3.jpg">
+                        <a href="trail photos/sandbench/sandbench-trail-3.jpg" download="SandbenchTrail3"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides7 fade">
+                        <div class="numbertext">4 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/sandbench/sandbench-trail-4.jpg">
+                        <a href="trail photos/sandbench/sandbench-trail-4.jpg" download="SandbenchTrail4"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides7 fade">
+                        <div class="numbertext">5 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/sandbench/sandbench-trail-5.jpg">
+                        <a href="trail photos/sandbench/sandbench-trail-5.jpg" download="SandbenchTrail5"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <!-- Next and previous buttons -->
+                    <a class="prev" @click="plusSlides(-1)">&#10094;</a>
+                    <a class="next" @click="plusSlides(1)">&#10095;</a>
+                    <br>
+                    <!-- The dots/circles -->
+                    <div class="dotContainer">
+                        <span class="dot" @click="currentSlide(1)"></span>
+                        <span class="dot" @click="currentSlide(2)"></span>
+                        <span class="dot" @click="currentSlide(3)"></span>
+                        <span class="dot" @click="currentSlide(4)"></span>
+                        <span class="dot" @click="currentSlide(5)"></span>
+                    </div>
+                </div>
+
+                <div v-if="page=='sandbenchMap'" class="blackBack">
+                    <img class="backX" src="icons/whiteX.svg" @click="page='sandbenchTrail'">
+                    <a href="trail photos/Sandbench-Trail-map.jpg" download="SandbenchTrailMap"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
+                    <img class="trailPhotoLone" src="trail photos/Sandbench-Trail-map.jpg">
+                </div>
+
+                <div v-if="page=='upperEmeraldTrail'">
+                    <div class="trailPhoto upperEmeraldPhoto" @click="page='upperEmeraldImages'; currentSlide(0)">
+                        <img class="backArrow" src="icons/arrow_back-24px 1 1.svg" @click="page='trails'">
+                        <img class="circleBtn expand" src="icons/expand.svg" @click="page='upperEmeraldImages'">
+                    </div>
+                    <div class="contentWrapper">
+                        <h3 class="contentTitle">Upper Emerald Pool Trail</h3>
+                        <div class="trailsGridContainer">
+                            <div class="trailsGridItem">DIFFICULTY</div>
+                            <div class="trailsGridItem">LENGTH</div>
+                            <div class="trailsGridItem">AVG TIME</div>
+                            <div class="trailsGridItem boldTrail">Moderate</div>
+                            <div class="trailsGridItem boldTrail">2.2 mi</div>
+                            <div class="trailsGridItem boldTrail">2 hrs</div>
+                        </div>
+                        <p class="trailText">The Upper Emerald Pool Trail in Zion National Park has a lot to offer for being one of the shorter hikes in the park! This trail starts at the Virgin River bottom with views up and down Zion Main Canyon, then turns and continues up Heaps Canyon and affords views of hidden water falls and sheer Navajo Sandstone Cliffs.</p>
+                        <h4 class="trailMapTitle">Trail Map</h4>
+                        <img class="trailMap" src="trail photos/Upper-Emerald-Pool-Trail-map.jpg" @click="page='upperEmeraldMap'">
+                        <h4 class="trailMapTitle">Trail Details</h4>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/toilets.svg">
+                            <p class="trailsIconText">Flushing Toilets at Ranger Station/Lodge</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/dog.svg">
+                            <p class="trailsIconText">No Dogs Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/bike.svg">
+                            <p class="trailsIconText">No Bikes Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/horse.svg">
+                            <p class="trailsIconText">No Equestrian Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/permit.svg">
+                            <p class="trailsIconText">No Permit Required</p>
+                        </div>
+                    </div>
+                    <div class="push"></div>
+                </div>
+
+                <div v-if="page=='upperEmeraldImages'" class="blackBack">
+                    <img class="backX" src="icons/whiteX.svg" @click="page='upperEmeraldTrail'">
+                    <div class="mySlides8 fade">
+                        <div class="numbertext">1 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/upper emerald pool/emerald-pool-upper-1.jpg">
+                        <a href="trail photos/upper emerald pool/emerald-pool-upper-1.jpg" download="UpperEmeraldPoolTrail1"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides8 fade">
+                        <div class="numbertext">2 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/upper emerald pool/emerald-pool-upper-2.jpg">
+                        <a href="trail photos/upper emerald pool/emerald-pool-upper-2.jpg" download="UpperEmeraldPoolTrail2"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides8 fade">
+                        <div class="numbertext">3 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/upper emerald pool/emerald-pool-upper-3.jpg">
+                        <a href="trail photos/upper emerald pool/emerald-pool-upper-3.jpg" download="UpperEmeraldPoolTrail3"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides8 fade">
+                        <div class="numbertext">4 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/upper emerald pool/emerald-pool-upper-4.jpg">
+                        <a href="trail photos/upper emerald pool/emerald-pool-upper-4.jpg" download="UpperEmeraldPoolTrail4"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides8 fade">
+                        <div class="numbertext">5 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/upper emerald pool/emerald-pool-upper-5.jpg">
+                        <a href="trail photos/upper emerald pool/emerald-pool-upper-5.jpg" download="UpperEmeraldPoolTrail5"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <!-- Next and previous buttons -->
+                    <a class="prev" @click="plusSlides(-1)">&#10094;</a>
+                    <a class="next" @click="plusSlides(1)">&#10095;</a>
+                    <br>
+                    <!-- The dots/circles -->
+                    <div class="dotContainer">
+                        <span class="dot" @click="currentSlide(1)"></span>
+                        <span class="dot" @click="currentSlide(2)"></span>
+                        <span class="dot" @click="currentSlide(3)"></span>
+                        <span class="dot" @click="currentSlide(4)"></span>
+                        <span class="dot" @click="currentSlide(5)"></span>
+                    </div>
+                </div>
+
+                <div v-if="page=='upperEmeraldMap'" class="blackBack">
+                    <img class="backX" src="icons/whiteX.svg" @click="page='upperEmeraldTrail'">
+                    <a href="trail photos/Upper-Emerald-Pool-Trail-map.jpg" download="UpperEmeraldPoolTrailMap"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
+                    <img class="trailPhotoLone" src="trail photos/Upper-Emerald-Pool-Trail-map.jpg">
+                </div>
+
+                <div v-if="page=='kayentaTrail'">
+                    <div class="trailPhoto kayentaPhoto" @click="page='kayentaImages'; currentSlide(0)">
+                        <img class="backArrow" src="icons/arrow_back-24px 1 1.svg" @click="page='trails'">
+                        <img class="circleBtn expand" src="icons/expand.svg" @click="page='kayentaImages'">
+                    </div>
+                    <div class="contentWrapper">
+                        <h3 class="contentTitle">Kayenta Trail</h3>
+                        <div class="trailsGridContainer">
+                            <div class="trailsGridItem">DIFFICULTY</div>
+                            <div class="trailsGridItem">LENGTH</div>
+                            <div class="trailsGridItem">AVG TIME</div>
+                            <div class="trailsGridItem boldTrail">Moderate</div>
+                            <div class="trailsGridItem boldTrail">2.0 mi</div>
+                            <div class="trailsGridItem boldTrail">1.5 hrs</div>
+                        </div>
+                        <p class="trailText">Moderate drop-offs. An unpaved climb to the Emerald Pools. Connects the Grotto to the Emerald Pools Trails. Restrooms and water filling stations are available at the Grotto.</p>
+                        <h4 class="trailMapTitle">Trail Map</h4>
+                        <img class="trailMap" src="trail photos/Kayenta-Trail-map.jpg" @click="page='kayentaMap'">
+                        <h4 class="trailMapTitle">Trail Details</h4>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/toilets.svg">
+                            <p class="trailsIconText">Flushing Toilets at Ranger Station/Lodge</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/dog.svg">
+                            <p class="trailsIconText">No Dogs Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/bike.svg">
+                            <p class="trailsIconText">No Bikes Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/horse.svg">
+                            <p class="trailsIconText">No Equestrian Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/permit.svg">
+                            <p class="trailsIconText">No Permit Required</p>
+                        </div>
+                    </div>
+                    <div class="push"></div>
+                </div>
+
+                <div v-if="page=='kayentaImages'" class="blackBack">
+                    <img class="backX" src="icons/whiteX.svg" @click="page='kayentaTrail'">
+                    <div class="mySlides9 fade">
+                        <div class="numbertext">1 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/kayenta/kayenta-trail-1.jpg">
+                        <a href="trail photos/kayenta/kayenta-trail-1.jpg" download="KayentaTrail1"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides9 fade">
+                        <div class="numbertext">2 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/kayenta/kayenta-trail-2.jpg">
+                        <a href="trail photos/kayenta/kayenta-trail-2.jpg" download="KayentaTrail2"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides9 fade">
+                        <div class="numbertext">3 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/kayenta/kayenta-trail-3.jpg">
+                        <a href="trail photos/kayenta/kayenta-trail-3.jpg" download="KayentaTrail3"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides9 fade">
+                        <div class="numbertext">4 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/kayenta/kayenta-trail-4.jpg">
+                        <a href="trail photos/kayenta/kayenta-trail-4.jpg" download="KayentaTrail4"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides9 fade">
+                        <div class="numbertext">5 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/kayenta/kayenta-trail-5.jpg">
+                        <a href="trail photos/kayenta/kayenta-trail-5.jpg" download="KayentaTrail5"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <!-- Next and previous buttons -->
+                    <a class="prev" @click="plusSlides(-1)">&#10094;</a>
+                    <a class="next" @click="plusSlides(1)">&#10095;</a>
+                    <br>
+                    <!-- The dots/circles -->
+                    <div class="dotContainer">
+                        <span class="dot" @click="currentSlide(1)"></span>
+                        <span class="dot" @click="currentSlide(2)"></span>
+                        <span class="dot" @click="currentSlide(3)"></span>
+                        <span class="dot" @click="currentSlide(4)"></span>
+                        <span class="dot" @click="currentSlide(5)"></span>
+                    </div>
+                </div>
+
+                <div v-if="page=='kayentaMap'" class="blackBack">
+                    <img class="backX" src="icons/whiteX.svg" @click="page='kayentaTrail'">
+                    <a href="trail photos/Upper-Emerald-Pool-Trail-map.jpg" download="KayentaTrailMap"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
+                    <img class="trailPhotoLone" src="trail photos/Kayenta-Trail-map.jpg">
+                </div>
+
+                <div v-if="page=='canyonTrail'">
+                    <div class="trailPhoto canyonPhoto" @click="page='canyonImages'; currentSlide(0)">
+                        <img class="backArrow" src="icons/arrow_back-24px 1 1.svg" @click="page='trails'">
+                        <img class="circleBtn expand" src="icons/expand.svg" @click="page='canyonImages'">
+                    </div>
+                    <div class="contentWrapper">
+                        <h3 class="contentTitle">Canyon Overlook Trail</h3>
+                        <div class="trailsGridContainer">
+                            <div class="trailsGridItem">DIFFICULTY</div>
+                            <div class="trailsGridItem">LENGTH</div>
+                            <div class="trailsGridItem">AVG TIME</div>
+                            <div class="trailsGridItem boldTrail">Moderate</div>
+                            <div class="trailsGridItem boldTrail">1.0 mi</div>
+                            <div class="trailsGridItem boldTrail">1 hr</div>
+                        </div>
+                        <p class="trailText">The Zion Canyon Overlook Trail is a fun way to experience the thrill of Zion National Park without riding the shuttle or dealing with the herds of people at the visitors center. This is a family friendly hike, but you’ll want to keep your kids close as there are many ledges and drops.</p>
+                        <h4 class="trailMapTitle">Trail Map</h4>
+                        <img class="trailMap" src="trail photos/Canyon-Overlook-Trail-map.jpg" @click="page='canyonMap'">
+                        <h4 class="trailMapTitle">Trail Details</h4>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/toilets.svg">
+                            <p class="trailsIconText">Vault Toilets at Trailhead</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/dog.svg">
+                            <p class="trailsIconText">No Dogs Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/bike.svg">
+                            <p class="trailsIconText">No Bikes Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/horse.svg">
+                            <p class="trailsIconText">No Equestrian Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/permit.svg">
+                            <p class="trailsIconText">No Permit Required</p>
+                        </div>
+                    </div>
+                    <div class="push"></div>
+                </div>
+
+                <div v-if="page=='canyonImages'" class="blackBack">
+                    <img class="backX" src="icons/whiteX.svg" @click="page='canyonTrail'">
+                    <div class="mySlides10 fade">
+                        <div class="numbertext">1 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/canyon overlook/zion-canyon-overlook-trail-1.jpg">
+                        <a href="trail photos/canyon overlook/zion-canyon-overlook-trail-1.jpg" download="CanyonOverlookTrail1"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides10 fade">
+                        <div class="numbertext">2 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/canyon overlook/zion-canyon-overlook-trail-2.jpg">
+                        <a href="trail photos/canyon overlook/zion-canyon-overlook-trail-2.jpg" download="CanyonOverlookTrail2"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides10 fade">
+                        <div class="numbertext">3 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/canyon overlook/zion-canyon-overlook-trail-3.jpg">
+                        <a href="trail photos/canyon overlook/zion-canyon-overlook-trail-3.jpg" download="CanyonOverlookTrail3"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides10 fade">
+                        <div class="numbertext">4 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/canyon overlook/zion-canyon-overlook-trail-4.jpg">
+                        <a href="trail photos/canyon overlook/zion-canyon-overlook-trail-4.jpg" download="CanyonOverlookTrail4"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides10 fade">
+                        <div class="numbertext">5 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/canyon overlook/zion-canyon-overlook-trail-5.jpg">
+                        <a href="trail photos/canyon overlook/zion-canyon-overlook-trail-5.jpg" download="CanyonOverlookTrail5"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <!-- Next and previous buttons -->
+                    <a class="prev" @click="plusSlides(-1)">&#10094;</a>
+                    <a class="next" @click="plusSlides(1)">&#10095;</a>
+                    <br>
+                    <!-- The dots/circles -->
+                    <div class="dotContainer">
+                        <span class="dot" @click="currentSlide(1)"></span>
+                        <span class="dot" @click="currentSlide(2)"></span>
+                        <span class="dot" @click="currentSlide(3)"></span>
+                        <span class="dot" @click="currentSlide(4)"></span>
+                        <span class="dot" @click="currentSlide(5)"></span>
+                    </div>
+                </div>
+
+                <div v-if="page=='canyonMap'" class="blackBack">
+                    <img class="backX" src="icons/whiteX.svg" @click="page='canyonTrail'">
+                    <a href="trail photos/Upper-Emerald-Pool-Trail-map.jpg" download="CanyonOverlookTrailMap"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
+                    <img class="trailPhotoLone" src="trail photos/Canyon-Overlook-Trail-map.jpg">
+                </div>
+
+                <div v-if="page=='taylorTrail'">
+                    <div class="trailPhoto taylorPhoto" @click="page='taylorImages'; currentSlide(0)">
+                        <img class="backArrow" src="icons/arrow_back-24px 1 1.svg" @click="page='trails'">
+                        <img class="circleBtn expand" src="icons/expand.svg" @click="page='taylorImages'">
+                    </div>
+                    <div class="contentWrapper">
+                        <h3 class="contentTitle">Taylor Creek Trail</h3>
+                        <div class="trailsGridContainer">
+                            <div class="trailsGridItem">DIFFICULTY</div>
+                            <div class="trailsGridItem">LENGTH</div>
+                            <div class="trailsGridItem">AVG TIME</div>
+                            <div class="trailsGridItem boldTrail">Moderate</div>
+                            <div class="trailsGridItem boldTrail">5.0 mi</div>
+                            <div class="trailsGridItem boldTrail">4 hrs</div>
+                        </div>
+                        <p class="trailText">The Middle Fork of Taylor Creek Trail is a scenic easy trail that is great for Spring, Summer, and Fall, but may closed during the snow season. The trail is a single track through the woods that features a couple of old ranchers’ cabins and a cool, shady alcove at the end of the hike. </p>
+                        <h4 class="trailMapTitle">Trail Map</h4>
+                        <img class="trailMap" src="trail photos/Taylor-Creek-Trail-map.jpg" @click="page='taylorMap'">
+                        <h4 class="trailMapTitle">Trail Details</h4>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/toilets.svg">
+                            <p class="trailsIconText">Flushing Toilets at Ranger Station/Lodge</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/dog.svg">
+                            <p class="trailsIconText">No Dogs Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/bike.svg">
+                            <p class="trailsIconText">No Bikes Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/horse.svg">
+                            <p class="trailsIconText">No Equestrian Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/permit.svg">
+                            <p class="trailsIconText">No Permit Required</p>
+                        </div>
+                    </div>
+                    <div class="push"></div>
+                </div>
+
+                <div v-if="page=='taylorImages'" class="blackBack">
+                    <img class="backX" src="icons/whiteX.svg" @click="page='taylorTrail'">
+                    <div class="mySlides11 fade">
+                        <div class="numbertext">1 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/taylor creek/taylor-creek-hike-1.jpg">
+                        <a href="trail photos/taylor creek/taylor-creek-hike-1.jpg" download="TaylorCreekTrail1"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides11 fade">
+                        <div class="numbertext">2 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/taylor creek/taylor-creek-hike-2.jpg">
+                        <a href="trail photos/taylor creek/taylor-creek-hike-2.jpg" download="TaylorCreekTrail2"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides11 fade">
+                        <div class="numbertext">3 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/taylor creek/taylor-creek-hike-3.jpg">
+                        <a href="trail photos/taylor creek/taylor-creek-hike-3.jpg" download="TaylorCreekTrail3"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides11 fade">
+                        <div class="numbertext">4 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/taylor creek/taylor-creek-hike-4.jpg">
+                        <a href="trail photos/taylor creek/taylor-creek-hike-4.jpg" download="TaylorCreekTrail4"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides11 fade">
+                        <div class="numbertext">5 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/taylor creek/taylor-creek-hike-5.jpg">
+                        <a href="trail photos/taylor creek/taylor-creek-hike-5.jpg" download="TaylorCreekTrail5"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <!-- Next and previous buttons -->
+                    <a class="prev" @click="plusSlides(-1)">&#10094;</a>
+                    <a class="next" @click="plusSlides(1)">&#10095;</a>
+                    <br>
+                    <!-- The dots/circles -->
+                    <div class="dotContainer">
+                        <span class="dot" @click="currentSlide(1)"></span>
+                        <span class="dot" @click="currentSlide(2)"></span>
+                        <span class="dot" @click="currentSlide(3)"></span>
+                        <span class="dot" @click="currentSlide(4)"></span>
+                        <span class="dot" @click="currentSlide(5)"></span>
+                    </div>
+                </div>
+
+                <div v-if="page=='taylorMap'" class="blackBack">
+                    <img class="backX" src="icons/whiteX.svg" @click="page='taylorTrail'">
+                    <a href="trail photos/Upper-Emerald-Pool-Trail-map.jpg" download="TaylorCreekTrailMap"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
+                    <img class="trailPhotoLone" src="trail photos/Taylor-Creek-Trail-map.jpg">
+                </div>
+
+                <div v-if="page=='timberTrail'">
+                    <div class="trailPhoto timberPhoto" @click="page='timberImages'; currentSlide(0)">
+                        <img class="backArrow" src="icons/arrow_back-24px 1 1.svg" @click="page='trails'">
+                        <img class="circleBtn expand" src="icons/expand.svg" @click="page='timberImages'">
+                    </div>
+                    <div class="contentWrapper">
+                        <h3 class="contentTitle">Timber Creek Overlook Trail</h3>
+                        <div class="trailsGridContainer">
+                            <div class="trailsGridItem">DIFFICULTY</div>
+                            <div class="trailsGridItem">LENGTH</div>
+                            <div class="trailsGridItem">AVG TIME</div>
+                            <div class="trailsGridItem boldTrail">Moderate</div>
+                            <div class="trailsGridItem boldTrail">1.0 mi</div>
+                            <div class="trailsGridItem boldTrail">30 min</div>
+                        </div>
+                        <p class="trailText">The Timber Creek Overlook Trail follows a small ridge with spectacular views of the Kolob Canyons, the Kolob Terrace, and the Pine Valley Mountains. Looking south on the far horizon, visitors may see Mount Trumbull 100 miles away at the north rim of the Grand Canyon.</p>
+                        <h4 class="trailMapTitle">Trail Map</h4>
+                        <img class="trailMap" src="trail photos/Timber-Creek-Overlook-Trail-map.jpg" @click="page='timberMap'">
+                        <h4 class="trailMapTitle">Trail Details</h4>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/toilets.svg">
+                            <p class="trailsIconText">Flushing Toilets at Kolob Canyons Visitor Center</p>
+                        </div>
+                        <div class="trailLineWrapper" >
+                            <img class="trailsIcon" src="icons/dog.svg">
+                            <p class="trailsIconText">No Dogs Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/bike.svg">
+                            <p class="trailsIconText">No Bikes Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/horse.svg">
+                            <p class="trailsIconText">No Equestrian Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/permit.svg">
+                            <p class="trailsIconText">No Permit Required</p>
+                        </div>
+                    </div>
+                    <div class="push"></div>
+                </div>
+
+                <div v-if="page=='timberImages'" class="blackBack">
+                    <img class="backX" src="icons/whiteX.svg" @click="page='timberTrail'">
+                    <div class="mySlides12 fade">
+                        <img class="trailPhotoLone" src="trail photos/timber creek/timber-creek-overlook-trail-1.jpg">
+                        <a href="trail photos/timber creek/timber-creek-overlook-trail-1.jpg" download="TimberCreekTrail"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                </div>
+
+                <div v-if="page=='timberMap'" class="blackBack">
+                    <img class="backX" src="icons/whiteX.svg" @click="page='timberTrail'">
+                    <a href="trail photos/Upper-Emerald-Pool-Trail-map.jpg" download="TimberCreekTrailMap"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
+                    <img class="trailPhotoLone" src="trail photos/Timber-Creek-Overlook-Trail-map.jpg">
+                </div>
+
+                <div v-if="page=='angelsTrail'">
+                    <div class="trailPhoto angelsPhoto" @click="page='angelsImages'; currentSlide(0)">
+                        <img class="backArrow" src="icons/arrow_back-24px 1 1.svg" @click="page='trails'">
+                        <img class="circleBtn expand" src="icons/expand.svg" @click="page='angelsImages'">
+                    </div>
+                    <div class="contentWrapper">
+                        <h3 class="contentTitle">Angels Landing via West Rim Trail</h3>
+                        <div class="trailsGridContainer">
+                            <div class="trailsGridItem">DIFFICULTY</div>
+                            <div class="trailsGridItem">LENGTH</div>
+                            <div class="trailsGridItem">AVG TIME</div>
+                            <div class="trailsGridItem boldTrail">Strenuous</div>
+                            <div class="trailsGridItem boldTrail">4.95 mi</div>
+                            <div class="trailsGridItem boldTrail">3.5 hrs</div>
+                        </div>
+                        <p class="trailText">The Angels Landing Trail is part of the West Rim Trail system in Zion National Park that leads out to a point that looks down on the Main Canyon and allows you to see up toward Kolob and down into Springdale.</p>
+                        <h4 class="trailMapTitle">Trail Map</h4>
+                        <img class="trailMap" src="trail photos/Angels-Landing-via-West-Rim-Trail-map.jpg" @click="page='angelsMap'">
+                        <h4 class="trailMapTitle">Trail Details</h4>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/toilets.svg">
+                            <p class="trailsIconText">Vault Toilets at Trailhead</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/dog.svg">
+                            <p class="trailsIconText">No Dogs Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/bike.svg">
+                            <p class="trailsIconText">No Bikes Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/horse.svg">
+                            <p class="trailsIconText">No Equestrian Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/permit.svg">
+                            <p class="trailsIconText">No Permit Required</p>
+                        </div>
+                    </div>
+                    <div class="push"></div>
+                </div>
+
+                <div v-if="page=='angelsImages'" class="blackBack">
+                    <img class="backX" src="icons/whiteX.svg" @click="page='angelsTrail'">
+                    <div class="mySlides13 fade">
+                        <div class="numbertext">1 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/angels landing/angels-landing-zion-national-park-1.jpg">
+                        <a href="trail photos/angels landing/angels-landing-zion-national-park-1.jpg" download="AngelsLandingTrail1"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides13 fade">
+                        <div class="numbertext">2 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/angels landing/angels-landing-zion-national-park-2.jpg">
+                        <a href="trail photos/angels landing/angels-landing-zion-national-park-2.jpg" download="AngelsLandingTrail2"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides13 fade">
+                        <div class="numbertext">3 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/angels landing/angels-landing-zion-national-park-3.jpg">
+                        <a href="trail photos/angels landing/angels-landing-zion-national-park-3.jpg" download="AngelsLandingTrail3"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides13 fade">
+                        <div class="numbertext">4 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/angels landing/angels-landing-zion-national-park-4.jpg">
+                        <a href="trail photos/angels landing/angels-landing-zion-national-park-4.jpg" download="AngelsLandingTrail4"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides13 fade">
+                        <div class="numbertext">5 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/angels landing/angels-landing-zion-national-park-5.jpg">
+                        <a href="trail photos/angels landing/angels-landing-zion-national-park-5.jpg" download="AngelsLandingTrail5"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <!-- Next and previous buttons -->
+                    <a class="prev" @click="plusSlides(-1)">&#10094;</a>
+                    <a class="next" @click="plusSlides(1)">&#10095;</a>
+                    <br>
+                    <!-- The dots/circles -->
+                    <div class="dotContainer">
+                        <span class="dot" @click="currentSlide(1)"></span>
+                        <span class="dot" @click="currentSlide(2)"></span>
+                        <span class="dot" @click="currentSlide(3)"></span>
+                        <span class="dot" @click="currentSlide(4)"></span>
+                        <span class="dot" @click="currentSlide(5)"></span>
+                    </div>
+                </div>
+
+                <div v-if="page=='angelsMap'" class="blackBack">
+                    <img class="backX" src="icons/whiteX.svg" @click="page='angelsTrail'">
+                    <a href="trail photos/Angels-Landing-via-West-Rim-Trail-map.jpg" download="AngelsLandingTrailMap"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
+                    <img class="trailPhotoLone" src="trail photos/Angels-Landing-via-West-Rim-Trail-map.jpg">
+                </div>
+
+                <div v-if="page=='observationTrail'">
+                    <div class="trailPhoto observationPhoto" @click="page='observationImages'; currentSlide(0)">
+                        <img class="backArrow" src="icons/arrow_back-24px 1 1.svg" @click="page='trails'">
+                        <img class="circleBtn expand" src="icons/expand.svg" @click="page='observationImages'">
+                    </div>
+                    <div class="contentWrapper">
+                        <h3 class="contentTitle">Observation Point via East Rim Trail</h3>
+                        <div class="trailsGridContainer">
+                            <div class="trailsGridItem">DIFFICULTY</div>
+                            <div class="trailsGridItem">LENGTH</div>
+                            <div class="trailsGridItem">AVG TIME</div>
+                            <div class="trailsGridItem boldTrail">Strenuous</div>
+                            <div class="trailsGridItem boldTrail">8.0 mi</div>
+                            <div class="trailsGridItem boldTrail">5-6 hrs</div>
+                        </div>
+                        <p class="trailText">Observation Point is an out of the way moderate-strenuous hike with views that will knock your socks off if you dare give it a try! It is slightly less strenuous than Angel’s Landing even though it is longer.</p>
+                        <h4 class="trailMapTitle">Trail Map</h4>
+                        <img class="trailMap" src="trail photos/Observation-Point-via-East-Rim-Trail-map.jpg" @click="page='observationMap'">
+                        <h4 class="trailMapTitle">Trail Details</h4>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/toilets.svg">
+                            <p class="trailsIconText">Vault Toilets at Trailhead</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/dog.svg">
+                            <p class="trailsIconText">No Dogs Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/bike.svg">
+                            <p class="trailsIconText">No Bikes Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/horse.svg">
+                            <p class="trailsIconText">No Equestrian Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/permit.svg">
+                            <p class="trailsIconText">No Permit Required</p>
+                        </div>
+                    </div>
+                    <div class="push"></div>
+                </div>
+
+                <div v-if="page=='observationImages'" class="blackBack">
+                    <img class="backX" src="icons/whiteX.svg" @click="page='observationTrail'">
+                    <div class="mySlides14 fade">
+                        <div class="numbertext">1 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/observation point/observation-point-1.jpg">
+                        <a href="trail photos/observation point/observation-point-1.jpg" download="ObservationPointTrail1"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides14 fade">
+                        <div class="numbertext">2 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/observation point/observation-point-2.jpg">
+                        <a href="trail photos/observation point/observation-point-2.jpg" download="ObservationPointTrail2"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides14 fade">
+                        <div class="numbertext">3 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/observation point/observation-point-3.jpg">
+                        <a href="trail photos/observation point/observation-point-3.jpg" download="ObservationPointTrail3"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides14 fade">
+                        <div class="numbertext">4 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/observation point/observation-point-4.jpg">
+                        <a href="trail photos/observation point/observation-point-4.jpg" download="ObservationPointTrail4"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides14 fade">
+                        <div class="numbertext">5 / 5</div>
+                        <img class="trailPhotoLone" src="trail photos/observation point/observation-point-5.jpg">
+                        <a href="trail photos/observation point/observation-point-5.jpg" download="ObservationPointTrail5"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <!-- Next and previous buttons -->
+                    <a class="prev" @click="plusSlides(-1)">&#10094;</a>
+                    <a class="next" @click="plusSlides(1)">&#10095;</a>
+                    <br>
+                    <!-- The dots/circles -->
+                    <div class="dotContainer">
+                        <span class="dot" @click="currentSlide(1)"></span>
+                        <span class="dot" @click="currentSlide(2)"></span>
+                        <span class="dot" @click="currentSlide(3)"></span>
+                        <span class="dot" @click="currentSlide(4)"></span>
+                        <span class="dot" @click="currentSlide(5)"></span>
+                    </div>
+                </div>
+
+                <div v-if="page=='observationMap'" class="blackBack">
+                    <img class="backX" src="icons/whiteX.svg" @click="page='observationTrail'">
+                    <a href="trail photos/Observation-Point-via-East-Rim-Trail-map.jpg" download="ObservationPointTrailMap"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
+                    <img class="trailPhotoLone" src="trail photos/Observation-Point-via-East-Rim-Trail-map.jpg">
+                </div>
+
+                <div v-if="page=='narrowsTrail'">
+                    <div class="trailPhoto narrowsPhoto" @click="page='narrowsImages'; currentSlide(0)">
+                        <img class="backArrow" src="icons/arrow_back-24px 1 1.svg" @click="page='trails'">
+                        <img class="circleBtn expand" src="icons/expand.svg" @click="page='narrowsImages'">
+                    </div>
+                    <div class="contentWrapper">
+                        <h3 class="contentTitle">The Narrows via Riverside Walk</h3>
+                        <div class="trailsGridContainer">
+                            <div class="trailsGridItem">DIFFICULTY</div>
+                            <div class="trailsGridItem">LENGTH</div>
+                            <div class="trailsGridItem">AVG TIME</div>
+                            <div class="trailsGridItem boldTrail">Strenuous</div>
+                            <div class="trailsGridItem boldTrail">9.4 mi</div>
+                            <div class="trailsGridItem boldTrail">8 hrs</div>
+                        </div>
+                        <p class="trailText">This route is known as the bottom-up Narrows and does not require a permit. Upstream travel beyond Big Spring or in Orderville Canyon is prohibited. At least 60% of the hike is spent wading, walking, and sometimes swimming in the river. </p>
+                        <h4 class="trailMapTitle">Trail Map</h4>
+                        <img class="trailMap" src="trail photos/The-Narrows-via-Riverside-Walk-map.jpg" @click="page='narrowsMap'">
+                        <h4 class="trailMapTitle">Trail Details</h4>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/toilets.svg">
+                            <p class="trailsIconText">Flushing Toilets at Trailhead</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/dog.svg">
+                            <p class="trailsIconText">No Dogs Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/bike.svg">
+                            <p class="trailsIconText">No Bikes Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/horse.svg">
+                            <p class="trailsIconText">No Equestrian Allowed</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="trailsIcon" src="icons/permit.svg">
+                            <p class="trailsIconText">No Permit Required</p>
+                        </div>
+                    </div>
+                    <div class="push"></div>
+                </div>
+
+                <div v-if="page=='narrowsImages'" class="blackBack">
+                    <img class="backX" src="icons/whiteX.svg" @click="page='narrowsTrail'">
+                    <div class="mySlides15 fade">
+                        <div class="numbertext">1 / 3</div>
+                        <img class="trailPhotoLone" src="trail photos/the narrows via riverside walk/the-narrows-1.jpg">
+                        <a href="trail photos/the narrows via riverside walk/the-narrows-1.jpg" download="TheNarrows1"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides15 fade">
+                        <div class="numbertext">2 / 3</div>
+                        <img class="trailPhotoLone" src="trail photos/the narrows via riverside walk/the-narrows-2.jpg">
+                        <a href="trail photos/the narrows via riverside walk/the-narrows-2.jpg" download="TheNarrows2"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <div class="mySlides15 fade">
+                        <div class="numbertext">3 / 3</div>
+                        <img class="trailPhotoLone" src="trail photos/the narrows via riverside walk/the-narrows-3.jpg">
+                        <a href="trail photos/the narrows via riverside walk/the-narrows-3.jpg" download="TheNarrows3"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
+                    </div>
+                    <!-- Next and previous buttons -->
+                    <a class="prev" @click="plusSlides(-1)">&#10094;</a>
+                    <a class="next" @click="plusSlides(1)">&#10095;</a>
+                    <br>
+                    <!-- The dots/circles -->
+                    <div class="dotContainer">
+                        <span class="dot" @click="currentSlide(1)"></span>
+                        <span class="dot" @click="currentSlide(2)"></span>
+                        <span class="dot" @click="currentSlide(3)"></span>
+                    </div>
+                </div>
+
+                <div v-if="page=='narrowsMap'" class="blackBack">
+                    <img class="backX" src="icons/whiteX.svg" @click="page='narrowsTrail'">
+                    <a href="trail photos/The-Narrows-via-Riverside-Walk-map.jpg" download="TheNarrowsMap"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
+                    <img class="trailPhotoLone" src="trail photos/The-Narrows-via-Riverside-Walk-map.jpg">
                 </div>
 
                 <!-- BOTTOM NAV -->

@@ -64,8 +64,33 @@ body, textarea{
     z-index: 10000;
     color: white;
 }
+#androidInstallContainer{
+    left: 0;
+    right: 0;
+    margin: auto;
+    position: fixed;
+    top: 50px;
+    background-color: rgba(242, 247, 250, 0.687);
+    border-radius: 4px;
+    width: 98%;
+    height: 60px;
+    font-size: 14px;
+    z-index: 10000;
+    color: black;
+}
+.arrow-up {
+    width: 0; 
+    height: 0; 
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid rgba(242, 247, 250, 0.687);
+    transform: rotate(180deg);
+    right: 10px;
+    position: absolute;
+    top: -20px;
+}
 @media only screen and (min-width: 575px){
-    #installContainer{
+    #installContainer, #androidInstallContainer{
         text-align: center;
     }
 }
@@ -226,6 +251,9 @@ body, textarea{
     position: absolute;
 }
 /* UPDATES PAGE */
+ul{
+    margin-bottom: 16px;
+}
 .contentWrapper{
     padding: 16px;
 }
@@ -476,7 +504,7 @@ h4{
     background-image: url("trail\ photos/kayenta/kayenta-trail-1.jpg");
 }
 .observationPhoto{
-    background-image: url("trail\ photos/observation-point-1.jpg");
+    background-image: url("trail\ photos/observation point/observation-point-1.jpg");
 }
 .riversidePhoto{
     background-image: url("trail\ photos/riverside walk/river-side-walk-zion-1.jpg");

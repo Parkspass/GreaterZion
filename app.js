@@ -17,6 +17,7 @@ var app = new Vue({
         home_selected: true,
         map_selected: false,
         showInstallMessage: false,
+        showAndroidInstallMessage: false,
         slideIndex: 1,
 
         // ENTRANCES
@@ -154,9 +155,12 @@ var app = new Vue({
               // Checks if should display install popup notification:
             if (isIos() && !isInStandaloneMode()) {
                 this.showInstallMessage = true;
+            }else if(!isIos() && !isInStandaloneMode()) {
+                this.showAndroidInstallMessage = true;
             }
 
             setTimeout(() => this.showInstallMessage = false, 15000);
+            setTimeout(() => this.showAndroidInstallMessage = false, 15000);
         },
         bottomNavImg: function(NewTab) {
             switch(NewTab) {
@@ -216,6 +220,22 @@ var app = new Vue({
                 slides = document.getElementsByClassName("mySlides5");
             }else if(this.page=='watchmanImages'){
                 slides = document.getElementsByClassName("mySlides6");
+            }else if(this.page=='sandbenchImages'){
+                slides = document.getElementsByClassName("mySlides7");
+            }else if(this.page=='upperEmeraldImages'){
+                slides = document.getElementsByClassName("mySlides8");
+            }else if(this.page=='kayentaImages'){
+                slides = document.getElementsByClassName("mySlides9");
+            }else if(this.page=='canyonImages'){
+                slides = document.getElementsByClassName("mySlides10");
+            }else if(this.page=='taylorImages'){
+                slides = document.getElementsByClassName("mySlides11");
+            }else if(this.page=='angelsImages'){
+                slides = document.getElementsByClassName("mySlides13");
+            }else if(this.page=='observationImages'){
+                slides = document.getElementsByClassName("mySlides14");
+            }else if(this.page=='narrowsImages'){
+                slides = document.getElementsByClassName("mySlides15");
             }
             var dots = document.getElementsByClassName("dot");
             if (n > slides.length) {this.slideIndex = 1;}
@@ -283,9 +303,9 @@ var app = new Vue({
                 let date = new Date();
                 let TOD = 'AM';
                 let hours = date.getHours();
-                if(hours>12){
+                if(hours>=12){
                     TOD = 'PM';
-                    if(hours>13){
+                    if(hours>=13){
                         hours -= 12;
                     }
                 }
@@ -382,9 +402,9 @@ var app = new Vue({
                 let date = new Date();
                 let TOD = 'AM';
                 let hours = date.getHours();
-                if(hours>12){
+                if(hours>=12){
                     TOD = 'PM';
-                    if(hours>13){
+                    if(hours>=13){
                         hours -= 12;
                     }
                 }
@@ -448,7 +468,7 @@ var app = new Vue({
             var A = this.archeologyStat/100;
             var LE = this.lowerEmeraldStat/100;
             var G = this.grottoStat/100;
-            var W = this.weepingRockStat/100;
+            //var W = this.weepingRockStat/100;
             var R = this.riversideStat/100;
             var WL = this.watchmanStat/100;
             var SB = this.sandBenchStat/100;
@@ -458,7 +478,7 @@ var app = new Vue({
             var TC = this.taylorCreekStat/100;
             var TiC = this.timberCreekStat/100;
             var AW = this.angelsLandingWestStat/100;
-            var HC = this.hiddenCanyonStat/100;
+            // var HC = this.hiddenCanyonStat/100;
             var OP = this.observationPointStat/100;
             var N = this.narrowsStat/100;
             var time = new Date().getHours();
@@ -482,9 +502,9 @@ var app = new Vue({
             this.grottoSvg = this.loadTrailsBusiness(G)[1];
             this.grottoSvgStroke = this.loadTrailsBusiness(G)[2];
             
-            this.weepingRockBusiness = this.loadTrailsBusiness(W)[0];
-            this.weepingRockSvg = this.loadTrailsBusiness(W)[1];
-            this.weepingRockSvgStroke = this.loadTrailsBusiness(W)[2];
+            // this.weepingRockBusiness = this.loadTrailsBusiness(W)[0];
+            // this.weepingRockSvg = this.loadTrailsBusiness(W)[1];
+            // this.weepingRockSvgStroke = this.loadTrailsBusiness(W)[2];
 
             this.riversideBusiness = this.loadTrailsBusiness(R)[0];
             this.riversideSvg = this.loadTrailsBusiness(R)[1];
@@ -522,9 +542,9 @@ var app = new Vue({
             this.angelsLandingWestSvg = this.loadTrailsBusiness(AW)[1];
             this.angelsLandingWestSvgStroke = this.loadTrailsBusiness(AW)[2];
 
-            this.hiddenCanyonBusiness = this.loadTrailsBusiness(HC)[0];
-            this.hiddenCanyonSvg = this.loadTrailsBusiness(HC)[1];
-            this.hiddenCanyonSvgStroke = this.loadTrailsBusiness(HC)[2];
+            // this.hiddenCanyonBusiness = this.loadTrailsBusiness(HC)[0];
+            // this.hiddenCanyonSvg = this.loadTrailsBusiness(HC)[1];
+            // this.hiddenCanyonSvgStroke = this.loadTrailsBusiness(HC)[2];
 
             this.observationPointBusiness = this.loadTrailsBusiness(OP)[0];
             this.observationPointSvg = this.loadTrailsBusiness(OP)[1];
@@ -538,7 +558,7 @@ var app = new Vue({
             this.setStop("archeologyLine", 8, A);
             this.setStop("lowerEmeraldLine", 8, LE);
             this.setStop("grottoLine", 8, G);
-            this.setStop("weepingRockLine", 8, W);
+            // this.setStop("weepingRockLine", 8, W);
             this.setStop("riversideLine", 8, R);
             this.setStop("watchmanLine", 8, WL);
             this.setStop("sandBenchLine", 8, SB);
@@ -548,16 +568,16 @@ var app = new Vue({
             this.setStop("taylorCreekLine", 8, TC);
             this.setStop("timberCreekLine", 8, TiC);
             this.setStop("angelsLandingWestLine", 8, AW);
-            this.setStop("hiddenCanyonLine", 8, HC);
+            // this.setStop("hiddenCanyonLine", 8, HC);
             this.setStop("observationPointLine", 8, OP);
             this.setStop("narrowsLine", 8, N);
 
             let date = new Date();
             let TOD = 'AM';
             let hours = date.getHours();
-            if(hours>12){
+            if(hours>=12){
                 TOD = 'PM';
-                if(hours>13){
+                if(hours>=13){
                     hours -= 12;
                 }
             }
