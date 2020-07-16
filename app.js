@@ -482,7 +482,7 @@ var app = new Vue({
             var OP = this.observationPointStat/100;
             var N = this.narrowsStat/100;
             var time = new Date().getHours();
-            if (time < 9 || time > 21 ){
+            if (time <= 9 || time >= 21 ){
                 P = A = LE = G = W = R = WL = SB = UE = K = CO = TC = TiC = AW = HC = OP = N = 0;
             }
 
