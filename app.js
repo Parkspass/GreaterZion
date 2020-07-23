@@ -405,9 +405,15 @@ var app = new Vue({
                 this.vcFullTime = this.getAPIData_safe(response.data, ["ParkingVisitorCenter", "Today", "full_time"], 0);
                 this.vcOpenTime = this.getAPIData_safe(response.data, ["ParkingVisitorCenter", "Today", "open_time"], 0);
                 //Museum: Today
-                this.museumStat = this.getAPIData_safe(response.data, ["ParkingVisitorCenter", "Today", "count"], 0);
-                this.museumFullTime = this.vcFullTime;
-                this.museumOpenTime = this.vcOpenTime;
+                this.museumStat = this.getAPIData_safe(response.data, ["ParkingOverflow", "Today", "count"], 0);
+                this.museumFullTime = this.getAPIData_safe(response.data, ["ParkingOverflow", "Today", "full_time"], 0);
+                this.museumOpenTime = this.getAPIData_safe(response.data, ["ParkingOverflow", "Today", "open_time"], 0);
+                if(this.museumFullTime == "UNK"){
+                    this.museumFullTime = this.vcFullTime;
+                }
+                if(this.museumOpenTime == "UNK"){
+                    this.museumOpenTime = this.vcOpenTime;
+                }
                 //RV: Today
                 this.rvStat = this.getAPIData_safe(response.data, ["ParkingVisitorCenter", "Today", "count"], 0);
                 this.rvFullTime = this.vcFullTime;
