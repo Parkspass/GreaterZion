@@ -387,6 +387,15 @@ h5{
 .lineWrapper{
     height: 53px;
     margin: 16px 0px;
+    vertical-align: top;
+}
+.lineWrapper2 p{
+    margin-bottom: 0px !important;
+}
+.yesterdayTimes{
+    font-size: 10px;
+    margin-right: -20px;
+    margin-top: -2px !important;
 }
 .lineWrapper2{
     display: inline-block;
@@ -394,14 +403,14 @@ h5{
     line-height: 53px;
     vertical-align: top;
     margin: 8px;
-    margin-top: 10px;
+    margin-top: 2px;
     width: 50%;
 }
 .lineWrapper2 h5, .lineWrapper2 p{
     line-height: 17px;
 }
 .lineWrapper2 h5{
-    margin-top: -2px;
+    margin-top: 0px;
 }
 .lineWrapper2 p{
     margin-left: 2px;
@@ -413,7 +422,9 @@ h5{
     text-align: right;
 }
 .lineWrapper3 p{
-    margin-top: 8px;
+    margin-top: 2px;
+    margin-bottom: 0px !important;
+    vertical-align: middle;
 }
 .circleBtn{
     height: 60px;

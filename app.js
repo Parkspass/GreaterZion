@@ -48,6 +48,18 @@ var app = new Vue({
         rvStat: '',
         springdaleStat: '',
         kolobVcStat: '',
+
+        vcFullTime: '',
+        museumFullTime: '',
+        rvFullTime: '',
+        springdaleFullTime: '',
+        kolobVcFullTime: '',
+        vcOpenTime: '',
+        museumOpenTime: '',
+        rvOpenTime: '',
+        springdaleOpenTime: '',
+        kolobVcOpenTime: '',
+        
         
         vcBusiness: '',
         museumBusiness: '',
@@ -390,10 +402,16 @@ var app = new Vue({
             axios.get("https://trailwaze.info/zion/request.php").then(response => {
                 //Visitor Center: Today
                 this.vcStat = this.getAPIData_safe(response.data, ["ParkingVisitorCenter", "Today", "count"], 0);
+                this.vcFullTime = this.getAPIData_safe(response.data, ["ParkingVisitorCenter", "Today", "full_time"], 0);
+                this.vcOpenTime = this.getAPIData_safe(response.data, ["ParkingVisitorCenter", "Today", "open_time"], 0);
                 //Museum: Today
                 this.museumStat = this.getAPIData_safe(response.data, ["ParkingVisitorCenter", "Today", "count"], 0);
+                this.museumFullTime = this.vcFullTime;
+                this.museumOpenTime = this.vcOpenTime;
                 //RV: Today
                 this.rvStat = this.getAPIData_safe(response.data, ["ParkingVisitorCenter", "Today", "count"], 0);
+                this.rvFullTime = this.vcFullTime;
+                this.rvOpenTime = this.vcOpenTime;
                 //Springdale: Today
                 this.springdaleStat = 0;
                 //Kolob Visitor Center
