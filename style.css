@@ -430,6 +430,9 @@ h5{
 .largest{
     height: 90px;
 }
+.spaceDown{
+    margin-top: 8px !important;
+}
 .lineWrapperTrails:hover{
     background-color: rgba(141, 141, 141, 0.274);
 }

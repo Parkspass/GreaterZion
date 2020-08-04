@@ -277,7 +277,7 @@
                             </div>
                         </div></a>
                         <a class="parkingLink" href="https://www.google.com/maps/place/Zion+Human+History+Museum/@37.2093572,-112.982696,17z/data=!3m1!4b1!4m5!3m4!1s0x80cac293a6a026c7:0xa97ed5011a8c0dee!8m2!3d37.2093529!4d-112.980502">
-                        <div class="lineWrapperParking largest">
+                        <div class="lineWrapperParking">
                             <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
                                 <image x="96" y="96" width="8" height="8" v-bind:href="museumParkingSvg"></image>
                                 <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.2" :stroke="museumParkingSvgStroke" />
@@ -286,22 +286,20 @@
                             <div class="lineWrapper2 moreLines">
                                 <h5>Zion Human</h5>
                                 <h5>History Museum</h5>
-                                <p class="yesterdayTimes">Yesterday: Full @ {{museumFullTime}} - Open @ {{museumOpenTime}}</p>
                             </div>
                             <div class="lineWrapper3">
                                 <p>{{museumBusiness}}</p>
                             </div>
                         </div></a>
                         <a class="parkingLink" href="https://www.google.com/maps/place/Zion+National+Park+Visitor+Center/@37.2004907,-112.9885074,18z/data=!4m19!1m13!4m12!1m4!2m2!1d-113.5609458!2d37.1126804!4e1!1m6!1m2!1s0x80cac2bd35ac0a47:0x8e601e4c459d754d!2szion+canyon+visitor+center!2m2!1d-112.9869983!2d37.2000864!3m4!1s0x80cac2bd35ac0a47:0x8e601e4c459d754d!8m2!3d37.2000864!4d-112.9869983">
-                        <div class="lineWrapperParking larger">
+                        <div class="lineWrapperParking">
                             <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
                                 <image x="96" y="96" width="8" height="8" v-bind:href="rvParkingSvg"></image>
                                 <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.2" :stroke="rvParkingSvgStroke" />
                                 <circle id="rvLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="rvParkingSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
                             </svg>
                             <div class="lineWrapper2">
-                                <h5>RV</h5>
-                                <p class="yesterdayTimes">Yesterday: Full @ {{rvFullTime}} - Open @ {{rvOpenTime}}</p>
+                                <h5 class="spaceDown">RV</h5>
                             </div>
                             <div class="lineWrapper3">
                                 <p>{{rvBusiness}}</p>
@@ -315,7 +313,7 @@
                                 <circle id="springdaleLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="springdaleParkingSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
                             </svg>
                             <div class="lineWrapper2">
-                                <h5>Springdale</h5>
+                                <h5 class="spaceDown">Springdale</h5>
                                 <!--<p class="yesterdayTimes">Yesterday: Full @ {{springdaleFullTime}} - Open @ {{springdaleOpenTime}}</p>-->
                             </div>
                             <div class="lineWrapper3">
