@@ -235,7 +235,7 @@ body, textarea{
     top: 8px;
 }
 #updatesText{
-    font-size: 12px;
+    font-size: 14px;
     color: white;
     margin: 0px;
     margin-top: 4px;
@@ -381,9 +381,10 @@ h5{
     margin-top: -24px;
 }
 .updateTime{
-    font-size: 11px;
+    font-size: 14px;
     margin: -16px 0px 10px 2px;
     display: inline-block;
+    color: #727272;
 }
 .updateNowBtn{
     color: #28430A;
@@ -391,47 +392,99 @@ h5{
     font-weight: 500;
     float: right;
 }
+.parkingLink{
+    color: black !important;
+}
 .lineWrapper{
-    height: 53px;
+    height: 56px;
     margin: 16px 0px;
     vertical-align: top;
+}
+.lineWrapperParking{
+    height: 72px;
+    padding-left: 16px;
+    padding-right: 16px;
+    vertical-align: top;
+    border-top: .25px solid #a7a7a76e;
+    padding-top: 10px;
+    padding-bottom: 4px;
+    cursor: pointer;
+}
+.lineWrapperParking:hover{
+    background-color: rgba(141, 141, 141, 0.274);
+}
+.lineWrapperTrails{
+    height: 72px;
+    padding-left: 16px;
+    padding-right: 16px;
+    vertical-align: top;
+    border-top: .25px solid #a7a7a76e;
+    padding-top: 10px;
+    padding-bottom: 4px;
+    cursor: pointer;
+}
+.larger{
+    height: 88px;
+    padding-top: 16px;
+}
+.largest{
+    height: 90px;
+}
+.lineWrapperTrails:hover{
+    background-color: rgba(141, 141, 141, 0.274);
+}
+.bottomBorder{
+    border-bottom: .25px solid #a7a7a76e;
 }
 .lineWrapper2 p{
     margin-bottom: 0px !important;
 }
 .yesterdayTimes{
-    font-size: 10px;
+    font-size: 14px;
     margin-right: -20px;
-    margin-top: -2px !important;
+    margin-top: 2px !important;
 }
 .lineWrapper2{
     display: inline-block;
-    font-size: 11px;
+    font-size: 14px;
     line-height: 53px;
     vertical-align: top;
     margin: 8px;
-    margin-top: 2px;
+    margin-top: 7px;
     width: 50%;
+}
+.moreLines{
+    margin-top: 0px;
+}
+.moreLines2{
+    padding-top: -8px;
 }
 .lineWrapper2 h5, .lineWrapper2 p{
     line-height: 17px;
 }
 .lineWrapper2 h5{
     margin-top: 0px;
+    font-size: 16px;
 }
 .lineWrapper2 p{
     margin-left: 2px;
+    font-size: 14px;
+    color: #727272;
 }
 .lineWrapper3{
     width: 60px;
     float: right;
     font-size: 14px;
     text-align: right;
+    position: relative;
 }
 .lineWrapper3 p{
-    margin-top: 2px;
-    margin-bottom: 0px !important;
+    height: 72px;
     vertical-align: middle;
+    margin-bottom: 0px !important;
+}
+.notBusy p{
+    margin-top: 16px;
 }
 .circleBtn{
     height: 60px;
@@ -461,7 +514,7 @@ h5{
 .shuttleWrap{
     width: 80%;
     display: inline-block;
-    font-size: 11px;
+    font-size: 14px;
     line-height: 53px;
     vertical-align: top;
 }
@@ -482,7 +535,10 @@ h4{
 .trailTitle{
     font-size: 18px;
     font-weight: 500;
-    margin: 24px 0px 16px 0px;
+    height: 48px;
+    line-height: 48px;
+    vertical-align: middle;
+    padding: 0px 16px;
 }
 .mapIframe{
     height: 90%;
