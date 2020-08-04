@@ -31,7 +31,6 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Greater Zion">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="theme-color" content="#28430A"/>
     <link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="/pwaIcons/icon_828x1792.png"/>
     <link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="/pwaIcons/icon_1242x2688.png"/>
     <link rel="apple-touch-startup-image" media="screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="/pwaIcons/icon_1125x2436.png"/>
@@ -54,6 +53,7 @@
         <v-app>
             <v-main >
 
+                <transition name="fade">
                 <div v-if="page=='home'" class="nospace" @click="showInstallMessage">
                     <div id="headerImg">
                         <div class="headerText">
@@ -113,13 +113,15 @@
                     </div>
                     <div class="push2"></div>
                 </div>
+                </transition>
 
                 <div v-if="page=='map'">
+                    <img class="backArrow" src="icons/arrow_back.svg" @click="page='home'">
                     <img id="staticMapTab" src="photos/zion_national_park_map.jpg">
                     <a href="photos/zion_national_park_map.jpg" download="ZionMap"><img id="staticMapDownload" class="circleBtn download" src="icons/download.svg"></a>
-                    <div class="push"></div>
                 </div>
                 
+                <transition name="fade">
                 <div v-if="page == 'update'">
                     <div id="updatesImg">
                         <img class="backArrow" src="icons/arrow_back.svg" @click="page='home'">
@@ -172,7 +174,9 @@
                     </div>
                     <div class="push"></div>
                 </div>
+                </transition>
         
+                <transition name="fade">
                 <div v-if="page=='entrances'">
                     <div class="mapStatic">
                         <a class="linkClass" href="https://www.google.com/maps/place/Zion+Park+Fee+Collection+Office/@37.1994752,-112.9913065,17z/data=!4m5!3m4!1s0x80cac2bd3eccc579:0xd19bbb134a3793d3!8m2!3d37.1993729!4d-112.9881647"></a>
@@ -244,7 +248,9 @@
                         </div>
                     </div>
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='parking'">
                     <div class="mapStatic map2">
                         <a class="linkClass" href="https://www.google.com/maps/place/Zion+Parking/@37.1994752,-112.9913065,17z/data=!4m12!1m6!3m5!1s0x80cac2bd3eccc579:0xd19bbb134a3793d3!2sZion+Park+Fee+Collection+Office!8m2!3d37.1993729!4d-112.9881647!3m4!1s0x0:0x54426bffe4c915ed!8m2!3d37.1992244!4d-112.9865943"></a>
@@ -338,7 +344,9 @@
                         </div></a>
                     </div>
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='shuttles'">
                     <div class="mapStatic map3">
                         <a class="linkClass" href="https://www.google.com/maps/place/Zion+National+Park+Visitor+Center/@37.2001611,-112.9903242,15.89z/data=!4m12!1m6!3m5!1s0x80cac2bd3eccc579:0xd19bbb134a3793d3!2sZion+Park+Fee+Collection+Office!8m2!3d37.1993729!4d-112.9881647!3m4!1s0x0:0x8e601e4c459d754d!8m2!3d37.2000865!4d-112.986998"></a>
@@ -421,7 +429,9 @@
                         </div>
                     </div>
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='trails'">
                     <div class="mapStatic map4">
                         <a class="linkClass" href="https://www.google.com/maps/place/Angels+Landing+Trail/@37.2718178,-112.9522506,17z/data=!3m1!4b1!4m12!1m6!3m5!1s0x80cac17e56c262ab:0xc5f60dc9da7d6629!2sAngels+Landing+Trail!8m2!3d37.2718136!4d-112.9500619!3m4!1s0x80cac17e56c262ab:0xc5f60dc9da7d6629!8m2!3d37.2718136!4d-112.9500619"></a>
@@ -704,9 +714,11 @@
                         <div class="push"></div>
                     </div>
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='parusTrail'">
-                    <div class="trailPhoto parusPhoto" @click="page='parusImages'; showSlides(1)">
+                    <div class="trailPhoto parusPhoto">
                         <img class="backArrow" src="icons/arrow_back.svg" @click="page='trails'">
                         <img class="circleBtn expand" src="icons/expand.svg" @click="page='parusImages'">
                     </div>
@@ -745,9 +757,10 @@
                             <p class="trailsIconText">No Permit Required</p>
                         </div>
                     </div>
-                    <div class="push"></div>
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='parusImages'" class="blackBack">
                     <img class="backX" src="icons/whiteX.svg" @click="page='parusTrail'">
                     <div class="mySlides fade">
@@ -788,15 +801,19 @@
                         <span class="dot" @click="currentSlide(5)"></span>
                     </div>
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='parusMap'" class="blackBack">
                     <img class="backX" src="icons/whiteX.svg" @click="page='parusTrail'">
                     <a href="trailPhotos/parus-map.jpg" download="Pa'rusTrailMap"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
                     <img class="trailPhotoLone" src="trailPhotos/parus-map.jpg">
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='archeologyTrail'">
-                    <div class="trailPhoto archeologyPhoto" @click="page='archeologyImages'; currentSlide(0)">
+                    <div class="trailPhoto archeologyPhoto">
                         <img class="backArrow" src="icons/arrow_back.svg" @click="page='trails'">
                         <img class="circleBtn expand" src="icons/expand.svg" @click="page='archeologyImages'">
                     </div>
@@ -835,9 +852,10 @@
                             <p class="trailsIconText">No Permit Required</p>
                         </div>
                     </div>
-                    <div class="push"></div>
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='archeologyImages'" class="blackBack">
                     <img class="backX" src="icons/whiteX.svg" @click="page='archeologyTrail'">
                     <div class="mySlides2 fade">
@@ -878,15 +896,19 @@
                         <span class="dot" @click="currentSlide(5)"></span>
                     </div>
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='archeologyMap'" class="blackBack">
                     <img class="backX" src="icons/whiteX.svg" @click="page='archeologyTrail'">
                     <a href="trailPhotos/archeology-map.jpg" download="ArcheologyTrailMap"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
                     <img class="trailPhotoLone" src="trailPhotos/archeology-map.jpg">
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='lowerEmeraldTrail'">
-                    <div class="trailPhoto lowerEmeraldPhoto" @click="page='lowerEmeraldImages'; showSlides(1) ">
+                    <div class="trailPhoto lowerEmeraldPhoto">
                         <img class="backArrow" src="icons/arrow_back.svg" @click="page='trails'">
                         <img class="circleBtn expand" src="icons/expand.svg" @click="page='lowerEmeraldImages'">
                     </div>
@@ -925,9 +947,10 @@
                             <p class="trailsIconText">No Permit Required</p>
                         </div>
                     </div>
-                    <div class="push"></div>
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='lowerEmeraldImages'" class="blackBack">
                     <img class="backX" src="icons/whiteX.svg" @click="page='lowerEmeraldTrail'">
                     <div class="mySlides3 fade">
@@ -968,15 +991,19 @@
                         <span class="dot" @click="currentSlide(5)"></span>
                     </div>
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='lowerEmeraldMap'" class="blackBack">
                     <img class="backX" src="icons/whiteX.svg" @click="page='lowerEmeraldTrail'">
                     <a href="trailPhotos/lower-emerald-pool-map.jpg" download="LowerEmeraldTrailMap"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
                     <img class="trailPhotoLone" src="trailPhotos/lower-emerald-pool-map.jpg">
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='grottoTrail'">
-                    <div class="trailPhoto grottoPhoto" @click="page='grottoImages'; currentSlide(0)">
+                    <div class="trailPhoto grottoPhoto">
                         <img class="backArrow" src="icons/arrow_back.svg" @click="page='trails'">
                         <img class="circleBtn expand" src="icons/expand.svg" @click="page='grottoImages'">
                     </div>
@@ -1015,9 +1042,10 @@
                             <p class="trailsIconText">No Permit Required</p>
                         </div>
                     </div>
-                    <div class="push"></div>
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='grottoImages'" class="blackBack">
                     <img class="backX" src="icons/whiteX.svg" @click="page='grottoTrail'">
                     <div class="mySlides4 fade">
@@ -1058,15 +1086,19 @@
                         <span class="dot" @click="currentSlide(5)"></span>
                     </div>
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='grottoMap'" class="blackBack">
                     <img class="backX" src="icons/whiteX.svg" @click="page='grottoTrail'">
                     <a href="trailPhotos/the-grotto-trail-map.jpg" download="GrottoTrailMap"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
                     <img class="trailPhotoLone" src="trailPhotos/the-grotto-trail-map.jpg">
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='riversideTrail'">
-                    <div class="trailPhoto riversidePhoto" @click="page='riversideImages'; currentSlide(0)">
+                    <div class="trailPhoto riversidePhoto">
                         <img class="backArrow" src="icons/arrow_back.svg" @click="page='trails'">
                         <img class="circleBtn expand" src="icons/expand.svg" @click="page='riversideImages'">
                     </div>
@@ -1105,9 +1137,10 @@
                             <p class="trailsIconText">No Permit Required</p>
                         </div>
                     </div>
-                    <div class="push"></div>
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='riversideImages'" class="blackBack">
                     <img class="backX" src="icons/whiteX.svg" @click="page='riversideTrail'">
                     <div class="mySlides5 fade">
@@ -1148,15 +1181,19 @@
                         <span class="dot" @click="currentSlide(5)"></span>
                     </div>
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='riversideMap'" class="blackBack">
                     <img class="backX" src="icons/whiteX.svg" @click="page='riversideTrail'">
                     <a href="trailPhotos/riverside-walk-map.jpg" download="RiversideWalkMap"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
                     <img class="trailPhotoLone" src="trailPhotos/riverside-walk-map.jpg">
                 </div>
+                </transition>
                 
+                <transition name="fade">
                 <div v-if="page=='watchmanTrail'">
-                    <div class="trailPhoto watchmanPhoto" @click="page='watchmanImages'; currentSlide(0)">
+                    <div class="trailPhoto watchmanPhoto">
                         <img class="backArrow" src="icons/arrow_back.svg" @click="page='trails'">
                         <img class="circleBtn expand" src="icons/expand.svg" @click="page='watchmanImages'">
                     </div>
@@ -1195,9 +1232,10 @@
                             <p class="trailsIconText">No Permit Required</p>
                         </div>
                     </div>
-                    <div class="push"></div>
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='watchmanImages'" class="blackBack">
                     <img class="backX" src="icons/whiteX.svg" @click="page='watchmanTrail'">
                     <div class="mySlides6 fade">
@@ -1220,15 +1258,19 @@
                         <span class="dot" @click="currentSlide(2)"></span>
                     </div>
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='watchmanMap'" class="blackBack">
                     <img class="backX" src="icons/whiteX.svg" @click="page='watchmanTrail'">
                     <a href="trailPhotos/Watchman-Trail-map.jpg" download="WathcmanTrailMap"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
                     <img class="trailPhotoLone" src="trailPhotos/Watchman-Trail-map.jpg">
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='sandbenchTrail'">
-                    <div class="trailPhoto sandbenchPhoto" @click="page='sandbenchImages'; currentSlide(0)">
+                    <div class="trailPhoto sandbenchPhoto">
                         <img class="backArrow" src="icons/arrow_back.svg" @click="page='trails'">
                         <img class="circleBtn expand" src="icons/expand.svg" @click="page='sandbenchImages'">
                     </div>
@@ -1267,9 +1309,10 @@
                             <p class="trailsIconText">No Permit Required</p>
                         </div>
                     </div>
-                    <div class="push"></div>
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='sandbenchImages'" class="blackBack">
                     <img class="backX" src="icons/whiteX.svg" @click="page='sandbenchTrail'">
                     <div class="mySlides7 fade">
@@ -1310,15 +1353,19 @@
                         <span class="dot" @click="currentSlide(5)"></span>
                     </div>
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='sandbenchMap'" class="blackBack">
                     <img class="backX" src="icons/whiteX.svg" @click="page='sandbenchTrail'">
                     <a href="trailPhotos/Sandbench-Trail-map.jpg" download="SandbenchTrailMap"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
                     <img class="trailPhotoLone" src="trailPhotos/Sandbench-Trail-map.jpg">
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='upperEmeraldTrail'">
-                    <div class="trailPhoto upperEmeraldPhoto" @click="page='upperEmeraldImages'; currentSlide(0)">
+                    <div class="trailPhoto upperEmeraldPhoto">
                         <img class="backArrow" src="icons/arrow_back.svg" @click="page='trails'">
                         <img class="circleBtn expand" src="icons/expand.svg" @click="page='upperEmeraldImages'">
                     </div>
@@ -1357,9 +1404,10 @@
                             <p class="trailsIconText">No Permit Required</p>
                         </div>
                     </div>
-                    <div class="push"></div>
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='upperEmeraldImages'" class="blackBack">
                     <img class="backX" src="icons/whiteX.svg" @click="page='upperEmeraldTrail'">
                     <div class="mySlides8 fade">
@@ -1400,15 +1448,19 @@
                         <span class="dot" @click="currentSlide(5)"></span>
                     </div>
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='upperEmeraldMap'" class="blackBack">
                     <img class="backX" src="icons/whiteX.svg" @click="page='upperEmeraldTrail'">
                     <a href="trailPhotos/Upper-Emerald-Pool-Trail-map.jpg" download="UpperEmeraldPoolTrailMap"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
                     <img class="trailPhotoLone" src="trailPhotos/Upper-Emerald-Pool-Trail-map.jpg">
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='kayentaTrail'">
-                    <div class="trailPhoto kayentaPhoto" @click="page='kayentaImages'; currentSlide(0)">
+                    <div class="trailPhoto kayentaPhoto">
                         <img class="backArrow" src="icons/arrow_back.svg" @click="page='trails'">
                         <img class="circleBtn expand" src="icons/expand.svg" @click="page='kayentaImages'">
                     </div>
@@ -1447,9 +1499,10 @@
                             <p class="trailsIconText">No Permit Required</p>
                         </div>
                     </div>
-                    <div class="push"></div>
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='kayentaImages'" class="blackBack">
                     <img class="backX" src="icons/whiteX.svg" @click="page='kayentaTrail'">
                     <div class="mySlides9 fade">
@@ -1490,15 +1543,19 @@
                         <span class="dot" @click="currentSlide(5)"></span>
                     </div>
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='kayentaMap'" class="blackBack">
                     <img class="backX" src="icons/whiteX.svg" @click="page='kayentaTrail'">
                     <a href="trailPhotos/Upper-Emerald-Pool-Trail-map.jpg" download="KayentaTrailMap"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
                     <img class="trailPhotoLone" src="trailPhotos/Kayenta-Trail-map.jpg">
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='canyonTrail'">
-                    <div class="trailPhoto canyonPhoto" @click="page='canyonImages'; currentSlide(0)">
+                    <div class="trailPhoto canyonPhoto">
                         <img class="backArrow" src="icons/arrow_back.svg" @click="page='trails'">
                         <img class="circleBtn expand" src="icons/expand.svg" @click="page='canyonImages'">
                     </div>
@@ -1537,9 +1594,10 @@
                             <p class="trailsIconText">No Permit Required</p>
                         </div>
                     </div>
-                    <div class="push"></div>
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='canyonImages'" class="blackBack">
                     <img class="backX" src="icons/whiteX.svg" @click="page='canyonTrail'">
                     <div class="mySlides10 fade">
@@ -1580,15 +1638,19 @@
                         <span class="dot" @click="currentSlide(5)"></span>
                     </div>
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='canyonMap'" class="blackBack">
                     <img class="backX" src="icons/whiteX.svg" @click="page='canyonTrail'">
                     <a href="trailPhotos/Upper-Emerald-Pool-Trail-map.jpg" download="CanyonOverlookTrailMap"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
                     <img class="trailPhotoLone" src="trailPhotos/Canyon-Overlook-Trail-map.jpg">
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='taylorTrail'">
-                    <div class="trailPhoto taylorPhoto" @click="page='taylorImages'; currentSlide(0)">
+                    <div class="trailPhoto taylorPhoto">
                         <img class="backArrow" src="icons/arrow_back.svg" @click="page='trails'">
                         <img class="circleBtn expand" src="icons/expand.svg" @click="page='taylorImages'">
                     </div>
@@ -1627,9 +1689,10 @@
                             <p class="trailsIconText">No Permit Required</p>
                         </div>
                     </div>
-                    <div class="push"></div>
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='taylorImages'" class="blackBack">
                     <img class="backX" src="icons/whiteX.svg" @click="page='taylorTrail'">
                     <div class="mySlides11 fade">
@@ -1670,15 +1733,19 @@
                         <span class="dot" @click="currentSlide(5)"></span>
                     </div>
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='taylorMap'" class="blackBack">
                     <img class="backX" src="icons/whiteX.svg" @click="page='taylorTrail'">
                     <a href="trailPhotos/Upper-Emerald-Pool-Trail-map.jpg" download="TaylorCreekTrailMap"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
                     <img class="trailPhotoLone" src="trailPhotos/Taylor-Creek-Trail-map.jpg">
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='timberTrail'">
-                    <div class="trailPhoto timberPhoto" @click="page='timberImages'; currentSlide(0)">
+                    <div class="trailPhoto timberPhoto">
                         <img class="backArrow" src="icons/arrow_back.svg" @click="page='trails'">
                         <img class="circleBtn expand" src="icons/expand.svg" @click="page='timberImages'">
                     </div>
@@ -1717,9 +1784,10 @@
                             <p class="trailsIconText">No Permit Required</p>
                         </div>
                     </div>
-                    <div class="push"></div>
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='timberImages'" class="blackBack">
                     <img class="backX" src="icons/whiteX.svg" @click="page='timberTrail'">
                     <div class="mySlides12 fade">
@@ -1727,15 +1795,19 @@
                         <a href="trailPhotos/timberCreek/timber-creek-overlook-trail-1.jpg" download="TimberCreekTrail"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
                     </div>
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='timberMap'" class="blackBack">
                     <img class="backX" src="icons/whiteX.svg" @click="page='timberTrail'">
                     <a href="trailPhotos/Upper-Emerald-Pool-Trail-map.jpg" download="TimberCreekTrailMap"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
                     <img class="trailPhotoLone" src="trailPhotos/Timber-Creek-Overlook-Trail-map.jpg">
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='angelsTrail'">
-                    <div class="trailPhoto angelsPhoto" @click="page='angelsImages'; currentSlide(0)">
+                    <div class="trailPhoto angelsPhoto">
                         <img class="backArrow" src="icons/arrow_back.svg" @click="page='trails'">
                         <img class="circleBtn expand" src="icons/expand.svg" @click="page='angelsImages'">
                     </div>
@@ -1774,9 +1846,10 @@
                             <p class="trailsIconText">No Permit Required</p>
                         </div>
                     </div>
-                    <div class="push"></div>
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='angelsImages'" class="blackBack">
                     <img class="backX" src="icons/whiteX.svg" @click="page='angelsTrail'">
                     <div class="mySlides13 fade">
@@ -1817,15 +1890,19 @@
                         <span class="dot" @click="currentSlide(5)"></span>
                     </div>
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='angelsMap'" class="blackBack">
                     <img class="backX" src="icons/whiteX.svg" @click="page='angelsTrail'">
                     <a href="trailPhotos/Angels-Landing-via-West-Rim-Trail-map.jpg" download="AngelsLandingTrailMap"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
                     <img class="trailPhotoLone" src="trailPhotos/Angels-Landing-via-West-Rim-Trail-map.jpg">
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='observationTrail'">
-                    <div class="trailPhoto observationPhoto" @click="page='observationImages'; currentSlide(0)">
+                    <div class="trailPhoto observationPhoto">
                         <img class="backArrow" src="icons/arrow_back.svg" @click="page='trails'">
                         <img class="circleBtn expand" src="icons/expand.svg" @click="page='observationImages'">
                     </div>
@@ -1864,9 +1941,10 @@
                             <p class="trailsIconText">No Permit Required</p>
                         </div>
                     </div>
-                    <div class="push"></div>
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='observationImages'" class="blackBack">
                     <img class="backX" src="icons/whiteX.svg" @click="page='observationTrail'">
                     <div class="mySlides14 fade">
@@ -1907,15 +1985,19 @@
                         <span class="dot" @click="currentSlide(5)"></span>
                     </div>
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='observationMap'" class="blackBack">
                     <img class="backX" src="icons/whiteX.svg" @click="page='observationTrail'">
                     <a href="trailPhotos/Observation-Point-via-East-Rim-Trail-map.jpg" download="ObservationPointTrailMap"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
                     <img class="trailPhotoLone" src="trailPhotos/Observation-Point-via-East-Rim-Trail-map.jpg">
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='narrowsTrail'">
-                    <div class="trailPhoto narrowsPhoto" @click="page='narrowsImages'; currentSlide(0)">
+                    <div class="trailPhoto narrowsPhoto">
                         <img class="backArrow" src="icons/arrow_back.svg" @click="page='trails'">
                         <img class="circleBtn expand" src="icons/expand.svg" @click="page='narrowsImages'">
                     </div>
@@ -1954,9 +2036,10 @@
                             <p class="trailsIconText">No Permit Required</p>
                         </div>
                     </div>
-                    <div class="push"></div>
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='narrowsImages'" class="blackBack">
                     <img class="backX" src="icons/whiteX.svg" @click="page='narrowsTrail'">
                     <div class="mySlides15 fade">
@@ -1985,12 +2068,15 @@
                         <span class="dot" @click="currentSlide(3)"></span>
                     </div>
                 </div>
+                </transition>
 
+                <transition name="fade">
                 <div v-if="page=='narrowsMap'" class="blackBack">
                     <img class="backX" src="icons/whiteX.svg" @click="page='narrowsTrail'">
                     <a href="trailPhotos/The-Narrows-via-Riverside-Walk-map.jpg" download="TheNarrowsMap"><img class="whiteDownload" src="icons/whiteDownload.svg"></a>
                     <img class="trailPhotoLone" src="trailPhotos/The-Narrows-via-Riverside-Walk-map.jpg">
                 </div>
+                </transition>
 
                 <!-- BOTTOM NAV -->
                 <div>

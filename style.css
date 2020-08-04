@@ -278,12 +278,9 @@ ul{
 .backArrow{
     width: 35px;
     height: 35px;
-    margin: 8px;
-}
-.backArrow{
-    width: 35px;
-    height: 35px;
-    margin: 8px;
+    position: absolute;
+    top: 8px;
+    left: 8px;
 }
 .backX{
     width: 16px;
@@ -558,6 +555,7 @@ h4{
     background-size: cover;
     height: 30vh;
     background-position: center;
+    z-index: 2000;
 }
 .parusPhoto{
     background-image: url("trailPhotos/parus/parus-trail-1.jpg");
@@ -760,4 +758,16 @@ h4{
 @keyframes fade {
   from {opacity: .4}
   to {opacity: 1}
+}
+
+.fade-enter-to {
+    transition: all .3s ease-in-out;
+}
+.fade-leave-active {
+    transition: all .2s ease-out;
+}
+.fade-enter, .fade-leave-to
+  /* .slide-fade-leave-active below version 2.1.8 */ {
+    transform: translateX(100%);
+    opacity: 0;
 }
