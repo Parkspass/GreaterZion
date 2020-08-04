@@ -1,7 +1,7 @@
 /*jshint esversion: 6 */
 
-const staticCacheName = 'site-static-v1'; // Need to change version number ANYTIME we change HTML or CSS files. This is how we get the app to update. The browser needs to detect a change in the service worker.
-const dynamicCacheName = 'site-dynamic-v1';
+const staticCacheName = 'site-static-v2'; // Need to change version number ANYTIME we change HTML or CSS files. This is how we get the app to update. The browser needs to detect a change in the service worker.
+const dynamicCacheName = 'site-dynamic-v2';
 const assets = [
     '/', // caches all reqeust responses from server
     '/index.html',
