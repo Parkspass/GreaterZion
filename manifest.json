@@ -39,7 +39,7 @@
             "purpose": "maskable"
         },
         {
-            "src": "pwaIcons/apple-touch-icon.png",
+            "src": "apple-touch-icon.png",
             "type": "image/png",
             "sizes": "180x180"
         },
