@@ -48,6 +48,13 @@ body, textarea{
 .push2{
     height: 20px;
 }
+.btnError{
+    height: 30px;
+    width: 200px;
+    color: white;
+    background-color: #28430A;
+    border-radius: 4px; 
+}
 
 /* HOME PAGE */
 #installContainer{
@@ -342,7 +349,7 @@ a{
     right: 10px;
 }
 .mapStatic{
-    background-image: url("Map\ photos/Entrances.jpg");
+    background-image: url("mapPhotos/Entrances.jpg");
     position: relative;
     top: 0;
     background-size: cover;
@@ -350,13 +357,13 @@ a{
     background-position: center;
 }
 .map2{
-    background-image: url("Map\ photos/Parking.jpg");
+    background-image: url("mapPhotos/Parking.jpg");
 }
 .map3{
-    background-image: url("Map\ photos/Shuttles.jpg");
+    background-image: url("mapPhotos/Shuttles.jpg");
 }
 .map4{
-    background-image: url("Map\ photos/Trails.jpg");
+    background-image: url("mapPhotos/Trails.jpg");
 }
 .svg{
     display: inline-block;
@@ -494,49 +501,49 @@ h4{
     background-position: center;
 }
 .parusPhoto{
-    background-image: url("trail\ photos/pa'rus/parus-trail-1.jpg");
+    background-image: url("trailPhotos/parus/parus-trail-1.jpg");
 }
 .archeologyPhoto{
-    background-image: url("trail\ photos/archeology/archeology-trail-1.jpg");
+    background-image: url("trailPhotos/archeology/archeology-trail-1.jpg");
 }
 .lowerEmeraldPhoto{
-    background-image: url("trail\ photos/lower emerald pool/emerald-pool-lower-1.jpg");
+    background-image: url("trailPhotos/lowerEmeraldPool/emerald-pool-lower-1.jpg");
 }
 .upperEmeraldPhoto{
-    background-image: url("trail\ photos/upper emerald pool/emerald-pool-upper-1.jpg");
+    background-image: url("trailPhotos/upperEmeraldPool/emerald-pool-upper-1.jpg");
 }
 .angelsPhoto{
-    background-image: url("trail\ photos/angels landing/angels-landing-zion-national-park-1.jpg");
+    background-image: url("trailPhotos/angelsLanding/angels-landing-zion-national-park-1.jpg");
 }
 .canyonPhoto{
-    background-image: url("trail\ photos/canyon overlook/zion-canyon-overlook-trail-1.jpg");
+    background-image: url("trailPhotos/canyonOverlook/zion-canyon-overlook-trail-1.jpg");
 }
 .grottoPhoto{
-    background-image: url("trail\ photos/grotto/grotto-trail-4.jpg");
+    background-image: url("trailPhotos/grotto/grotto-trail-4.jpg");
 }
 .kayentaPhoto{
-    background-image: url("trail\ photos/kayenta/kayenta-trail-1.jpg");
+    background-image: url("trailPhotos/kayenta/kayenta-trail-1.jpg");
 }
 .observationPhoto{
-    background-image: url("trail\ photos/observation point/observation-point-1.jpg");
+    background-image: url("trailPhotos/observationPoint/observation-point-1.jpg");
 }
 .riversidePhoto{
-    background-image: url("trail\ photos/riverside walk/river-side-walk-zion-1.jpg");
+    background-image: url("trailPhotos/riversideWalk/river-side-walk-zion-1.jpg");
 }
 .sandbenchPhoto{
-    background-image: url("trail\ photos/sandbench/sandbench-trail-1.jpg");
+    background-image: url("trailPhotos/sandbench/sandbench-trail-1.jpg");
 }
 .taylorPhoto{
-    background-image: url("trail\ photos/taylor creek/taylor-creek-hike-1.jpg");
+    background-image: url("trailPhotos/taylorCreek/taylor-creek-hike-1.jpg");
 }
 .narrowsPhoto{
-    background-image: url("trail\ photos/the narrows via riverside walk/the-narrows-1.jpg");
+    background-image: url("trailPhotos/theNarrows/the-narrows-1.jpg");
 }
 .timberPhoto{
-    background-image: url("trail\ photos/timber creek/timber-creek-overlook-trail-1.jpg");
+    background-image: url("trailPhotos/timberCreek/timber-creek-overlook-trail-1.jpg");
 }
 .watchmanPhoto{
-    background-image: url("trail\ photos/watchman/Watchman-Trail-Zion-National-Park-4.jpg");
+    background-image: url("trailPhotos/watchman/Watchman-Trail-Zion-National-Park-4.jpg");
 }
 .trailsGridContainer{
     display: grid;

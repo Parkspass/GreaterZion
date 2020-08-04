@@ -188,24 +188,24 @@ var app = new Vue({
         },
         entrancesClicked: function(){
             this.page = 'entrances';
-            history.pushState(this.previousPages, '', "index.html");
+            //history.pushState(this.previousPages, '', "index.html");
             this.loadEntrance();
             this.showInstallMessage = false;
         },
         parkingClicked: function(){
             this.page = 'parking';
-            history.pushState(this.previousPages, '', "index.html");            
+            //history.pushState(this.previousPages, '', "index.html");            
             this.loadParking();
             this.showInstallMessage = false;
         },
         shuttlesClicked: function(){
             this.page = 'shuttles';
-            history.pushState(this.previousPages, '', "index.html");            
+            //history.pushState(this.previousPages, '', "index.html");            
             this.showInstallMessage = false;
         },
         trailsClicked: function(){
             this.page = 'trails';
-            history.pushState(this.previousPages, '', "index.html");            
+            //history.pushState(this.previousPages, '', "index.html");            
             this.loadTrails();
             this.showInstallMessage = false;
         },
@@ -331,6 +331,10 @@ var app = new Vue({
                 this.entranceLastUpdate = hours.toString() + ":" + minutes.toString() + " " + TOD;
             }).catch(error =>{
                 vm = "Fetch " + error;
+                this.southEntranceSvg = "icons/entrance_grey.svg";
+                this.southEntranceSvgStroke = "#B5B5B5";
+                this.SouthEntranceBusiness = "";
+                this.entranceLastUpdate = "(Connect to wifi to update)";
             });
             axios.get("https://trailwaze.info/zion/vehicleTraffic_request.php?site=zioneastin").then(response =>{
                 this.EastEntranceStat = response.data.zioneastin.rotate100;
@@ -351,6 +355,9 @@ var app = new Vue({
                 this.setStop("eastEntranceLine", 8, this.EastEntranceStat);
             }).catch(error =>{
                 vm = "Fetch " + error;
+                this.eastEntranceSvg = "icons/entrance_grey.svg";
+                this.eastEntranceSvgStroke = "#B5B5B5";
+                this.EastEntranceBusiness = "";
             });
             axios.get("https://trailwaze.info/zion/vehicleTraffic_request.php?site=zionbridge").then(response =>{
                 this.RiverEntranceStat = response.data.zionbridge.rotate100;
@@ -376,6 +383,14 @@ var app = new Vue({
                 this.setStop("kolobEntranceLine", 8, 1);
             }).catch(error =>{
                 vm = "Fetch " + error;
+
+                this.riverEntranceSvg = "icons/entrance_grey.svg";
+                this.riverEntranceSvgStroke = "#B5B5B5";
+                this.RiverEntranceBusiness = "";
+
+                this.kolobEntranceSvg = "icons/entrance_grey.svg";
+                this.kolobEntranceSvgStroke = "#B5B5B5";
+                this.KolobEntranceBusiness = "Closed";
             });
             // axios.get("kolob parking php request here").then(response => {
             //     this.RiverEntranceStat = response.data.zionbridge.rotate100;
@@ -442,6 +457,8 @@ var app = new Vue({
                 this.parkingLastUpdate = hours.toString() + ":" + minutes.toString() + " " + TOD;
             }).catch(error => {
                 vm = "Fetch " + error;
+                this.vcStat = 200;this.museumStat = 200;this.rvStat=200;this.springdaleStat=200;this.kolobVcStat=200;
+                this.loadParkingSvgsOffline();
             });
         },
         loadParkingSvgs: function(){
@@ -486,6 +503,39 @@ var app = new Vue({
             }else{
                 return ['As busy as it gets', 'icons/parking_pink.svg', '#EF6A6E'];
             }
+        },
+        loadParkingSvgsOffline: function(){
+            this.parkingLastUpdate = "(Connect to wifi to update)";
+            var VC = this.vcStat / 100;
+            this.vcBusiness = "";
+            this.vcParkingSvg = 'icons/parking_grey.svg';
+            this.vcParkingSvgStroke = '#B5B5B5';
+
+            var M = this.museumStat / 100;
+            this.museumBusiness = "";
+            this.museumParkingSvg = 'icons/parking_grey.svg';
+            this.museumParkingSvgStroke = '#B5B5B5';
+
+            var RV = this.rvStat / 100;
+            this.rvBusiness = "";
+            this.vcParkingSvg = 'icons/parking_grey.svg';
+            this.rvParkingSvgStroke = '#B5B5B5';
+
+            var SD = this.springdaleStat / 100;
+            this.springdaleBusiness = "";
+            this.vcParkingSvg = 'icons/parking_grey.svg';
+            this.springdaleParkingSvgStroke = '#B5B5B5';
+
+            var KVC = this.kolobVcStat / 100;
+            this.kolobVcBusiness = "";
+            this.vcParkingSvg = 'icons/parking_grey.svg';
+            this.kolobVcParkingSvgStroke = '#B5B5B5';
+
+            this.setStop("vcLine", 8, 1);
+            this.setStop("museumLine", 8, 1);
+            this.setStop("rvLine", 8, 1);
+            this.setStop("springdaleLine", 8, 1);
+            this.setStop("kolobVcLine", 8, 1);
         },
         loadTrails: function(){
             var P = this.parusStat/100;
