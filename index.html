@@ -17,7 +17,7 @@
     <title>Greater Zion</title>
 
     <!-- PWA STUFF -->
-    <link rel="manifest" href="/manifest.json">
+    <link rel='manifest' href='/manifest.json'>
     <link rel="apple-touch-icon" href="apple-icon-iphone.png">
     <link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
@@ -111,7 +111,7 @@
                         </div>
                         <div class="arrow-up"></div>
                     </div>
-                    <div class="push2"></div>
+                    <div></div>
                 </div>
                 </transition>
 
@@ -119,6 +119,7 @@
                     <img class="backArrow" src="icons/arrow_back.svg" @click="page='home'">
                     <img id="staticMapTab" src="photos/zion_national_park_map.jpg">
                     <a href="photos/zion_national_park_map.jpg" download="ZionMap"><img id="staticMapDownload" class="circleBtn download" src="icons/download.svg"></a>
+                    <div class="push"></div>
                 </div>
                 
                 <transition name="fade">
@@ -188,7 +189,7 @@
                         <h3 class="contentTitle">Entrances</h3>
                         <div class="updateNowWrapper">
                             <div class="updateTime">Last updated: {{entranceLastUpdate}}</div>
-                            <div class="updateNowBtn" @click="loadEntrance()">UPDATE NOW</div>
+                            <div class="updateNowBtn" @click="resetEntranceAnimation();">UPDATE NOW</div>
                         </div>
                         <div class="lineWrapper">
                             <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
@@ -247,6 +248,7 @@
                             </div>
                         </div>
                     </div>
+                    <div class="push"></div>
                 </div>
                 </transition>
 
@@ -276,7 +278,7 @@
                             <div class="lineWrapper2 moreLines">
                                 <h5>Zion Canyon</h5>
                                 <h5>Visitor Center</h5>
-                                <p class="yesterdayTimes">Yesterday: Full @ {{vcFullTime}} - Open @ {{vcOpenTime}}</p>
+                                <p class="yesterdayTimes">Yesterday: {{vcFullTime}}{{vcOpenTime}}</p>
                             </div>
                             <div class="lineWrapper3">
                                 <p>{{vcBusiness}}</p>
@@ -343,6 +345,7 @@
                             </div>
                         </div></a>
                     </div>
+                    <div class="pushBigger"></div>
                 </div>
                 </transition>
 
@@ -428,6 +431,7 @@
                             </div>
                         </div>
                     </div>
+                    <div class="push"></div>
                 </div>
                 </transition>
 
@@ -711,8 +715,8 @@
                                 <p>{{narrowsBusiness}}</p>
                             </div>
                         </div>
-                        <div class="push"></div>
                     </div>
+                    <div class="push2"></div>
                 </div>
                 </transition>
 
@@ -762,36 +766,28 @@
 
                 <transition name="fade">
                 <div v-if="page=='parusImages'" class="blackBack">
-                    <img class="backX" src="icons/whiteX.svg" @click="page='parusTrail'">
-                    <div class="mySlides fade">
-                        <div class="numbertext">1 / 5</div>
+                    <img class="backX" src="icons/whiteX.svg" @click="page='parusTrail'; slideIndex=1">
+                    <div class="numbertext">{{slideIndex}} of 5</div>
+                    <div class="mySlides fade">      
                         <img class="trailPhotoLone" src="trailPhotos/parus/parus-trail-1.jpg">
                         <a href="trailPhotos/parus/parus-trail-1.jpg" download="Pa'rusTrail1"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
                     </div>
                     <div class="mySlides fade">
-                        <div class="numbertext">2 / 5</div>
                         <img class="trailPhotoLone" src="trailPhotos/parus/parus-trail-2.jpg">
                         <a href="trailPhotos/parus/parus-trail-2.jpg" download="Pa'rusTrail2"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
                     </div>
                     <div class="mySlides fade">
-                        <div class="numbertext">3 / 5</div>
                         <img class="trailPhotoLone" src="trailPhotos/parus/parus-trail-3.jpg">
                         <a href="trailPhotos/parus/parus-trail-3.jpg" download="Pa'rusTrail3"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
                     </div>
                     <div class="mySlides fade">
-                        <div class="numbertext">4 / 5</div>
                         <img class="trailPhotoLone" src="trailPhotos/parus/parus-trail-4.jpg">
                         <a href="trailPhotos/parus/parus-trail-4.jpg" download="Pa'rusTrail4"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
                     </div>
                     <div class="mySlides fade">
-                        <div class="numbertext">5 / 5</div>
                         <img class="trailPhotoLone" src="trailPhotos/parus/parus-trail-5.jpg">
                         <a href="trailPhotos/parus/parus-trail-5.jpg" download="Pa'rusTrail5"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
                     </div>
-                    <!-- Next and previous buttons -->
-                    <a class="prev" @click="plusSlides(-1)">&#10094;</a>
-                    <a class="next" @click="plusSlides(1)">&#10095;</a>
-                    <br>
                     <!-- The dots/circles -->
                     <div class="dotContainer">
                         <span class="dot" @click="currentSlide(1)"></span>
@@ -883,10 +879,6 @@
                         <img class="trailPhotoLone" src="trailPhotos/archeology/archeology-trail-5.jpg">
                         <a href="trailPhotos/archeology/archeology-trail-5.jpg" download="ArcheologyTrail5"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
                     </div>
-                    <!-- Next and previous buttons -->
-                    <a class="prev" @click="plusSlides(-1)">&#10094;</a>
-                    <a class="next" @click="plusSlides(1)">&#10095;</a>
-                    <br>
                     <!-- The dots/circles -->
                     <div class="dotContainer">
                         <span class="dot" @click="currentSlide(1)"></span>
@@ -978,10 +970,6 @@
                         <img class="trailPhotoLone" src="trailPhotos/lowerEmeraldPool/emerald-pool-lower-5.jpg">
                         <a href="trailPhotos/lowerEmeraldPool/emerald-pool-lower-5.jpg" download="LowerEmeraldTrail5"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
                     </div>
-                    <!-- Next and previous buttons -->
-                    <a class="prev" @click="plusSlides(-1)">&#10094;</a>
-                    <a class="next" @click="plusSlides(1)">&#10095;</a>
-                    <br>
                     <!-- The dots/circles -->
                     <div class="dotContainer">
                         <span class="dot" @click="currentSlide(1)"></span>
@@ -1073,10 +1061,6 @@
                         <img class="trailPhotoLone" src="trailPhotos/grotto/grotto-trail-5.jpg">
                         <a href="trailPhotos/grotto/grotto-trail-5.jpg" download="GrottoTrail5"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
                     </div>
-                    <!-- Next and previous buttons -->
-                    <a class="prev" @click="plusSlides(-1)">&#10094;</a>
-                    <a class="next" @click="plusSlides(1)">&#10095;</a>
-                    <br>
                     <!-- The dots/circles -->
                     <div class="dotContainer">
                         <span class="dot" @click="currentSlide(1)"></span>
@@ -1168,10 +1152,6 @@
                         <img class="trailPhotoLone" src="trailPhotos/riversideWalk/river-side-walk-zion-5.jpg">
                         <a href="trailPhotos/riversideWalk/river-side-walk-zion-5.jpg" download="RiversideWalk5"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
                     </div>
-                    <!-- Next and previous buttons -->
-                    <a class="prev" @click="plusSlides(-1)">&#10094;</a>
-                    <a class="next" @click="plusSlides(1)">&#10095;</a>
-                    <br>
                     <!-- The dots/circles -->
                     <div class="dotContainer">
                         <span class="dot" @click="currentSlide(1)"></span>
@@ -1248,10 +1228,6 @@
                         <img class="trailPhotoLone" src="trailPhotos/watchman/Watchman-Trail-Zion-National-Park-5.jpg">
                         <a href="trailPhotos/watchman/Watchman-Trail-Zion-National-Park-5.jpg" download="WatchmanTrail2"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
                     </div>
-                    <!-- Next and previous buttons -->
-                    <a class="prev" @click="plusSlides(-1)">&#10094;</a>
-                    <a class="next" @click="plusSlides(1)">&#10095;</a>
-                    <br>
                     <!-- The dots/circles -->
                     <div class="dotContainer">
                         <span class="dot" @click="currentSlide(1)"></span>
@@ -1340,10 +1316,6 @@
                         <img class="trailPhotoLone" src="trailPhotos/sandbench/sandbench-trail-5.jpg">
                         <a href="trailPhotos/sandbench/sandbench-trail-5.jpg" download="SandbenchTrail5"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
                     </div>
-                    <!-- Next and previous buttons -->
-                    <a class="prev" @click="plusSlides(-1)">&#10094;</a>
-                    <a class="next" @click="plusSlides(1)">&#10095;</a>
-                    <br>
                     <!-- The dots/circles -->
                     <div class="dotContainer">
                         <span class="dot" @click="currentSlide(1)"></span>
@@ -1435,10 +1407,6 @@
                         <img class="trailPhotoLone" src="trailPhotos/upperEmeraldPool/emerald-pool-upper-5.jpg">
                         <a href="trailPhotos/upperEmeraldPool/emerald-pool-upper-5.jpg" download="UpperEmeraldPoolTrail5"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
                     </div>
-                    <!-- Next and previous buttons -->
-                    <a class="prev" @click="plusSlides(-1)">&#10094;</a>
-                    <a class="next" @click="plusSlides(1)">&#10095;</a>
-                    <br>
                     <!-- The dots/circles -->
                     <div class="dotContainer">
                         <span class="dot" @click="currentSlide(1)"></span>
@@ -1530,10 +1498,6 @@
                         <img class="trailPhotoLone" src="trailPhotos/kayenta/kayenta-trail-5.jpg">
                         <a href="trailPhotos/kayenta/kayenta-trail-5.jpg" download="KayentaTrail5"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
                     </div>
-                    <!-- Next and previous buttons -->
-                    <a class="prev" @click="plusSlides(-1)">&#10094;</a>
-                    <a class="next" @click="plusSlides(1)">&#10095;</a>
-                    <br>
                     <!-- The dots/circles -->
                     <div class="dotContainer">
                         <span class="dot" @click="currentSlide(1)"></span>
@@ -1625,10 +1589,6 @@
                         <img class="trailPhotoLone" src="trailPhotos/canyonOverlook/zion-canyon-overlook-trail-5.jpg">
                         <a href="trailPhotos/canyonOverlook/zion-canyon-overlook-trail-5.jpg" download="CanyonOverlookTrail5"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
                     </div>
-                    <!-- Next and previous buttons -->
-                    <a class="prev" @click="plusSlides(-1)">&#10094;</a>
-                    <a class="next" @click="plusSlides(1)">&#10095;</a>
-                    <br>
                     <!-- The dots/circles -->
                     <div class="dotContainer">
                         <span class="dot" @click="currentSlide(1)"></span>
@@ -1720,10 +1680,6 @@
                         <img class="trailPhotoLone" src="trailPhotos/taylorCreek/taylor-creek-hike-5.jpg">
                         <a href="trailPhotos/taylorCreek/taylor-creek-hike-5.jpg" download="TaylorCreekTrail5"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
                     </div>
-                    <!-- Next and previous buttons -->
-                    <a class="prev" @click="plusSlides(-1)">&#10094;</a>
-                    <a class="next" @click="plusSlides(1)">&#10095;</a>
-                    <br>
                     <!-- The dots/circles -->
                     <div class="dotContainer">
                         <span class="dot" @click="currentSlide(1)"></span>
@@ -1877,10 +1833,6 @@
                         <img class="trailPhotoLone" src="trailPhotos/angelsLanding/angels-landing-zion-national-park-5.jpg">
                         <a href="trailPhotos/angelsLanding/angels-landing-zion-national-park-5.jpg" download="AngelsLandingTrail5"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
                     </div>
-                    <!-- Next and previous buttons -->
-                    <a class="prev" @click="plusSlides(-1)">&#10094;</a>
-                    <a class="next" @click="plusSlides(1)">&#10095;</a>
-                    <br>
                     <!-- The dots/circles -->
                     <div class="dotContainer">
                         <span class="dot" @click="currentSlide(1)"></span>
@@ -1972,10 +1924,6 @@
                         <img class="trailPhotoLone" src="trailPhotos/observationPoint/observation-point-5.jpg">
                         <a href="trailPhotos/observationPoint/observation-point-5.jpg" download="ObservationPointTrail5"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
                     </div>
-                    <!-- Next and previous buttons -->
-                    <a class="prev" @click="plusSlides(-1)">&#10094;</a>
-                    <a class="next" @click="plusSlides(1)">&#10095;</a>
-                    <br>
                     <!-- The dots/circles -->
                     <div class="dotContainer">
                         <span class="dot" @click="currentSlide(1)"></span>
@@ -2057,10 +2005,6 @@
                         <img class="trailPhotoLone" src="trailPhotos/theNarrows/the-narrows-3.jpg">
                         <a href="trailPhotos/theNarrows/the-narrows-3.jpg" download="TheNarrows3"><img class="whiteDownload lift" src="icons/whiteDownload.svg"></a>
                     </div>
-                    <!-- Next and previous buttons -->
-                    <a class="prev" @click="plusSlides(-1)">&#10094;</a>
-                    <a class="next" @click="plusSlides(1)">&#10095;</a>
-                    <br>
                     <!-- The dots/circles -->
                     <div class="dotContainer">
                         <span class="dot" @click="currentSlide(1)"></span>

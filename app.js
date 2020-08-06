@@ -188,13 +188,11 @@ var app = new Vue({
         },
         entrancesClicked: function(){
             this.page = 'entrances';
-            //history.pushState(this.previousPages, '', "index.html");
             this.loadEntrance();
             this.showInstallMessage = false;
         },
         parkingClicked: function(){
-            this.page = 'parking';
-            //history.pushState(this.previousPages, '', "index.html");            
+            this.page = 'parking';         
             this.loadParking();
             this.showInstallMessage = false;
         },
@@ -204,8 +202,7 @@ var app = new Vue({
             this.showInstallMessage = false;
         },
         trailsClicked: function(){
-            this.page = 'trails';
-            //history.pushState(this.previousPages, '', "index.html");            
+            this.page = 'trails';        
             this.loadTrails();
             this.showInstallMessage = false;
         },
@@ -292,11 +289,31 @@ var app = new Vue({
 				console.log(err);
 			}
 			return ret;
-		},
+        },
+        getUpdateTime: function(){
+            let date = new Date();
+            let TOD = 'AM';
+            let hours = date.getHours();
+            if(hours>=12){
+                TOD = 'PM';
+                if(hours>=13){
+                    hours -= 12;
+                }
+            }
+            if(hours==0){
+                hours=12;
+            }
+            let minutes = date.getMinutes();
+            if(minutes < 10){
+                minutes = "0" + minutes.toString();
+            }
+            return hours.toString() + ":" + minutes.toString() + " " + TOD;
+        },
         loadEntrance: function(){
             var vm = this;
             axios.get("https://trailwaze.info/zion/vehicleTraffic_request.php?site=zionsouthin").then(response =>{
                 this.SouthEntranceStat = response.data.zionsouthin.rotate100;
+                console.log("fetch called")
                 if(this.SouthEntranceStat < 33){
                     this.southEntranceSvg = "icons/entrance_green.svg";
                     this.southEntranceSvgStroke = "#749D4C";
@@ -312,23 +329,8 @@ var app = new Vue({
                 }
                 this.SouthEntranceStat /= 100;
                 this.setStop("southEntranceLine", 8, this.SouthEntranceStat);
-                let date = new Date();
-                let TOD = 'AM';
-                let hours = date.getHours();
-                if(hours>=12){
-                    TOD = 'PM';
-                    if(hours>=13){
-                        hours -= 12;
-                    }
-                }
-                if(hours==0){
-                    hours=12;
-                }
-                let minutes = date.getMinutes();
-                if(minutes < 10){
-                    minutes = "0" + minutes.toString();
-                }
-                this.entranceLastUpdate = hours.toString() + ":" + minutes.toString() + " " + TOD;
+                
+                this.entranceLastUpdate = this.getUpdateTime();
             }).catch(error =>{
                 vm = "Fetch " + error;
                 this.southEntranceSvg = "icons/entrance_grey.svg";
@@ -380,7 +382,7 @@ var app = new Vue({
                 this.kolobEntranceSvg = "icons/entrance_grey.svg";
                 this.kolobEntranceSvgStroke = "#B5B5B5";
                 this.KolobEntranceBusiness = "Closed";
-                this.setStop("kolobEntranceLine", 8, 1);
+                this.setStop("kolobEntranceLine", 8, .01);
             }).catch(error =>{
                 vm = "Fetch " + error;
 
@@ -413,12 +415,34 @@ var app = new Vue({
             //     vm = "Fetch " + error;
             // });
         },
+        resetEntranceAnimation: function(){
+            // document.getElementById("southEntranceLine").style.animation = "null";
+            // document.getElementById("eastEntranceLine").style.animation = "null";
+            // document.getElementById("riverEntranceLine").style.animation = "null";
+            // document.getElementById("kolobEntranceLine").style.animation = "null";
+            // setTimeout(function(){
+            //     document.getElementById("southEntranceLine").style.animation = "null";
+            //     document.getElementById("eastEntranceLine").style.animation = "null";
+            //     document.getElementById("riverEntranceLine").style.animation = "null";
+            //     document.getElementById("kolobEntranceLine").style.animation = "null";
+            // },.2);
+            // this.loadEntrance();
+            this.entranceLastUpdate = this.getUpdateTime();
+        },
         loadParking: function(){
             axios.get("https://trailwaze.info/zion/request.php").then(response => {
                 //Visitor Center: Today
                 this.vcStat = this.getAPIData_safe(response.data, ["ParkingVisitorCenter", "Today", "count"], 0);
-                this.vcFullTime = this.getAPIData_safe(response.data, ["ParkingVisitorCenter", "Today", "full_time"], 0);
-                this.vcOpenTime = this.getAPIData_safe(response.data, ["ParkingVisitorCenter", "Today", "open_time"], 0);
+                var vcFullTime = this.getAPIData_safe(response.data, ["ParkingVisitorCenter", "Today", "full_time"], 0);
+                var vcOpenTime = this.getAPIData_safe(response.data, ["ParkingVisitorCenter", "Today", "open_time"], 0);
+                this.vcFullTime = "Full @ " + vcFullTime;
+                this.vcOpenTime = "- Open @ " + vcOpenTime;
+                if(vcFullTime == "UNK"){
+                    this.vcFullTime = "";
+                }
+                if(vcOpenTime == "UNK"){
+                    this.vcOpenTime = "";
+                }     
                 //Museum: Today
                 this.museumStat = this.getAPIData_safe(response.data, ["ParkingOverflow", "Today", "count"], 0);
                 this.museumFullTime = this.getAPIData_safe(response.data, ["ParkingOverflow", "Today", "full_time"], 0);
@@ -556,7 +580,7 @@ var app = new Vue({
             var OP = this.observationPointStat/100;
             var N = this.narrowsStat/100;
             var time = new Date().getHours();
-            if (time <= 9 || time >= 21 ){
+            if (time <= 8 || time >= 21 ){
                 P = A = LE = G = W = R = WL = SB = UE = K = CO = TC = TiC = AW = HC = OP = N = 0;
             }
 
@@ -676,6 +700,11 @@ var app = new Vue({
                 return ['As busy as it gets', 'fill: #EF6A6E', '#EF6A6E'];
             }
         },
-    },
+        swipe: function(dir){
+            if (dir = "Left"){
+                this.showSlides(this.slideIndex -= 1);
+            }
+        }
+    }
 });
 

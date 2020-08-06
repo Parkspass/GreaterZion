@@ -45,8 +45,11 @@ body, textarea{
 .push{
     height: 35px;
 }
+.pushBigger{
+    height: 70px;
+}
 .push2{
-    height: 20px;
+    height: 50px;
 }
 .btnError{
     height: 30px;
@@ -241,6 +244,7 @@ body, textarea{
     margin-top: 4px;
     position: absolute;
     top: 20%;
+    line-height: 14px;
 }
 #calendar{
     position: absolute;
@@ -323,7 +327,7 @@ a{
 
 /* bottom navigation tabs */
 .bottomNavBar {
-    position: fixed;
+    position: fixed !important;
     width: 100%;
     bottom: 0px;
 }
@@ -388,6 +392,22 @@ h5{
     font-size: 14px;
     font-weight: 500;
     float: right;
+    background-color: rgba(40, 67, 10, 0.2);
+    border-radius: 20px;
+    padding: 8px 10px;
+    cursor: pointer;
+}
+.updateNowBtn:active{
+    animation: colorChange 3s 1;
+    background-color: rgba(40, 67, 10, 0.548);
+}
+@keyframes colorChange{
+    0%      {background:rgba(40, 67, 10, 0.548);}
+    99.999% {background:rgba(40, 67, 10, 0.548);}
+    100%    {background:rgba(40, 67, 10, 0.2)}
+}
+.updateNowBtn:hover{
+    background-color: rgba(40, 67, 10, 0.349);
 }
 .parkingLink{
     color: black !important;
@@ -663,7 +683,7 @@ h4{
 }
 .trailPhotoLone{
     width: 100%;
-    height: 30vh;
+    max-height: 35vh;
     margin: auto;
     position: absolute;
     top: 0; left: 0; bottom: 0; right: 0;
@@ -708,15 +728,16 @@ h4{
 /* Number text (1/3 etc) */
 .numbertext {
   color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
+  font-size: 14px;
   position: absolute;
-  top: 35%;
-  width: 55px;
-  height: 30px;
-  background-color: rgba(0,0,0,0.9);
+  top: 16px;
   z-index: 5;
   text-align: center;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 45px;
 }
 
 .dotContainer{
@@ -740,34 +761,4 @@ h4{
 
 .active, .dot:hover {
   background-color: #717171;
-}
-
-/* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@-webkit-keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-}
-
-@keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-}
-
-.fade-enter-to {
-    transition: all .3s ease-in-out;
-}
-.fade-leave-active {
-    transition: all .2s ease-out;
-}
-.fade-enter, .fade-leave-to
-  /* .slide-fade-leave-active below version 2.1.8 */ {
-    transform: translateX(100%);
-    opacity: 0;
 }
