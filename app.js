@@ -336,7 +336,7 @@ var app = new Vue({
                 this.southEntranceSvg = "icons/entrance_grey.svg";
                 this.southEntranceSvgStroke = "#B5B5B5";
                 this.SouthEntranceBusiness = "";
-                this.entranceLastUpdate = "(Connect to wifi to update)";
+                this.entranceLastUpdate = "Update needs wifi";
             });
             axios.get("https://trailwaze.info/zion/vehicleTraffic_request.php?site=zioneastin").then(response =>{
                 this.EastEntranceStat = response.data.zioneastin.rotate100;
@@ -416,17 +416,100 @@ var app = new Vue({
             // });
         },
         resetEntranceAnimation: function(){
-            // document.getElementById("southEntranceLine").style.animation = "null";
-            // document.getElementById("eastEntranceLine").style.animation = "null";
-            // document.getElementById("riverEntranceLine").style.animation = "null";
-            // document.getElementById("kolobEntranceLine").style.animation = "null";
-            // setTimeout(function(){
-            //     document.getElementById("southEntranceLine").style.animation = "null";
-            //     document.getElementById("eastEntranceLine").style.animation = "null";
-            //     document.getElementById("riverEntranceLine").style.animation = "null";
-            //     document.getElementById("kolobEntranceLine").style.animation = "null";
-            // },.2);
-            // this.loadEntrance();
+            var vm = this;
+            axios.get("https://trailwaze.info/zion/vehicleTraffic_request.php?site=zionsouthin").then(response =>{
+                this.SouthEntranceStat = response.data.zionsouthin.rotate100;
+                console.log("fetch called")
+                if(this.SouthEntranceStat < 33){
+                    this.southEntranceSvg = "icons/entrance_green.svg";
+                    this.southEntranceSvgStroke = "#749D4C";
+                    this.SouthEntranceBusiness = "Not busy";
+                }else if(this.SouthEntranceStat < 66){
+                    this.southEntranceSvg = "icons/entrance_yellow.svg";
+                    this.southEntranceSvgStroke = "#FFCD31";
+                    this.SouthEntranceBusiness = "A little busy";
+                }else{
+                    this.southEntranceSvg = "icons/entrance_pink.svg";
+                    this.southEntranceSvgStroke = "#EF6A6E";
+                    this.SouthEntranceBusiness = "As busy as it gets";
+                }
+                this.SouthEntranceStat /= 100;
+                this.setStop("southEntranceLine", 8, this.SouthEntranceStat);
+                
+                this.entranceLastUpdate = this.getUpdateTime();
+            }).catch(error =>{
+                vm = "Fetch " + error;
+                this.southEntranceSvg = "icons/entrance_grey.svg";
+                this.southEntranceSvgStroke = "#B5B5B5";
+                this.SouthEntranceBusiness = "";
+                this.entranceLastUpdate = "Update needs wifi";
+            });
+            axios.get("https://trailwaze.info/zion/vehicleTraffic_request.php?site=zioneastin").then(response =>{
+                this.EastEntranceStat = response.data.zioneastin.rotate100;
+                if(this.EastEntranceStat < 33){
+                    this.eastEntranceSvg = "icons/entrance_green.svg";
+                    this.eastEntranceSvgStroke = "#749D4C";
+                    this.EastEntranceBusiness = "Not busy";
+                }else if(this.EastEntranceStat < 66){
+                    this.eastEntranceSvg = "icons/entrance_yellow.svg";
+                    this.eastEntranceSvgStroke = "#FFCD31";
+                    this.EastEntranceBusiness = "A little busy";
+                }else{
+                    this.eastEntranceSvg = "icons/entrance_pink.svg";
+                    this.eastEntranceSvgStroke = "#EF6A6E";
+                    this.EastEntranceBusiness = "As busy as it gets";
+                }
+                this.EastEntranceStat /= 100;
+                this.setStop("eastEntranceLine", 8, this.EastEntranceStat);
+            }).catch(error =>{
+                vm = "Fetch " + error;
+                this.eastEntranceSvg = "icons/entrance_grey.svg";
+                this.eastEntranceSvgStroke = "#B5B5B5";
+                this.EastEntranceBusiness = "";
+            });
+            axios.get("https://trailwaze.info/zion/vehicleTraffic_request.php?site=zionbridge").then(response =>{
+                this.RiverEntranceStat = response.data.zionbridge.rotate100;
+                if(this.RiverEntranceStat < 33){
+                    this.riverEntranceSvg = "icons/entrance_green.svg";
+                    this.riverEntranceSvgStroke = "#749D4C";
+                    this.RiverEntranceBusiness = "Not busy";
+                }else if(this.RiverEntranceStat < 66){
+                    this.riverEntranceSvg = "icons/entrance_yellow.svg";
+                    this.riverEntranceSvgStroke = "#FFCD31";
+                    this.RiverEntranceBusiness = "A little busy";
+                }else{
+                    this.riverEntranceSvg = "icons/entrance_pink.svg";
+                    this.riverEntranceSvgStroke = "#EF6A6E";
+                    this.RiverEntranceBusiness = "As busy as it gets";
+                }
+                this.RiverEntranceStat /= 100;
+                this.setStop("riverEntranceLine", 8, this.RiverEntranceStat);
+
+                this.kolobEntranceSvg = "icons/entrance_grey.svg";
+                this.kolobEntranceSvgStroke = "#B5B5B5";
+                this.KolobEntranceBusiness = "Closed";
+                this.setStop("kolobEntranceLine", 8, .01);
+            }).catch(error =>{
+                vm = "Fetch " + error;
+
+                this.riverEntranceSvg = "icons/entrance_grey.svg";
+                this.riverEntranceSvgStroke = "#B5B5B5";
+                this.RiverEntranceBusiness = "";
+
+                this.kolobEntranceSvg = "icons/entrance_grey.svg";
+                this.kolobEntranceSvgStroke = "#B5B5B5";
+                this.KolobEntranceBusiness = "Closed";
+            });
+            document.getElementById("southEntranceLine").style.animation = "null";
+            document.getElementById("eastEntranceLine").style.animation = "null";
+            document.getElementById("riverEntranceLine").style.animation = "null";
+            document.getElementById("kolobEntranceLine").style.animation = "null";
+            setTimeout(function(){
+                document.getElementById("southEntranceLine").style.animation = "";
+                document.getElementById("eastEntranceLine").style.animation = "";
+                document.getElementById("riverEntranceLine").style.animation = "";
+                document.getElementById("kolobEntranceLine").style.animation = "";
+            },.2);
             this.entranceLastUpdate = this.getUpdateTime();
         },
         loadParking: function(){
@@ -517,6 +600,172 @@ var app = new Vue({
             this.setStop("springdaleLine", 8, SD);
             this.setStop("kolobVcLine", 8, KVC);
         },
+        resetLoadParkingSvgs: function(){
+            var VC = this.vcStat / 100;
+            this.vcBusiness = this.loadParkingBusiness(VC)[0];
+            this.vcParkingSvg = this.loadParkingBusiness(VC)[1];
+            this.vcParkingSvgStroke = this.loadParkingBusiness(VC)[2];
+
+            var M = this.museumStat / 100;
+            this.museumBusiness = this.loadParkingBusiness(M)[0];
+            this.museumParkingSvg = this.loadParkingBusiness(M)[1];
+            this.museumParkingSvgStroke = this.loadParkingBusiness(M)[2];
+
+            var RV = this.rvStat / 100;
+            this.rvBusiness = this.loadParkingBusiness(RV)[0];
+            this.rvParkingSvg = this.loadParkingBusiness(RV)[1];
+            this.rvParkingSvgStroke = this.loadParkingBusiness(RV)[2];
+
+            var SD = this.springdaleStat / 100;
+            this.springdaleBusiness = this.loadParkingBusiness(SD)[0];
+            this.springdaleParkingSvg = this.loadParkingBusiness(SD)[1];
+            this.springdaleParkingSvgStroke = this.loadParkingBusiness(SD)[2];
+
+            var KVC = this.kolobVcStat / 100;
+            this.kolobVcBusiness = this.loadParkingBusiness(KVC)[0];
+            this.kolobVcParkingSvg = this.loadParkingBusiness(KVC)[1];
+            this.kolobVcParkingSvgStroke = this.loadParkingBusiness(KVC)[2];
+
+            this.setStop("vcLine", 8, VC);
+            this.setStop("museumLine", 8, M);
+            this.setStop("rvLine", 8, RV);
+            this.setStop("springdaleLine", 8, SD);
+            this.setStop("kolobVcLine", 8, KVC);
+
+            document.getElementById("vcLine").style.animation = "null";
+            document.getElementById("museumLine").style.animation = "null";
+            document.getElementById("rvLine").style.animation = "null";
+            document.getElementById("springdaleLine").style.animation = "null";
+            document.getElementById("kolobVcLine").style.animation = "null";
+            setTimeout(function(){
+                document.getElementById("vcLine").style.animation = "";
+                document.getElementById("museumLine").style.animation = "";
+                document.getElementById("rvLine").style.animation = "";
+                document.getElementById("springdaleLine").style.animation = "";
+                document.getElementById("kolobVcLine").style.animation = "";
+            },.2);
+            this.parkingLastUpdate = this.getUpdateTime();
+        },
+        resetLoadParkingSvgsOffline: function(){
+            this.parkingLastUpdate = "Update needs wifi";
+            var VC = this.vcStat / 100;
+            this.vcBusiness = "";
+            this.vcParkingSvg = 'icons/parking_grey.svg';
+            this.vcParkingSvgStroke = '#B5B5B5';
+
+            var M = this.museumStat / 100;
+            this.museumBusiness = "";
+            this.museumParkingSvg = 'icons/parking_grey.svg';
+            this.museumParkingSvgStroke = '#B5B5B5';
+
+            var RV = this.rvStat / 100;
+            this.rvBusiness = "";
+            this.vcParkingSvg = 'icons/parking_grey.svg';
+            this.rvParkingSvgStroke = '#B5B5B5';
+
+            var SD = this.springdaleStat / 100;
+            this.springdaleBusiness = "";
+            this.vcParkingSvg = 'icons/parking_grey.svg';
+            this.springdaleParkingSvgStroke = '#B5B5B5';
+
+            var KVC = this.kolobVcStat / 100;
+            this.kolobVcBusiness = "";
+            this.vcParkingSvg = 'icons/parking_grey.svg';
+            this.kolobVcParkingSvgStroke = '#B5B5B5';
+
+            this.setStop("vcLine", 8, 1);
+            this.setStop("museumLine", 8, 1);
+            this.setStop("rvLine", 8, 1);
+            this.setStop("springdaleLine", 8, 1);
+            this.setStop("kolobVcLine", 8, 1);
+
+            document.getElementById("vcLine").style.animation = "null";
+            document.getElementById("museumLine").style.animation = "null";
+            document.getElementById("rvLine").style.animation = "null";
+            document.getElementById("springdaleLine").style.animation = "null";
+            document.getElementById("kolobVcLine").style.animation = "null";
+            setTimeout(function(){
+                document.getElementById("vcLine").style.animation = "";
+                document.getElementById("museumLine").style.animation = "";
+                document.getElementById("rvLine").style.animation = "";
+                document.getElementById("springdaleLine").style.animation = "";
+                document.getElementById("kolobVcLine").style.animation = "";
+            },.2);
+        },
+        resetParkingAnimation: function(){
+            axios.get("https://trailwaze.info/zion/request.php").then(response => {
+                //Visitor Center: Today
+                this.vcStat = this.getAPIData_safe(response.data, ["ParkingVisitorCenter", "Today", "count"], 0);
+                var vcFullTime = this.getAPIData_safe(response.data, ["ParkingVisitorCenter", "Today", "full_time"], 0);
+                var vcOpenTime = this.getAPIData_safe(response.data, ["ParkingVisitorCenter", "Today", "open_time"], 0);
+                this.vcFullTime = "Full @ " + vcFullTime;
+                this.vcOpenTime = "- Open @ " + vcOpenTime;
+                if(vcFullTime == "UNK"){
+                    this.vcFullTime = "";
+                }
+                if(vcOpenTime == "UNK"){
+                    this.vcOpenTime = "";
+                }     
+                //Museum: Today
+                this.museumStat = this.getAPIData_safe(response.data, ["ParkingOverflow", "Today", "count"], 0);
+                this.museumFullTime = this.getAPIData_safe(response.data, ["ParkingOverflow", "Today", "full_time"], 0);
+                this.museumOpenTime = this.getAPIData_safe(response.data, ["ParkingOverflow", "Today", "open_time"], 0);
+                if(this.museumFullTime == "UNK"){
+                    this.museumFullTime = this.vcFullTime;
+                }
+                if(this.museumOpenTime == "UNK"){
+                    this.museumOpenTime = this.vcOpenTime;
+                }
+                //RV: Today
+                this.rvStat = this.getAPIData_safe(response.data, ["ParkingVisitorCenter", "Today", "count"], 0);
+                this.rvFullTime = this.vcFullTime;
+                this.rvOpenTime = this.vcOpenTime;
+                //Springdale: Today
+                this.springdaleStat = 0;
+                //Kolob Visitor Center
+                this.kolobVcStat = 'closed';
+                this.resetLoadParkingSvgs();
+            }).catch(error => {
+                vm = "Fetch " + error;
+                this.vcStat = 200;this.museumStat = 200;this.rvStat=200;this.springdaleStat=200;this.kolobVcStat=200;
+                this.resetLoadParkingSvgsOffline();
+            });
+        },
+        resetTrailAnimation: function(){
+            document.getElementById("parusLine").style.animation = "null";
+            document.getElementById("archeologyLine").style.animation = "null";
+            document.getElementById("lowerEmeraldLine").style.animation = "null";
+            document.getElementById("grottoLine").style.animation = "null";
+            document.getElementById("riversideLine").style.animation = "null";
+            document.getElementById("watchmanLine").style.animation = "null";
+            document.getElementById("sandBenchLine").style.animation = "null";
+            document.getElementById("upperEmeraldLine").style.animation = "null";
+            document.getElementById("kayentaLine").style.animation = "null";
+            document.getElementById("canyonOverlookLine").style.animation = "null";
+            document.getElementById("taylorCreekLine").style.animation = "null";
+            document.getElementById("timberCreekLine").style.animation = "null";
+            document.getElementById("angelsLandingWestLine").style.animation = "null";
+            document.getElementById("observationPointLine").style.animation = "null";
+            document.getElementById("narrowsLine").style.animation = "null";
+            setTimeout(function(){
+                document.getElementById("parusLine").style.animation = "";
+                document.getElementById("archeologyLine").style.animation = "";
+                document.getElementById("lowerEmeraldLine").style.animation = "";
+                document.getElementById("grottoLine").style.animation = "";
+                document.getElementById("riversideLine").style.animation = "";
+                document.getElementById("watchmanLine").style.animation = "";
+                document.getElementById("sandBenchLine").style.animation = "";
+                document.getElementById("upperEmeraldLine").style.animation = "";
+                document.getElementById("kayentaLine").style.animation = "";
+                document.getElementById("canyonOverlookLine").style.animation = "";
+                document.getElementById("taylorCreekLine").style.animation = "";
+                document.getElementById("timberCreekLine").style.animation = "";
+                document.getElementById("angelsLandingWestLine").style.animation = "";
+                document.getElementById("observationPointLine").style.animation = "";
+                document.getElementById("narrowsLine").style.animation = "";
+            },.2);
+            this.trailsLastUpdate = this.getUpdateTime();
+        },
         loadParkingBusiness: function(lot){
             if (isNaN(lot)){
                 return ['Closed', 'icons/parking_grey.svg', '#B5B5B5'];
@@ -529,7 +778,7 @@ var app = new Vue({
             }
         },
         loadParkingSvgsOffline: function(){
-            this.parkingLastUpdate = "(Connect to wifi to update)";
+            this.parkingLastUpdate = "Update needs wifi";
             var VC = this.vcStat / 100;
             this.vcBusiness = "";
             this.vcParkingSvg = 'icons/parking_grey.svg';
