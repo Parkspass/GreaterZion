@@ -2049,13 +2049,27 @@
     <script src="app.js"></script>
     
     <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <!--<script src="/__/firebase/7.16.0/firebase-app.js"></script>-->
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
 
     <!-- TODO: Add SDKs for Firebase products that you want to use
         https://firebase.google.com/docs/web/setup#available-libraries -->
-    <!--<script src="/__/firebase/7.16.0/firebase-analytics.js"></script>-->
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-analytics.js"></script>
 
-    <!-- Initialize Firebase -->
-    <!--<script src="/__/firebase/init.js"></script>-->
+    <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyBggiezDY2pm3d5RHjnAsJp7QS1t8CX1FM",
+        authDomain: "greaterzion-app.firebaseapp.com",
+        databaseURL: "https://greaterzion-app.firebaseio.com",
+        projectId: "greaterzion-app",
+        storageBucket: "greaterzion-app.appspot.com",
+        messagingSenderId: "618841775769",
+        appId: "1:618841775769:web:da612096dd2048e2e06208",
+        measurementId: "G-QV747DS96L"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    </script>
 </body>
 </html>
