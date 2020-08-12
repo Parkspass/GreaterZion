@@ -129,10 +129,10 @@
                     </div>
                     <div class="contentWrapper">
                         <h1 class="uTitle">Park Updates</h1>
-                        <p class="uSub">Park Shuttle Service Resumes July 1, 2020 - Tickets Required In Advance</p>
+                        <p class="uSub">Park Shuttle Service Resumed July 1, 2020 - Tickets Required In Advance</p>
                         <a href="https://www.recreation.gov/ticket/facility/tour/3010 "><img class="buyTicket" src="icons/buy-ticket-now.svg"></a>
-                        <p class="uText">Park Shuttle Service Resumes July 1, 2020 - Tickets Required In Advance
-                            Starting July 1, park shuttles will resume modified operations--tickets required. Book tickets in advance on Recreation.gov. 
+                        <p class="uText">Park Shuttle Service Resumed July 1, 2020 - Tickets Required In Advance
+                            Starting July 1, park shuttles resumed modified operations--tickets required. Book tickets in advance on Recreation.gov. 
                             Private vehicles are not allowed on the Zion Canyon Scenic Drive when shuttles are in operation. </p>
                         <a href="https://www.nps.gov/zion/planyourvisit/zion-canyon-shuttle-tickets.htm"><img class="linkImg" src="icons/linkImg.svg"><span class="linkText">View more alerts at nps.gov/zion.</span></a>
 
@@ -150,6 +150,8 @@
                             <li>Circulator buses can be boarded any time when in operation</li>
                             <li>Children under 2 years of age who can sit on a parent’s lap do not need a ticket</li>
                         </ul>
+                        <img class="shuttleCode" src="photos/qr-code-photo.jpg"></img>
+                        <p class="uText">Those with a QR code from recreation.gov will cross the bridge to hop on the shuttle.</p>
                         <p class="uText">Passengers will be transported by shuttle from stop #1 at the visitor
                                         center to stops along the Scenic Drive. Circulator buses will transport riders up and down the Scenic Drive during the day. Circulator buses do not travel back to the visitor center. When you are ready to return to the visitor center, take a shuttle that isn’t marked as a circulator.
                                         Note that once you return to the visitor center you cannot return to the Scenic Drive by shuttle without a new ticket and new boarding time.</p>
@@ -724,7 +726,7 @@
                 <div v-if="page=='parusTrail'">
                     <div class="trailPhoto parusPhoto">
                         <img class="backArrow" src="icons/arrow_back.svg" @click="page='trails'">
-                        <img class="circleBtn expand" src="icons/expand.svg" @click="page='parusImages'">
+                        <img class="circleBtn expand" src="icons/expand.svg" @click="page='parusImages'; 'currentSlide(1)'">
                     </div>
                     <div class="contentWrapper">
                         <h3 class="contentTitle">Pa'rus Trail</h3>
@@ -765,7 +767,7 @@
                 </transition>
 
                 <transition name="fade">
-                <div v-if="page=='parusImages'" class="blackBack">
+                <div v-if="page=='parusImages'" class="blackBack" id="modalContent">
                     <img class="backX" src="icons/whiteX.svg" @click="page='parusTrail'; slideIndex=1">
                     <div class="numbertext">{{slideIndex}} of 5</div>
                     <div class="mySlides fade">      
