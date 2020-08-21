@@ -194,7 +194,7 @@ body, textarea{
     background-position: center;
 }
 #trails{
-    background: url("photos/parus-trail-medium.jpg");
+    background: url(photos/parus-trail-medium.jpg);
     background-size: cover;
     height: 49%;
     border-radius: 4px;
@@ -235,7 +235,7 @@ body, textarea{
     line-height: 12px;
     font-weight: 500;
     position: absolute;
-    top: 8px;
+    top: 12px;
 }
 #updatesText{
     font-size: 14px;
@@ -243,20 +243,23 @@ body, textarea{
     margin: 0px;
     margin-top: 4px;
     position: absolute;
-    top: 20%;
+    top: 25%;
     line-height: 14px;
 }
 #calendar{
     position: absolute;
-    right: 4px;
-    bottom: 4px;
+    right: 6px;
+    bottom: 6px;
+    width: 30px;
+    height: auto;
 }
 #updateBold{
     font-size: 14px;
     font-weight: bold;
     margin: 2px 0px;
     position: absolute;
-    bottom: 0px;
+    bottom: 6px;
+    color: white;
 }
 .linkClass{
     width:100%;

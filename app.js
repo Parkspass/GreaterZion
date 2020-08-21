@@ -421,9 +421,9 @@ var app = new Vue({
                 this.RiverEntranceStat /= 100;
                 this.setStop("riverEntranceLine", 8, this.RiverEntranceStat);
 
-                this.kolobEntranceSvg = "icons/entrance_grey.svg";
-                this.kolobEntranceSvgStroke = "#B5B5B5";
-                this.KolobEntranceBusiness = "Closed";
+                this.kolobEntranceSvg = "icons/entrance_green.svg";
+                this.kolobEntranceSvgStroke = "#749D4C";
+                this.KolobEntranceBusiness = "Not busy";
                 this.setStop("kolobEntranceLine", 8, .01);
             }).catch(error =>{
                 vm = "Fetch " + error;
@@ -527,9 +527,9 @@ var app = new Vue({
                 this.RiverEntranceStat /= 100;
                 this.setStop("riverEntranceLine", 8, this.RiverEntranceStat);
 
-                this.kolobEntranceSvg = "icons/entrance_grey.svg";
-                this.kolobEntranceSvgStroke = "#B5B5B5";
-                this.KolobEntranceBusiness = "Closed";
+                this.kolobEntranceSvg = "icons/entrance_green.svg";
+                this.kolobEntranceSvgStroke = "#749D4C";
+                this.KolobEntranceBusiness = "Not busy";
                 this.setStop("kolobEntranceLine", 8, .01);
             }).catch(error =>{
                 vm = "Fetch " + error;
@@ -538,9 +538,9 @@ var app = new Vue({
                 this.riverEntranceSvgStroke = "#B5B5B5";
                 this.RiverEntranceBusiness = "";
 
-                this.kolobEntranceSvg = "icons/entrance_grey.svg";
-                this.kolobEntranceSvgStroke = "#B5B5B5";
-                this.KolobEntranceBusiness = "Closed";
+                this.kolobEntranceSvg = "icons/entrance_green.svg";
+                this.kolobEntranceSvgStroke = "#749D4C";
+                this.KolobEntranceBusiness = "Not busy";
             });
             document.getElementById("southEntranceLine").style.animation = "null";
             document.getElementById("eastEntranceLine").style.animation = "null";
@@ -631,7 +631,7 @@ var app = new Vue({
             this.springdaleParkingSvg = this.loadParkingBusiness(SD)[1];
             this.springdaleParkingSvgStroke = this.loadParkingBusiness(SD)[2];
 
-            var KVC = this.kolobVcStat / 100;
+            var KVC = .1 / 100;
             this.kolobVcBusiness = this.loadParkingBusiness(KVC)[0];
             this.kolobVcParkingSvg = this.loadParkingBusiness(KVC)[1];
             this.kolobVcParkingSvgStroke = this.loadParkingBusiness(KVC)[2];
