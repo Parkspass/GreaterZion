@@ -51,6 +51,9 @@ body, textarea{
 .push2{
     height: 50px;
 }
+.push3{
+    height: 60px;
+}
 .btnError{
     height: 30px;
     width: 200px;
@@ -177,6 +180,7 @@ body, textarea{
     height: 28vh;
     border-radius: 4px;
     overflow: hidden;
+    cursor: pointer;
 }
 #entrances{
     background: url("photos/south-entrance_medium.jpg");
@@ -288,11 +292,16 @@ ul{
     position: absolute;
     top: 8px;
     left: 8px;
+    cursor: pointer;
 }
 .backX{
     width: 16px;
     height: 16px;
     margin: 16px;
+}
+.uText{
+    font-size: 16px;
+    line-height: 24px;
 }
 .uTitle{
     font-size: 24px;
@@ -357,6 +366,9 @@ a{
     top: 10px;
     right: 10px;
 }
+.tabInfo{
+    margin-bottom: 0px !important;
+}
 .mapStatic{
     background-image: url("mapPhotos/Entrances.jpg");
     position: relative;
@@ -404,6 +416,7 @@ h5{
     border-radius: 20px;
     padding: 8px 10px;
     cursor: pointer;
+    margin-top: -20px;
 }
 .updateNowBtn:active{
     animation: colorChange 3s 1;
@@ -420,10 +433,18 @@ h5{
 .parkingLink{
     color: black !important;
 }
+.bottomLW{
+    border-bottom: 1px solid #a7a7a76e;
+}
 .lineWrapper{
-    height: 56px;
-    margin: 16px 0px;
+    height: 72px;
+    padding-left: 16px;
+    padding-right: 16px;
     vertical-align: top;
+    border-top: .25px solid #a7a7a76e;
+    padding-top: 10px;
+    padding-bottom: 4px;
+    cursor: pointer;
 }
 .lineWrapperParking{
     height: 72px;
@@ -519,6 +540,38 @@ h5{
     width: 60px;
     position: absolute;
     cursor: pointer;
+}
+.southPhoto{
+    background-image: url('photos/south-entrance_medium.jpg');
+}
+.eastPhoto{
+    background-image: url('photos/east entrance 1.jpg');
+}
+.riverPhoto{
+    background-image: url('photos/river-entrance 2.jpg');
+}
+.kolobPhoto{
+    background-image: url('photos/kolob-entrance 1.jpg');
+}
+.entranceDetailedTitle{
+    font-size: 24px;
+    line-height: 28px;
+    color: rgba(0, 0, 0, 0.86);
+    margin-bottom: 16px;
+    margin-top: 6px;
+}
+.greenLink{
+    color: #28430A !important;
+    text-decoration: underline;
+    text-decoration-color: #28430A;
+}
+.entranceIcon{
+    height: auto;
+    width: 20px;
+    margin: 8px;
+    margin-left: 0px;
+    display: inline-block;
+    vertical-align: middle;
 }
 .download{
     bottom: -30px;
@@ -769,4 +822,14 @@ h4{
 
 .active, .dot:hover {
   background-color: #717171;
+}
+@media only screen and (min-width: 650px) {
+    .grid-container{
+        grid-template-columns: 49.5% 49.5%;
+    }
+}
+@media only screen and (min-width: 1000px) {
+    .grid-container{
+        grid-template-columns: 49.7% 49.7%;
+    }
 }

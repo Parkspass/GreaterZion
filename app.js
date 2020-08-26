@@ -228,6 +228,12 @@ var app = new Vue({
                     break;
             }
         },
+        mapBackClicked: function(){
+            this.page = 'home';
+            this.bottomNavImg('home');
+            this.home_selected = true;
+            this.map_selected = false;
+        },
         entrancesClicked: function(){
             this.page = 'entrances';
             this.loadEntrance();
@@ -355,11 +361,10 @@ var app = new Vue({
             var vm = this;
             axios.get("https://trailwaze.info/zion/vehicleTraffic_request.php?site=zionsouthin").then(response =>{
                 this.SouthEntranceStat = response.data.zionsouthin.rotate100;
-                console.log("fetch called")
                 if(this.SouthEntranceStat < 33){
                     this.southEntranceSvg = "icons/entrance_green.svg";
                     this.southEntranceSvgStroke = "#749D4C";
-                    this.SouthEntranceBusiness = "Not busy";
+                    this.SouthEntranceBusiness = "Not too busy";
                 }else if(this.SouthEntranceStat < 66){
                     this.southEntranceSvg = "icons/entrance_yellow.svg";
                     this.southEntranceSvgStroke = "#FFCD31";
@@ -385,7 +390,7 @@ var app = new Vue({
                 if(this.EastEntranceStat < 33){
                     this.eastEntranceSvg = "icons/entrance_green.svg";
                     this.eastEntranceSvgStroke = "#749D4C";
-                    this.EastEntranceBusiness = "Not busy";
+                    this.EastEntranceBusiness = "Not too busy";
                 }else if(this.EastEntranceStat < 66){
                     this.eastEntranceSvg = "icons/entrance_yellow.svg";
                     this.eastEntranceSvgStroke = "#FFCD31";
@@ -408,7 +413,7 @@ var app = new Vue({
                 if(this.RiverEntranceStat < 33){
                     this.riverEntranceSvg = "icons/entrance_green.svg";
                     this.riverEntranceSvgStroke = "#749D4C";
-                    this.RiverEntranceBusiness = "Not busy";
+                    this.RiverEntranceBusiness = "Not too busy";
                 }else if(this.RiverEntranceStat < 66){
                     this.riverEntranceSvg = "icons/entrance_yellow.svg";
                     this.riverEntranceSvgStroke = "#FFCD31";
@@ -423,8 +428,8 @@ var app = new Vue({
 
                 this.kolobEntranceSvg = "icons/entrance_green.svg";
                 this.kolobEntranceSvgStroke = "#749D4C";
-                this.KolobEntranceBusiness = "Not busy";
-                this.setStop("kolobEntranceLine", 8, .01);
+                this.KolobEntranceBusiness = "Not too busy";
+                this.setStop("kolobEntranceLine", 8, 0.01);
             }).catch(error =>{
                 vm = "Fetch " + error;
 
@@ -434,14 +439,14 @@ var app = new Vue({
 
                 this.kolobEntranceSvg = "icons/entrance_grey.svg";
                 this.kolobEntranceSvgStroke = "#B5B5B5";
-                this.KolobEntranceBusiness = "Closed";
+                this.KolobEntranceBusiness = "Not too busy";
             });
             // axios.get("kolob parking php request here").then(response => {
             //     this.RiverEntranceStat = response.data.zionbridge.rotate100;
             //     if(this.RiverEntranceStat < 33){
             //         this.riverEntranceSvg = "icons/entrance_green.svg";
             //         this.riverEntranceSvgStroke = "#749D4C";
-            //         this.RiverEntranceBusiness = "Not busy";
+            //         this.RiverEntranceBusiness = "Not too busy";
             //     }else if(this.RiverEntranceStat < 66){
             //         this.riverEntranceSvg = "icons/entrance_yellow.svg";
             //         this.riverEntranceSvgStroke = "#FFCD31";
@@ -461,11 +466,10 @@ var app = new Vue({
             var vm = this;
             axios.get("https://trailwaze.info/zion/vehicleTraffic_request.php?site=zionsouthin").then(response =>{
                 this.SouthEntranceStat = response.data.zionsouthin.rotate100;
-                console.log("fetch called")
                 if(this.SouthEntranceStat < 33){
                     this.southEntranceSvg = "icons/entrance_green.svg";
                     this.southEntranceSvgStroke = "#749D4C";
-                    this.SouthEntranceBusiness = "Not busy";
+                    this.SouthEntranceBusiness = "Not too busy";
                 }else if(this.SouthEntranceStat < 66){
                     this.southEntranceSvg = "icons/entrance_yellow.svg";
                     this.southEntranceSvgStroke = "#FFCD31";
@@ -491,7 +495,7 @@ var app = new Vue({
                 if(this.EastEntranceStat < 33){
                     this.eastEntranceSvg = "icons/entrance_green.svg";
                     this.eastEntranceSvgStroke = "#749D4C";
-                    this.EastEntranceBusiness = "Not busy";
+                    this.EastEntranceBusiness = "Not too busy";
                 }else if(this.EastEntranceStat < 66){
                     this.eastEntranceSvg = "icons/entrance_yellow.svg";
                     this.eastEntranceSvgStroke = "#FFCD31";
@@ -514,7 +518,7 @@ var app = new Vue({
                 if(this.RiverEntranceStat < 33){
                     this.riverEntranceSvg = "icons/entrance_green.svg";
                     this.riverEntranceSvgStroke = "#749D4C";
-                    this.RiverEntranceBusiness = "Not busy";
+                    this.RiverEntranceBusiness = "Not too busy";
                 }else if(this.RiverEntranceStat < 66){
                     this.riverEntranceSvg = "icons/entrance_yellow.svg";
                     this.riverEntranceSvgStroke = "#FFCD31";
@@ -529,8 +533,8 @@ var app = new Vue({
 
                 this.kolobEntranceSvg = "icons/entrance_green.svg";
                 this.kolobEntranceSvgStroke = "#749D4C";
-                this.KolobEntranceBusiness = "Not busy";
-                this.setStop("kolobEntranceLine", 8, .01);
+                this.KolobEntranceBusiness = "Not too busy";
+                this.setStop("kolobEntranceLine", 8, 0.01);
             }).catch(error =>{
                 vm = "Fetch " + error;
 
@@ -540,7 +544,7 @@ var app = new Vue({
 
                 this.kolobEntranceSvg = "icons/entrance_green.svg";
                 this.kolobEntranceSvgStroke = "#749D4C";
-                this.KolobEntranceBusiness = "Not busy";
+                this.KolobEntranceBusiness = "Not too busy";
             });
             document.getElementById("southEntranceLine").style.animation = "null";
             document.getElementById("eastEntranceLine").style.animation = "null";
@@ -551,7 +555,7 @@ var app = new Vue({
                 document.getElementById("eastEntranceLine").style.animation = "";
                 document.getElementById("riverEntranceLine").style.animation = "";
                 document.getElementById("kolobEntranceLine").style.animation = "";
-            },.2);
+            },0.2);
             this.entranceLastUpdate = this.getUpdateTime();
         },
         loadParking: function(){
@@ -631,7 +635,7 @@ var app = new Vue({
             this.springdaleParkingSvg = this.loadParkingBusiness(SD)[1];
             this.springdaleParkingSvgStroke = this.loadParkingBusiness(SD)[2];
 
-            var KVC = .1 / 100;
+            var KVC = 0.1 / 100;
             this.kolobVcBusiness = this.loadParkingBusiness(KVC)[0];
             this.kolobVcParkingSvg = this.loadParkingBusiness(KVC)[1];
             this.kolobVcParkingSvgStroke = this.loadParkingBusiness(KVC)[2];
@@ -685,7 +689,7 @@ var app = new Vue({
                 document.getElementById("rvLine").style.animation = "";
                 document.getElementById("springdaleLine").style.animation = "";
                 document.getElementById("kolobVcLine").style.animation = "";
-            },.2);
+            },0.2);
             this.parkingLastUpdate = this.getUpdateTime();
         },
         resetLoadParkingSvgsOffline: function(){
@@ -732,7 +736,7 @@ var app = new Vue({
                 document.getElementById("rvLine").style.animation = "";
                 document.getElementById("springdaleLine").style.animation = "";
                 document.getElementById("kolobVcLine").style.animation = "";
-            },.2);
+            },0.2);
         },
         resetParkingAnimation: function(){
             axios.get("https://trailwaze.info/zion/request.php").then(response => {
@@ -805,14 +809,14 @@ var app = new Vue({
                 document.getElementById("angelsLandingWestLine").style.animation = "";
                 document.getElementById("observationPointLine").style.animation = "";
                 document.getElementById("narrowsLine").style.animation = "";
-            },.2);
+            },0.2);
             this.trailsLastUpdate = this.getUpdateTime();
         },
         loadParkingBusiness: function(lot){
             if (isNaN(lot)){
                 return ['Closed', 'icons/parking_grey.svg', '#B5B5B5'];
             }else if(lot < 0.33){
-                return ['Not busy', 'icons/parking_green.svg', '#749D4C'];
+                return ['Not too busy', 'icons/parking_green.svg', '#749D4C'];
             }else if(lot < 0.66){
                 return ['A little busy', 'icons/parking_yellow.svg', '#FFCD31'];
             }else{
@@ -984,7 +988,7 @@ var app = new Vue({
             if (isNaN(trail)){
                 return ['Closed', 'fill: #B5B5B5', '#B5B5B5'];
             }else if(trail < 0.33){
-                return ['Not busy', 'fill: #749D4C', '#749D4C'];
+                return ['Not too busy', 'fill: #749D4C', '#749D4C'];
             }else if(trail < 0.66){
                 return ['A little busy', 'fill: #FFCD31', '#FFCD31'];
             }else{
@@ -992,7 +996,7 @@ var app = new Vue({
             }
         },
         swipe: function(dir){
-            if (dir = "Left"){
+            if (dir == "Left"){
                 this.showSlides(this.slideIndex -= 1);
             }
         }

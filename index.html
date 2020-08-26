@@ -118,7 +118,7 @@
                 </transition>
 
                 <div v-if="page=='map'">
-                    <img class="backArrow" src="icons/arrow_back.svg" @click="page='home'">
+                    <img class="backArrow" src="icons/arrow_back.svg" @click="mapBackClicked()">
                     <img id="staticMapTab" src="photos/zion_national_park_map.jpg">
                     <a href="photos/zion_national_park_map.jpg" download="ZionMap"><img id="staticMapDownload" class="circleBtn download" src="icons/download.svg"></a>
                     <div class="push"></div>
@@ -186,8 +186,6 @@
                     <div class="mapStatic">
                         <a class="linkClass" href="https://www.google.com/maps/place/Zion+Park+Fee+Collection+Office/@37.1994752,-112.9913065,17z/data=!4m5!3m4!1s0x80cac2bd3eccc579:0xd19bbb134a3793d3!8m2!3d37.1993729!4d-112.9881647"></a>
                         <img class="backArrow" src="icons/arrow_back.svg" @click="page='home'">
-                        <a href="photos/zion_national_park_map.jpg" download="ZionMap"><img class="circleBtn download" src="icons/download.svg"></a>
-                        <a href="https://www.google.com/maps/place/Zion+Park+Fee+Collection+Office/@37.1994752,-112.9913065,17z/data=!4m5!3m4!1s0x80cac2bd3eccc579:0xd19bbb134a3793d3!8m2!3d37.1993729!4d-112.9881647"><img class="circleBtn expand" src="icons/expand.svg"></a>
                     </div>
                     <div class="contentWrapper">
                         <h3 class="contentTitle">Entrances</h3>
@@ -195,64 +193,285 @@
                             <div class="updateTime">Last updated: {{entranceLastUpdate}}</div>
                             <div class="updateNowBtn" @click="resetEntranceAnimation();">UPDATE NOW</div>
                         </div>
-                        <div class="lineWrapper">
-                            <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
-                                <image x="96" y="96" width="8" height="8" v-bind:href="southEntranceSvg"></image>
-                                <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.2" :stroke="southEntranceSvgStroke" />
-                                <circle id="southEntranceLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="southEntranceSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
-                            </svg>
-                            <div class="lineWrapper2">
-                                <h5>South Entrance</h5>
-                                <p>Vehicle Entrance</p>
-                            </div>
-                            <div class="lineWrapper3">
-                                <p>{{SouthEntranceBusiness}}</p>
-                            </div>
+                        <p class="tabInfo">There are two vehicle entrances into Zion National Park and one walk-in entrance. Kolob Canyon has one vehicle entrance.</p>
+                    </div>
+                    <div class="lineWrapper" @click="page='southEntranceDetailed'">
+                        <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
+                            <image x="96" y="96" width="8" height="8" v-bind:href="southEntranceSvg"></image>
+                            <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.2" :stroke="southEntranceSvgStroke" />
+                            <circle id="southEntranceLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="southEntranceSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
+                        </svg>
+                        <div class="lineWrapper2">
+                            <h5>South Entrance</h5>
+                            <p>Vehicle Entrance</p>
                         </div>
-                        <div class="lineWrapper">
-                            <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
-                                <image x="96" y="96" width="8" height="8" v-bind:href="eastEntranceSvg"></image>
-                                <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.2" :stroke="eastEntranceSvgStroke" />
-                                <circle id="eastEntranceLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="eastEntranceSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
-                            </svg>
-                            <div class="lineWrapper2">
-                                <h5>East Entrance</h5>
-                                <p>Vehicle Entrance</p>
-                            </div>
-                            <div class="lineWrapper3">
-                                <p>{{EastEntranceBusiness}}</p>
-                            </div>
-                        </div>
-                        <div class="lineWrapper">
-                            <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
-                                <image x="96" y="96" width="8" height="8" v-bind:href="riverEntranceSvg"></image>
-                                <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.2" :stroke="riverEntranceSvgStroke" />
-                                <circle id="riverEntranceLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="riverEntranceSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
-                            </svg>
-                            <div class="lineWrapper2">
-                                <h5>River Entrance</h5>
-                                <p>Walk-in Entrance</p>
-                            </div>
-                            <div class="lineWrapper3">
-                                <p>{{RiverEntranceBusiness}}</p>
-                            </div>
-                        </div>
-                        <div class="lineWrapper">
-                            <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
-                                <image x="96" y="96" width="8" height="8" v-bind:href="kolobEntranceSvg"></image>
-                                <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.2" :stroke="kolobEntranceSvgStroke" />
-                                <circle id="kolobEntranceLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="kolobEntranceSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
-                            </svg>
-                            <div class="lineWrapper2">
-                                <h5>Kolob Entrance</h5>
-                                <p>Vehicle Entrance</p>
-                            </div>
-                            <div class="lineWrapper3">
-                                <p>{{KolobEntranceBusiness}}</p>
-                            </div>
+                        <div class="lineWrapper3">
+                            <p>{{SouthEntranceBusiness}}</p>
                         </div>
                     </div>
-                    <div class="push"></div>
+                    <div class="lineWrapper" @click="page='eastEntranceDetailed'">
+                        <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
+                            <image x="96" y="96" width="8" height="8" v-bind:href="eastEntranceSvg"></image>
+                            <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.2" :stroke="eastEntranceSvgStroke" />
+                            <circle id="eastEntranceLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="eastEntranceSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
+                        </svg>
+                        <div class="lineWrapper2">
+                            <h5>East Entrance</h5>
+                            <p>Vehicle Entrance</p>
+                        </div>
+                        <div class="lineWrapper3">
+                            <p>{{EastEntranceBusiness}}</p>
+                        </div>
+                    </div>
+                    <div class="lineWrapper" @click="page='riverEntranceDetailed'">
+                        <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
+                            <image x="96" y="96" width="8" height="8" v-bind:href="riverEntranceSvg"></image>
+                            <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.2" :stroke="riverEntranceSvgStroke" />
+                            <circle id="riverEntranceLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="riverEntranceSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
+                        </svg>
+                        <div class="lineWrapper2">
+                            <h5>River Entrance</h5>
+                            <p>Walk-in Entrance</p>
+                        </div>
+                        <div class="lineWrapper3">
+                            <p>{{RiverEntranceBusiness}}</p>
+                        </div>
+                    </div>
+                    <div class="lineWrapper bottomLW" @click="page='kolobEntranceDetailed'">
+                        <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
+                            <image x="96" y="96" width="8" height="8" v-bind:href="kolobEntranceSvg"></image>
+                            <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.2" :stroke="kolobEntranceSvgStroke" />
+                            <circle id="kolobEntranceLine" class="overlayLine" cx="100" cy="100" r="8" :stroke="kolobEntranceSvgStroke" stroke-dasharray="0, 3000" stroke-dashoffset="126" transform="rotate(-90,100,100)" />
+                        </svg>
+                        <div class="lineWrapper2">
+                            <h5>Kolob Entrance</h5>
+                            <p>Vehicle Entrance</p>
+                        </div>
+                        <div class="lineWrapper3">
+                            <p>{{KolobEntranceBusiness}}</p>
+                        </div>
+                    </div>
+                    <div class="push3"></div>
+                </div>
+                </transition>
+
+                <transition name="fade">
+                <div v-if="page=='southEntranceDetailed'">
+                    <div class="trailPhoto southPhoto">
+                        <img class="backArrow" src="icons/arrow_back.svg" @click="page='entrances'; loadEntrance()">
+                    </div>
+                    <div class="contentWrapper">
+                        <h5 class="entranceDetailedTitle">South Entrance</h5>
+                        <p class="uText">Welcome to Zion National Park! Prepare to let your curiosity guide you to new places. Pick up a map and brochure as you enter your national park.</p>
+                        <p class="uText">The park entrance fee can be paid upon arrival. Park passes can be purchased here, and park brochures may be available.</p>
+                        <p class="uText"><b>Entrance Fees</b> (valid for seven days with receipt)</p>
+                        <ul>
+                            <li>Private vehicle: $35 (no per-person fee)</li>
+                            <li>Motorcycle: $30 (no per-person fee)</li>
+                            <li>Individual (walk-in, bicycle, horse, in a bus): $20 per person, aged 16 or older (fee waivers may be available for curriculum-based educational trips)</li>
+                        </ul>
+                        <p class="uSub">Passes</p>
+                        <ul>
+                            <li>Zion Pass: $70</li>
+                            <li>Valid for one year in Zion.</li>
+                            <li>Interagency Annual Pass: $80</li>
+                            <li>Valid for one year at all federal recreation sites.</li>
+                            <li>Interagency Senior Pass: $80</li>
+                            <li>(Lifetime) For U.S. citizens or permanent residents 62 and over.</li>
+                            <li>Interagency Military Pass (Free)</li>
+                            <li>(Annual) For active duty U.S. military and dependents.</li>
+                            <li>Interagency 4th Grade Pass (Free)</li>
+                            <li>(Annual) For fourth graders and their familites. Must present paper voucher. Visit <a class="greenLink" href="">website</a> for paper voucher and more information.</li>
+                            <li style="list-style: none; margin-top: 6px;">See <a class="greenLink" href="">website</a> for more details.</li>
+                        </ul>
+                        <p class="uSub">Hours</p>
+                        <p class="uText">Zion National Park is open 24 hours per day, 365 days per year, no reservations are required to enter [the park].</p>
+                        <p class="uSub">Getting Here</p>
+                        <p class="uText">Located on Zion Park Blvd Zion - Mount Carmel Highway, Springdale, UT.</p>
+                        <p class="uSub">Hazards & Warnings</p>
+                        <p class="uText">During the busy summer, you are likely to experience congestion in Zion and at park entrances. Be prepared for delays, especially around noon and on weekends. Plan accordingly and use restrooms when available. It is best to arrive by early-morning to find parking and avoid traffic delays.</p>
+                        <p class="uSub">Facilities</p>
+                        <div class="trailLineWrapper">
+                            <img class="entranceIcon" src="icons/entranceIcon.svg">
+                            <p class="trailsIconText">Entrance</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="entranceIcon" src="icons/infoIcon.svg">
+                            <p class="trailsIconText">Information</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="entranceIcon" src="icons/rangerIcon.svg">
+                            <p class="trailsIconText">Ranger Station</p>
+                        </div>
+                    </div>
+                    <div class="push2"></div>
+                </div>
+                </transition>
+
+                <transition name="fade">
+                <div v-if="page=='eastEntranceDetailed'">
+                    <div class="trailPhoto southPhoto">
+                        <img class="backArrow" src="icons/arrow_back.svg" @click="page='entrances'; loadEntrance();">
+                    </div>
+                    <div class="contentWrapper">
+                        <h5 class="entranceDetailedTitle">East Entrance</h5>
+                        <p class="uText">Welcome to Zion National Park! Prepare to let your curiosity guide you to new places. Pick up a map and brochure as you enter your national park.</p>
+                        <p class="uText">The park entrance fee can be paid upon arrival. Park passes can be purchased here, and park brochures may be available.</p>
+                        <p class="uText"><b>Entrance Fees</b> (valid for seven days with receipt)</p>
+                        <ul>
+                            <li>Private vehicle: $35 (no per-person fee)</li>
+                            <li>Motorcycle: $30 (no per-person fee)</li>
+                            <li>Individual (walk-in, bicycle, horse, in a bus): $20 per person, aged 16 or older (fee waivers may be available for curriculum-based educational trips)</li>
+                        </ul>
+                        <p class="uSub">Passes</p>
+                        <ul>
+                            <li>Zion Pass: $70</li>
+                            <li>Valid for one year in Zion.</li>
+                            <li>Interagency Annual Pass: $80</li>
+                            <li>Valid for one year at all federal recreation sites.</li>
+                            <li>Interagency Senior Pass: $80</li>
+                            <li>(Lifetime) For U.S. citizens or permanent residents 62 and over.</li>
+                            <li>Interagency Military Pass (Free)</li>
+                            <li>(Annual) For active duty U.S. military and dependents.</li>
+                            <li>Interagency 4th Grade Pass (Free)</li>
+                            <li>(Annual) For fourth graders and their familites. Must present paper voucher. Visit <a class="greenLink" href="">website</a> for paper voucher and more information.</li>
+                            <li style="list-style: none; margin-top: 6px;">See <a class="greenLink" href="">website</a> for more details.</li>
+                        </ul>
+                        <p class="uSub">Hours</p>
+                        <p class="uText">Zion National Park is open 24 hours per day, 365 days per year, no reservations are required to enter [the park].</p>
+                        <p class="uSub">Getting Here</p>
+                        <p class="uText">Located on UT-9 E, Orderville, UT.</p>
+                        <p class="uSub">Hazards & Warnings</p>
+                        <p class="uText">During the busy summer, you are likely to experience congestion in Zion and at park entrances. Be prepared for delays, especially around noon and on weekends. Plan accordingly and use restrooms when available. It is best to arrive by early-morning to find parking and avoid traffic delays.</p>
+                        <p class="uSub">Facilities</p>
+                        <div class="trailLineWrapper">
+                            <img class="entranceIcon" src="icons/entranceIcon.svg">
+                            <p class="trailsIconText">Entrance</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="entranceIcon" src="icons/infoIcon.svg">
+                            <p class="trailsIconText">Information</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="entranceIcon" src="icons/rangerIcon.svg">
+                            <p class="trailsIconText">Ranger Station</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="entranceIcon" src="icons/parkingIcon.svg">
+                            <p class="trailsIconText">Parking</p>
+                        </div>
+                    </div>
+                    <div class="push2"></div>
+                </div>
+                </transition>
+
+                <transition name="fade">
+                <div v-if="page=='riverEntranceDetailed'">
+                    <div class="trailPhoto southPhoto">
+                        <img class="backArrow" src="icons/arrow_back.svg" @click="page='entrances'; loadEntrance();">
+                    </div>
+                    <div class="contentWrapper">
+                        <h5 class="entranceDetailedTitle">River Entrance</h5>
+                        <p class="uText">Welcome to Zion National Park! Prepare to let your curiosity guide you to new places. Pick up a map and brochure as you enter your national park.</p>
+                        <p class="uText">The park entrance fee can be paid upon arrival. Park passes can be purchased here, and park brochures may be available.</p>
+                        <p class="uText"><b>Entrance Fees</b> (valid for seven days with receipt)</p>
+                        <ul>
+                            <li>Private vehicle: $35 (no per-person fee)</li>
+                            <li>Motorcycle: $30 (no per-person fee)</li>
+                            <li>Individual (walk-in, bicycle, horse, in a bus): $20 per person, aged 16 or older (fee waivers may be available for curriculum-based educational trips)</li>
+                        </ul>
+                        <p class="uSub">Passes</p>
+                        <ul>
+                            <li>Zion Pass: $70</li>
+                            <li>Valid for one year in Zion.</li>
+                            <li>Interagency Annual Pass: $80</li>
+                            <li>Valid for one year at all federal recreation sites.</li>
+                            <li>Interagency Senior Pass: $80</li>
+                            <li>(Lifetime) For U.S. citizens or permanent residents 62 and over.</li>
+                            <li>Interagency Military Pass (Free)</li>
+                            <li>(Annual) For active duty U.S. military and dependents.</li>
+                            <li>Interagency 4th Grade Pass (Free)</li>
+                            <li>(Annual) For fourth graders and their familites. Must present paper voucher. Visit <a class="greenLink" href="">website</a> for paper voucher and more information.</li>
+                            <li style="list-style: none; margin-top: 6px;">See <a class="greenLink" href="">website</a> for more details.</li>
+                        </ul>
+                        <p class="uSub">Hours</p>
+                        <p class="uText">Zion National Park is open 24 hours per day, 365 days per year, no reservations are required to enter [the park].</p>
+                        <p class="uSub">Getting Here</p>
+                        <p class="uText">Located near Zion Park Blvd and Zion Outfitter, past the bridge over the Virgin River in Springdale, UT.</p>
+                        <p class="uSub">Hazards & Warnings</p>
+                        <p class="uText">During the busy summer, you are likely to experience congestion in Zion and at park entrances. Be prepared for delays, especially around noon and on weekends. Plan accordingly and use restrooms when available. It is best to arrive by early-morning to find parking and avoid traffic delays.</p>
+                        <p class="uSub">Facilities</p>
+                        <div class="trailLineWrapper">
+                            <img class="entranceIcon" src="icons/entranceIcon.svg">
+                            <p class="trailsIconText">Entrance</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="entranceIcon" src="icons/infoIcon.svg">
+                            <p class="trailsIconText">Information</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="entranceIcon" src="icons/rangerIcon.svg">
+                            <p class="trailsIconText">Ranger Station</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="entranceIcon" src="icons/parkingIcon.svg">
+                            <p class="trailsIconText">Parking</p>
+                        </div>
+                    </div>
+                    <div class="push2"></div>
+                </div>
+                </transition>
+
+                <transition name="fade">
+                <div v-if="page=='kolobEntranceDetailed'">
+                    <div class="trailPhoto southPhoto">
+                        <img class="backArrow" src="icons/arrow_back.svg" @click="page='entrances'; loadEntrance();">
+                    </div>
+                    <div class="contentWrapper">
+                        <h5 class="entranceDetailedTitle">Kolob Entrance</h5>
+                        <p class="uText">Welcome to Zion National Park! Prepare to let your curiosity guide you to new places. Pick up a map and brochure as you enter your national park.</p>
+                        <p class="uText">The park entrance fee can be paid upon arrival. Park passes can be purchased here, and park brochures may be available.</p>
+                        <p class="uText"><b>Entrance Fees</b> (valid for seven days with receipt)</p>
+                        <ul>
+                            <li>Private vehicle: $35 (no per-person fee)</li>
+                            <li>Motorcycle: $30 (no per-person fee)</li>
+                            <li>Individual (walk-in, bicycle, horse, in a bus): $20 per person, aged 16 or older (fee waivers may be available for curriculum-based educational trips)</li>
+                        </ul>
+                        <p class="uSub">Passes</p>
+                        <ul>
+                            <li>Zion Pass: $70</li>
+                            <li>Valid for one year in Zion.</li>
+                            <li>Interagency Annual Pass: $80</li>
+                            <li>Valid for one year at all federal recreation sites.</li>
+                            <li>Interagency Senior Pass: $80</li>
+                            <li>(Lifetime) For U.S. citizens or permanent residents 62 and over.</li>
+                            <li>Interagency Military Pass (Free)</li>
+                            <li>(Annual) For active duty U.S. military and dependents.</li>
+                            <li>Interagency 4th Grade Pass (Free)</li>
+                            <li>(Annual) For fourth graders and their familites. Must present paper voucher. Visit <a class="greenLink" href="">website</a> for paper voucher and more information.</li>
+                            <li style="list-style: none; margin-top: 6px;">See <a class="greenLink" href="">website</a> for more details.</li>
+                        </ul>
+                        <p class="uSub">Hours</p>
+                        <p class="uText">Zion National Park is open 24 hours per day, 365 days per year, no reservations are required to enter [the park].</p>
+                        <p class="uSub">Getting Here</p>
+                        <p class="uText">Located on E Kolob Canyon Rd, New Harmony, UT near I-15.</p>
+                        <p class="uSub">Hazards & Warnings</p>
+                        <p class="uText">During the busy summer, you are likely to experience congestion in Zion and at park entrances. Be prepared for delays, especially around noon and on weekends. Plan accordingly and use restrooms when available. It is best to arrive by early-morning to find parking and avoid traffic delays.</p>
+                        <p class="uSub">Facilities</p>
+                        <div class="trailLineWrapper">
+                            <img class="entranceIcon" src="icons/entranceIcon.svg">
+                            <p class="trailsIconText">Entrance</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="entranceIcon" src="icons/infoIcon.svg">
+                            <p class="trailsIconText">Information</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="entranceIcon" src="icons/rangerIcon.svg">
+                            <p class="trailsIconText">Ranger Station</p>
+                        </div>
+                    </div>
+                    <div class="push2"></div>
                 </div>
                 </transition>
 
@@ -261,8 +480,6 @@
                     <div class="mapStatic map2">
                         <a class="linkClass" href="https://www.google.com/maps/place/Zion+Parking/@37.1994752,-112.9913065,17z/data=!4m12!1m6!3m5!1s0x80cac2bd3eccc579:0xd19bbb134a3793d3!2sZion+Park+Fee+Collection+Office!8m2!3d37.1993729!4d-112.9881647!3m4!1s0x0:0x54426bffe4c915ed!8m2!3d37.1992244!4d-112.9865943"></a>
                         <img class="backArrow" src="icons/arrow_back.svg" @click="page='home'">
-                        <a href="photos/zion_national_park_map.jpg" download="ZionMap"><img class="circleBtn download" src="icons/download.svg"></a>
-                        <a href="https://www.google.com/maps/place/Zion+Parking/@37.1994752,-112.9913065,17z/data=!4m12!1m6!3m5!1s0x80cac2bd3eccc579:0xd19bbb134a3793d3!2sZion+Park+Fee+Collection+Office!8m2!3d37.1993729!4d-112.9881647!3m4!1s0x0:0x54426bffe4c915ed!8m2!3d37.1992244!4d-112.9865943"><img class="circleBtn expand" src="icons/expand.svg"></a>
                     </div>
                     <div>
                         <div class="contentWrapper">
@@ -272,6 +489,7 @@
                                 <div class="updateNowBtn" @click="resetParkingAnimation()">UPDATE NOW</div>
                             </div>
                         </div>
+                        <p class="tabInfo">St. George shuttles are free and can take you to and from the town of Springdale to the Zion Canyon Visitor Center.</p>
                         <a class="parkingLink" href="https://www.google.com/maps/place/Zion+National+Park+Visitor+Center/@37.2004907,-112.9885074,18z/data=!4m19!1m13!4m12!1m4!2m2!1d-113.5609458!2d37.1126804!4e1!1m6!1m2!1s0x80cac2bd35ac0a47:0x8e601e4c459d754d!2szion+canyon+visitor+center!2m2!1d-112.9869983!2d37.2000864!3m4!1s0x80cac2bd35ac0a47:0x8e601e4c459d754d!8m2!3d37.2000864!4d-112.9869983">
                         <div class="lineWrapperParking largest">
                             <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
@@ -358,8 +576,6 @@
                     <div class="mapStatic map3">
                         <a class="linkClass" href="https://www.google.com/maps/place/Zion+National+Park+Visitor+Center/@37.2001611,-112.9903242,15.89z/data=!4m12!1m6!3m5!1s0x80cac2bd3eccc579:0xd19bbb134a3793d3!2sZion+Park+Fee+Collection+Office!8m2!3d37.1993729!4d-112.9881647!3m4!1s0x0:0x8e601e4c459d754d!8m2!3d37.2000865!4d-112.986998"></a>
                         <img class="backArrow" src="icons/arrow_back.svg" @click="page='home'">
-                        <a href="photos/zion_national_park_map.jpg" download="ZionMap"><img class="circleBtn download" src="icons/download.svg"></a>
-                        <a href="https://www.google.com/maps/place/Zion+National+Park+Visitor+Center/@37.2001611,-112.9903242,15.89z/data=!4m12!1m6!3m5!1s0x80cac2bd3eccc579:0xd19bbb134a3793d3!2sZion+Park+Fee+Collection+Office!8m2!3d37.1993729!4d-112.9881647!3m4!1s0x0:0x8e601e4c459d754d!8m2!3d37.2000865!4d-112.986998"><img class="circleBtn expand" src="icons/expand.svg"></a>
                     </div>
                     <div class="contentWrapper">
                         <h3 class="contentTitle">Shuttles</h3>
@@ -444,8 +660,6 @@
                     <div class="mapStatic map4">
                         <a class="linkClass" href="https://www.google.com/maps/place/Angels+Landing+Trail/@37.2718178,-112.9522506,17z/data=!3m1!4b1!4m12!1m6!3m5!1s0x80cac17e56c262ab:0xc5f60dc9da7d6629!2sAngels+Landing+Trail!8m2!3d37.2718136!4d-112.9500619!3m4!1s0x80cac17e56c262ab:0xc5f60dc9da7d6629!8m2!3d37.2718136!4d-112.9500619"></a>
                         <img class="backArrow" src="icons/arrow_back.svg" @click="page='home'">
-                        <a href="photos/zion_national_park_map.jpg" download="ZionMap"><img class="circleBtn download" src="icons/download.svg"></a>
-                        <a href="https://www.google.com/maps/place/Angels+Landing+Trail/@37.2718178,-112.9522506,17z/data=!3m1!4b1!4m12!1m6!3m5!1s0x80cac17e56c262ab:0xc5f60dc9da7d6629!2sAngels+Landing+Trail!8m2!3d37.2718136!4d-112.9500619!3m4!1s0x80cac17e56c262ab:0xc5f60dc9da7d6629!8m2!3d37.2718136!4d-112.9500619"><img class="circleBtn expand" src="icons/expand.svg"></a>
                     </div>
                     <div>
                         <div class="contentWrapper">
