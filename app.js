@@ -150,6 +150,9 @@ var app = new Vue({
         observationPointSvgStroke: '',
         narrowsSvg: '',
         narrowsSvgStroke: '',
+
+        zionCanyon_selected: true,
+        springdale_selected: false,
     },
     created: function(){
         this.PWA_popup();
@@ -999,7 +1002,15 @@ var app = new Vue({
             if (dir == "Left"){
                 this.showSlides(this.slideIndex -= 1);
             }
-        }
+        },
+        zionTabClicked: function(){
+            this.zionCanyon_selected = true;
+            this.springdale_selected = false;
+        },
+        springdaleTabClicked: function(){
+            this.zionCanyon_selected = false;
+            this.springdale_selected = true;
+        },
     }
 });
 

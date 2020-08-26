@@ -316,9 +316,10 @@ ul{
 .buyTicket{
     display: block;
     width: 200px;
-    margin: 16px;
+    margin: 4px;
     margin-left: auto;
     margin-right: auto;
+    cursor: pointer;
 }
 .linkImg{
     vertical-align: middle;
@@ -341,7 +342,22 @@ a{
     height: auto;
     margin-bottom: 8px;
 }
-
+.shuttleTabContainer{
+    text-align: center;
+    width: 100%;
+    border-bottom: 1px solid #a7a7a76e;
+}
+.shuttleTab{
+    height: 48px;
+    width: 49%;
+    text-align: center;
+    line-height: 48px;
+    display: inline-block;
+}
+.shuttleTabFocus{
+    color: #28430A;
+    border-bottom: 2px solid #28430A;
+}
 /* bottom navigation tabs */
 .bottomNavBar {
     position: fixed !important;
@@ -437,23 +453,21 @@ h5{
     border-bottom: 1px solid #a7a7a76e;
 }
 .lineWrapper{
-    height: 72px;
     padding-left: 16px;
     padding-right: 16px;
     vertical-align: top;
     border-top: .25px solid #a7a7a76e;
-    padding-top: 10px;
-    padding-bottom: 4px;
+    padding-top: 18px;
+    padding-bottom: 18px;
     cursor: pointer;
 }
 .lineWrapperParking{
-    height: 72px;
     padding-left: 16px;
     padding-right: 16px;
     vertical-align: top;
     border-top: .25px solid #a7a7a76e;
-    padding-top: 10px;
-    padding-bottom: 4px;
+    padding-top: 16px;
+    padding-bottom: 8px;
     cursor: pointer;
 }
 .lineWrapperParking:hover{
@@ -472,9 +486,6 @@ h5{
 .larger{
     height: 88px;
     padding-top: 16px;
-}
-.largest{
-    height: 90px;
 }
 .spaceDown{
     margin-top: 8px !important;
@@ -553,6 +564,10 @@ h5{
 .kolobPhoto{
     background-image: url('photos/kolob-entrance 1.jpg');
 }
+.vcParking{
+    background-image: url('photos/vcParking.jpg');
+}
+
 .entranceDetailedTitle{
     font-size: 24px;
     line-height: 28px;

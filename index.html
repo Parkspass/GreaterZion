@@ -310,7 +310,7 @@
 
                 <transition name="fade">
                 <div v-if="page=='eastEntranceDetailed'">
-                    <div class="trailPhoto southPhoto">
+                    <div class="trailPhoto eastPhoto">
                         <img class="backArrow" src="icons/arrow_back.svg" @click="page='entrances'; loadEntrance();">
                     </div>
                     <div class="contentWrapper">
@@ -367,7 +367,7 @@
 
                 <transition name="fade">
                 <div v-if="page=='riverEntranceDetailed'">
-                    <div class="trailPhoto southPhoto">
+                    <div class="trailPhoto riverPhoto">
                         <img class="backArrow" src="icons/arrow_back.svg" @click="page='entrances'; loadEntrance();">
                     </div>
                     <div class="contentWrapper">
@@ -424,7 +424,7 @@
 
                 <transition name="fade">
                 <div v-if="page=='kolobEntranceDetailed'">
-                    <div class="trailPhoto southPhoto">
+                    <div class="trailPhoto kolobPhoto">
                         <img class="backArrow" src="icons/arrow_back.svg" @click="page='entrances'; loadEntrance();">
                     </div>
                     <div class="contentWrapper">
@@ -488,10 +488,9 @@
                                 <div class="updateTime">Last updated: {{parkingLastUpdate}}</div>
                                 <div class="updateNowBtn" @click="resetParkingAnimation()">UPDATE NOW</div>
                             </div>
+                            <p class="tabInfo">St. George shuttles are free and can take you to and from the town of Springdale to the Zion Canyon Visitor Center.</p>
                         </div>
-                        <p class="tabInfo">St. George shuttles are free and can take you to and from the town of Springdale to the Zion Canyon Visitor Center.</p>
-                        <a class="parkingLink" href="https://www.google.com/maps/place/Zion+National+Park+Visitor+Center/@37.2004907,-112.9885074,18z/data=!4m19!1m13!4m12!1m4!2m2!1d-113.5609458!2d37.1126804!4e1!1m6!1m2!1s0x80cac2bd35ac0a47:0x8e601e4c459d754d!2szion+canyon+visitor+center!2m2!1d-112.9869983!2d37.2000864!3m4!1s0x80cac2bd35ac0a47:0x8e601e4c459d754d!8m2!3d37.2000864!4d-112.9869983">
-                        <div class="lineWrapperParking largest">
+                        <div class="lineWrapperParking largest" @click="page='zionCanyonDetailed">
                             <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
                                 <image x="96" y="96" width="8" height="8" v-bind:href="vcParkingSvg"></image>
                                 <circle class="background" cx="100" cy="100" r="8" stroke-opacity="0.2" :stroke="vcParkingSvgStroke" />
@@ -505,7 +504,7 @@
                             <div class="lineWrapper3">
                                 <p>{{vcBusiness}}</p>
                             </div>
-                        </div></a>
+                        </div>
                         <a class="parkingLink" href="https://www.google.com/maps/place/Zion+Human+History+Museum/@37.2093572,-112.982696,17z/data=!3m1!4b1!4m5!3m4!1s0x80cac293a6a026c7:0xa97ed5011a8c0dee!8m2!3d37.2093529!4d-112.980502">
                         <div class="lineWrapperParking">
                             <svg class="svg" viewBox="90 90 20 20" height="50px" width="50px">
@@ -572,6 +571,59 @@
                 </transition>
 
                 <transition name="fade">
+                <div v-if="page=='zionCanyonDetailed'">
+                    <div class="trailPhoto vcParking">
+                        <img class="backArrow" src="icons/arrow_back.svg" @click="page='entrances'; loadEntrance();">
+                    </div>
+                    <div class="contentWrapper">
+                        <h5 class="entranceDetailedTitle">Kolob Entrance</h5>
+                        <p class="uText">Welcome to Zion National Park! Prepare to let your curiosity guide you to new places. Pick up a map and brochure as you enter your national park.</p>
+                        <p class="uText">The park entrance fee can be paid upon arrival. Park passes can be purchased here, and park brochures may be available.</p>
+                        <p class="uText"><b>Entrance Fees</b> (valid for seven days with receipt)</p>
+                        <ul>
+                            <li>Private vehicle: $35 (no per-person fee)</li>
+                            <li>Motorcycle: $30 (no per-person fee)</li>
+                            <li>Individual (walk-in, bicycle, horse, in a bus): $20 per person, aged 16 or older (fee waivers may be available for curriculum-based educational trips)</li>
+                        </ul>
+                        <p class="uSub">Passes</p>
+                        <ul>
+                            <li>Zion Pass: $70</li>
+                            <li>Valid for one year in Zion.</li>
+                            <li>Interagency Annual Pass: $80</li>
+                            <li>Valid for one year at all federal recreation sites.</li>
+                            <li>Interagency Senior Pass: $80</li>
+                            <li>(Lifetime) For U.S. citizens or permanent residents 62 and over.</li>
+                            <li>Interagency Military Pass (Free)</li>
+                            <li>(Annual) For active duty U.S. military and dependents.</li>
+                            <li>Interagency 4th Grade Pass (Free)</li>
+                            <li>(Annual) For fourth graders and their familites. Must present paper voucher. Visit <a class="greenLink" href="">website</a> for paper voucher and more information.</li>
+                            <li style="list-style: none; margin-top: 6px;">See <a class="greenLink" href="">website</a> for more details.</li>
+                        </ul>
+                        <p class="uSub">Hours</p>
+                        <p class="uText">Zion National Park is open 24 hours per day, 365 days per year, no reservations are required to enter [the park].</p>
+                        <p class="uSub">Getting Here</p>
+                        <p class="uText">Located on E Kolob Canyon Rd, New Harmony, UT near I-15.</p>
+                        <p class="uSub">Hazards & Warnings</p>
+                        <p class="uText">During the busy summer, you are likely to experience congestion in Zion and at park entrances. Be prepared for delays, especially around noon and on weekends. Plan accordingly and use restrooms when available. It is best to arrive by early-morning to find parking and avoid traffic delays.</p>
+                        <p class="uSub">Facilities</p>
+                        <div class="trailLineWrapper">
+                            <img class="entranceIcon" src="icons/entranceIcon.svg">
+                            <p class="trailsIconText">Entrance</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="entranceIcon" src="icons/infoIcon.svg">
+                            <p class="trailsIconText">Information</p>
+                        </div>
+                        <div class="trailLineWrapper">
+                            <img class="entranceIcon" src="icons/rangerIcon.svg">
+                            <p class="trailsIconText">Ranger Station</p>
+                        </div>
+                    </div>
+                    <div class="push2"></div>
+                </div>
+                </transition>
+
+                <transition name="fade">
                 <div v-if="page=='shuttles'">
                     <div class="mapStatic map3">
                         <a class="linkClass" href="https://www.google.com/maps/place/Zion+National+Park+Visitor+Center/@37.2001611,-112.9903242,15.89z/data=!4m12!1m6!3m5!1s0x80cac2bd3eccc579:0xd19bbb134a3793d3!2sZion+Park+Fee+Collection+Office!8m2!3d37.1993729!4d-112.9881647!3m4!1s0x0:0x8e601e4c459d754d!8m2!3d37.2000865!4d-112.986998"></a>
@@ -579,10 +631,18 @@
                     </div>
                     <div class="contentWrapper">
                         <h3 class="contentTitle">Shuttles</h3>
-                        <div>
-                            <img class="alert" src="icons/alert.svg"><h4>Warning</h4>
-                            <p style="font-size: 16px;">You must have a shuttle ticket to board the bus. Shuttle tickets cost $1.00 each and will sell out fast. </p>
-                            <a href="https://www.recreation.gov/ticket/facility/tour/3010 "><img class="buyTicket" src="icons/buy-ticket-now.svg"></a>
+                    </div>
+                    <div class="shuttleTabContainer">
+                        <div class="shuttleTab" :class="{shuttleTabFocus:zionCanyon_selected}" @click="zionTabClicked()">ZION CANYON LINE</div>
+                        <div class="shuttleTab" :class="{shuttleTabFocus:springdale_selected}" @click="springdaleTabClicked()">SPRINGDALE LINE</div>
+                    </div>
+                    <div v-if="zionCanyon_selected">
+                        <div class="contentWrapper">
+                            <div>
+                                <img class="alert" src="icons/alert.svg"><h4>Warning</h4>
+                                <p style="font-size: 16px;">You must have a shuttle ticket to board the bus. Shuttle tickets cost $1.00 each and will sell out fast. </p>
+                                <a href="https://www.recreation.gov/ticket/facility/tour/3010 "><img class="buyTicket" src="icons/buy-ticket-now.svg"></a>
+                            </div>
                         </div>
                         <div class="lineWrapper">
                             <img class="shuttleNum" src="icons/circle1.svg">
@@ -650,8 +710,69 @@
                                 <p class="shuttleText">Riverside Walk, The Narrows</p>
                             </div>
                         </div>
+                        <div class="push3"></div>
                     </div>
-                    <div class="push"></div>
+
+                    <div v-if="springdale_selected">
+                        <div class="contentWrapper">
+                            <p style="font-size: 16px; margin-bottom: 0px;">The FREE Springdale service, operated by St George Shuttle, resumed 7/15 and will continue daily 7am to 9pm until at least October 31, 2020.</p>
+                        </div>
+                        <div class="lineWrapper">
+                            <img class="shuttleNum" src="icons/brown1.png">
+                            <div class="shuttleWrap">
+                                <h5>Zion Canyon Village</h5>
+                            </div>
+                        </div>
+                        <div class="lineWrapper">
+                            <img class="shuttleNum" src="icons/brown2.png">
+                            <div class="shuttleWrap">
+                                <h5>Cafe Soleil, Thai Sapa, Cliffrose</h5>
+                            </div>
+                        </div>
+                        <div class="lineWrapper">
+                            <img class="shuttleNum" src="icons/brown3.png">
+                            <div class="shuttleWrap">
+                                <h5>Whiptail Grill, Flanigan’s Inn</h5>
+                            </div>
+                        </div>
+                        <div class="lineWrapper">
+                            <img class="shuttleNum" src="icons/brown4.png">
+                            <div class="shuttleWrap">
+                                <h5>Desert Pearl Inn, Canyon Ranch Motel</h5>
+                            </div>
+                        </div>
+                        <div class="lineWrapper">
+                            <img class="shuttleNum" src="icons/brown5.png">
+                            <div class="shuttleWrap">
+                                <h5>Bumbleberry Inn, Zion Pizza & Noodle Company</h5>
+                            </div>
+                        </div>
+                        <div class="lineWrapper">
+                            <img class="shuttleNum" src="icons/brown6.png">
+                            <div class="shuttleWrap">
+                                <h5>Hamption Inn, Holiday Inn Express, Bit & Spur</h5>
+                            </div>
+                        </div>
+                        <div class="lineWrapper">
+                            <img class="shuttleNum" src="icons/brown7.png">
+                            <div class="shuttleWrap">
+                                <h5>Driftwood Lodge, Quality Inn & Suites - Montclair</h5>
+                            </div>
+                        </div>
+                        <div class="lineWrapper">
+                            <img class="shuttleNum" src="icons/brown8.png">
+                            <div class="shuttleWrap">
+                                <h5>Silver Bear Enterprises, Park House Cafe</h5>
+                            </div>
+                        </div>
+                        <div class="lineWrapper">
+                            <img class="shuttleNum" src="icons/brown9.png">
+                            <div class="shuttleWrap">
+                                <h5>Majestic View Lodge</h5>
+                            </div>
+                        </div>
+                        <div class="push3"></div>
+                    </div>
                 </div>
                 </transition>
 
